@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet">
+<style>
+@font-face{
+  font-family:'Departure Mono';
+  src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2409-1@1.0/DepartureMono-Regular.woff2') format('woff2');
+  font-weight:400;font-style:normal;font-display:swap;
+}
+:root{
+  --bg:oklch(0.145 0.014 62); --panel:oklch(0.185 0.016 62); --panel2:oklch(0.245 0.020 62);
+  --fg:oklch(0.855 0.085 78); --dim:oklch(0.615 0.065 74); --line:oklch(0.375 0.045 68);
+  --accent:oklch(0.805 0.135 76); --onaccent:oklch(0.145 0.014 62);
+}
+:root[data-theme="dark"]{
+  --bg:oklch(0.155 0.006 70); --panel:oklch(0.195 0.006 70); --panel2:oklch(0.255 0.006 70);
+  --fg:oklch(0.915 0.004 80); --dim:oklch(0.645 0.006 74); --line:oklch(0.335 0.006 70);
+  --accent:oklch(0.805 0.130 76); --onaccent:oklch(0.155 0.006 70);
+}
+:root[data-theme="light"]{
+  --bg:oklch(0.965 0.004 85); --panel:oklch(0.930 0.004 85); --panel2:oklch(0.885 0.004 85);
+  --fg:oklch(0.240 0.008 70); --dim:oklch(0.500 0.008 70); --line:oklch(0.780 0.006 82);
+  --accent:oklch(0.505 0.135 62); --onaccent:oklch(0.975 0.004 85);
+}
+:root[data-theme="green"]{
+  --bg:oklch(0.150 0.028 150); --panel:oklch(0.195 0.034 150); --panel2:oklch(0.255 0.042 150);
+  --fg:oklch(0.865 0.150 148); --dim:oklch(0.615 0.105 148); --line:oklch(0.375 0.062 150);
+  --accent:oklch(0.855 0.190 145); --onaccent:oklch(0.150 0.028 150);
+}
+:root[data-theme="contrast"]{
+  --bg:oklch(0 0 0); --panel:oklch(0.130 0 0); --panel2:oklch(0.215 0 0);
+  --fg:oklch(1 0 0); --dim:oklch(0.740 0 0); --line:oklch(0.560 0 0);
+  --accent:oklch(0.930 0.185 100); --onaccent:oklch(0 0 0);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--fg)}
+body{font-family:'JetBrains Mono',ui-monospace,monospace;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{color:var(--fg);text-decoration:underline;text-underline-offset:3px}
+::selection{background:var(--accent);color:var(--onaccent)}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-thumb{background:var(--line)}
+::-webkit-scrollbar-track{background:var(--panel)}
+.work-flow{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(220px,0.85fr);gap:38px;align-items:start}
+.flow-diagram{display:flex;flex-direction:column;gap:6px;color:var(--dim)}
+.flow-row{display:flex;justify-content:center;flex-wrap:wrap;gap:6px}
+.flow-node{border:1px dashed var(--line);padding:4px 6px;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:10px;line-height:1.25;color:var(--fg);text-align:center}
+.flow-arrow{height:18px;position:relative;display:flex;justify-content:center;align-items:center}
+.flow-arrow::before{content:'';height:100%;border-left:1px dashed var(--line)}
+.flow-arrow::after{content:'';position:absolute;width:4px;height:4px;border-radius:50%;background:var(--accent);animation:flow-signal 2.5s ease-in-out infinite}
+.flow-arrow-label{position:absolute;left:calc(50% + 9px);max-width:18ch;font-size:10px;line-height:1.25;color:var(--dim)}
+.flow-note,.flow-text{font-size:10px;line-height:1.45;text-align:center;color:var(--dim)}
+@keyframes flow-signal{0%,100%{transform:translateY(-7px);opacity:0}20%,80%{opacity:1}50%{transform:translateY(7px);opacity:1}}
+@media (prefers-reduced-motion:reduce){.flow-arrow::after{animation:none;transform:translateY(0);opacity:1}}
+@media (max-width:760px){.work-flow{grid-template-columns:1fr;gap:20px}}
+</style>
+</helmet>
+<div style="min-height:100vh;background:var(--bg);color:var(--fg);display:flex;flex-direction:column">
+
+  <header style="display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:20px;border-bottom:1px solid var(--line);padding:0 20px;height:56px;position:sticky;top:0;background:var(--bg);z-index:40">
+    <a href="#home" onClick="{{ goHome }}" style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:19px;letter-spacing:0.04em;color:var(--fg);text-decoration:none">TAHER AKOLAWALA</a>
+    <div style="display:flex;align-items:center;gap:18px">
+      <div style="display:flex;gap:12px;align-items:baseline;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px">
+        <sc-for list="{{ themes }}" as="th" hint-placeholder-count="5">
+          <div style="display:flex">
+            <sc-if value="{{ th.on }}">
+              <button onClick="{{ th.set }}" style="font-family:inherit;font-size:14px;background:transparent;border:0;padding:0;cursor:pointer;color:var(--fg)">{{ th.label }}</button>
+            </sc-if>
+            <sc-if value="{{ th.off }}">
+              <button onClick="{{ th.set }}" style="font-family:inherit;font-size:14px;background:transparent;border:0;padding:0;cursor:pointer;color:var(--dim)" style-hover="color:var(--fg)">{{ th.label }}</button>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+      <button onClick="{{ openPalette }}" style="display:flex;align-items:center;gap:10px;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px;color:var(--dim);background:transparent;border:1px solid var(--line);padding:6px 10px;cursor:pointer">
+        <span>Search</span><span style="border:1px solid var(--line);padding:0 4px;font-size:12px">⌘K</span>
+      </button>
+      <div style="display:flex;gap:12px;align-items:baseline;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px">
+        <a href="https://github.com/taherakolawala" target="_blank" style="color:var(--dim)" style-hover="color:var(--fg)">GitHub ↗</a>
+        <a href="https://linkedin.com/in/taher51" target="_blank" style="color:var(--dim)" style-hover="color:var(--fg)">LinkedIn ↗</a>
+      </div>
+      <a href="taher-akolawala-resume.pdf" target="_blank" style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px;border:1px solid var(--accent);color:var(--accent);padding:7px 12px;white-space:nowrap" style-hover="background:var(--accent);color:var(--onaccent);text-decoration:none">Resume ↓</a>
+    </div>
+  </header>
+
+  <div style="display:grid;grid-template-columns:300px minmax(0,1fr);flex:1;align-items:start">
+
+    <aside style="border-right:1px dashed var(--line);position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto;padding:22px 0 60px">
+      <div style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:15px;letter-spacing:0.08em;color:var(--fg);padding:0 20px 18px">TABLE OF CONTENTS</div>
+      <nav style="display:flex;flex-direction:column">
+        <sc-for list="{{ nav }}" as="sec" hint-placeholder-count="4">
+          <div style="display:flex;flex-direction:column">
+            <button onClick="{{ sec.toggle }}" style="display:flex;align-items:center;justify-content:space-between;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:16px;color:var(--fg);background:transparent;border:0;padding:9px 20px;cursor:pointer;text-align:left;width:100%">
+              <span>{{ sec.label }}</span><span style="color:var(--dim)">{{ sec.sign }}</span>
+            </button>
+            <sc-if value="{{ sec.open }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;flex-direction:column">
+                <sc-for list="{{ sec.items }}" as="it" hint-placeholder-count="4">
+                  <div style="display:flex">
+                    <sc-if value="{{ it.active }}">
+                      <a href="#page" onClick="{{ it.go }}" style="flex:1;display:flex;align-items:baseline;gap:8px;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:15px;padding:7px 20px 7px 36px;background:var(--accent);color:var(--onaccent);text-decoration:none">
+                        <span>{{ it.label }}</span>
+                        <span style="font-size:12px;border:1px solid var(--onaccent);padding:0 4px;margin-left:auto;white-space:nowrap;opacity:0.75">{{ it.abbr }}</span>
+                      </a>
+                    </sc-if>
+                    <sc-if value="{{ it.inactive }}">
+                      <a href="#page" onClick="{{ it.go }}" style="flex:1;display:flex;align-items:baseline;gap:8px;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:15px;padding:7px 20px 7px 36px;color:var(--fg);text-decoration:none" style-hover="background:var(--panel)">
+                        <span>{{ it.label }}</span>
+                        <span style="font-size:12px;background:var(--panel2);color:var(--dim);padding:0 4px;margin-left:auto;white-space:nowrap">{{ it.abbr }}</span>
+                      </a>
+                    </sc-if>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </nav>
+    </aside>
+
+    <main style="min-width:0;display:flex;flex-direction:column;min-height:calc(100vh - 56px)">
+      <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+        <section style="padding:14px 44px 70px">
+          <div style="position:relative;margin:0 0 34px;font-family:'JetBrains Mono',monospace;font-size:10px;line-height:1;letter-spacing:0.04em;color:var(--accent);white-space:pre;user-select:none;overflow:hidden"><pre ref="{{ asciiRef }}" style="margin:0"></pre><pre ref="{{ nameRef }}" style="position:absolute;inset:0;margin:0;opacity:0"></pre></div><p style="margin: 0; font-size: 14.5px">I study computer science at the University of Florida with a minor in electrical engineering, graduating May 2028. I write systems software at <span style="background:var(--panel2);padding:1px 4px">ReliaQuest</span> and research autonomy at the <span style="background:var(--panel2);padding:1px 4px">Machine Intelligence Lab</span>, and most of what I build sits somewhere between low-level systems and applied machine learning.</p><h1 style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:30px;font-weight:400;letter-spacing:0.04em;margin:0 0 26px;color:var(--fg)"><br></h1>
+          
+          <div style="display:flex;flex-direction:column;gap:16px;max-width:78ch;font-size:14.5px;line-height:1.75;color:var(--fg);text-wrap:pretty">
+            
+            
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isContact }}">
+        <section style="padding:14px 44px 70px">
+          <h1 style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:30px;font-weight:400;letter-spacing:0.04em;margin:0 0 28px;color:var(--fg)">CONTACT</h1>
+          <div style="display:flex;flex-direction:column;gap:0;max-width:620px;border-top:1px dashed var(--line)">
+            <a href="https://github.com/taherakolawala" target="_blank" style="display:flex;gap:20px;align-items:baseline;padding:16px 4px;border-bottom:1px dashed var(--line);color:var(--fg);text-decoration:none" style-hover="background:var(--panel)">
+              <span style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:15px;color:var(--dim);min-width:110px">GITHUB</span>
+              <span style="font-size:14px;color:var(--accent)">github.com/taherakolawala ↗</span>
+            </a>
+            <a href="https://linkedin.com/in/taher51" target="_blank" style="display:flex;gap:20px;align-items:baseline;padding:16px 4px;border-bottom:1px dashed var(--line);color:var(--fg);text-decoration:none" style-hover="background:var(--panel)">
+              <span style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:15px;color:var(--dim);min-width:110px">LINKEDIN</span>
+              <span style="font-size:14px;color:var(--accent)">linkedin.com/in/taher51 ↗</span>
+            </a>
+            <a href="taher-akolawala-resume.pdf" target="_blank" style="display:flex;gap:20px;align-items:baseline;padding:16px 4px;border-bottom:1px dashed var(--line);color:var(--fg);text-decoration:none" style-hover="background:var(--panel)">
+              <span style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:15px;color:var(--dim);min-width:110px">RESUME</span>
+              <span style="font-size:14px;color:var(--accent)">taher-akolawala-resume.pdf ↓</span>
+            </a>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isEntry }}">
+        <article style="padding:14px 44px 60px">
+          <h1 style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:30px;font-weight:400;letter-spacing:0.03em;line-height:1.25;margin:0 0 12px;color:var(--fg);text-wrap:pretty">{{ entry.title }}</h1>
+          <div style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:16px;color:var(--dim);margin-bottom:20px">{{ entry.role }}</div>
+
+          <div style="display:flex;flex-wrap:wrap;gap:8px;padding-bottom:22px;margin-bottom:30px">
+            <sc-for list="{{ entry.meta }}" as="m" hint-placeholder-count="3">
+              <span style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px;background:var(--panel2);color:var(--dim);padding:3px 7px">{{ m }}</span>
+            </sc-for>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:20px">
+            <sc-for list="{{ entry.blocks }}" as="b" hint-placeholder-count="5">
+              <div>
+                <sc-if value="{{ b.isWorkWithFlow }}">
+                  <div class="work-flow">
+                    <div>
+                      <div style="display:flex;align-items:center;gap:12px;margin-top:16px;margin-bottom:20px">
+                        <h2 style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:18px;font-weight:400;letter-spacing:0.04em;color:var(--fg);margin:0;white-space:nowrap">{{ b.text }}</h2>
+                        <span style="flex:1;border-top:1px dashed var(--line)"></span>
+                      </div>
+                      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:13px">
+                        <sc-for list="{{ b.items }}" as="li" hint-placeholder-count="3">
+                          <li style="display:flex;gap:12px;align-items:baseline">
+                            <span style="font-family:'Departure Mono','JetBrains Mono',monospace;color:var(--accent);font-size:15px;flex:0 0 auto">*</span>
+                            <span style="font-size:14.5px;line-height:1.7;color:var(--fg);text-wrap:pretty">{{ li }}</span>
+                          </li>
+                        </sc-for>
+                      </ul>
+                    </div>
+                    <div style="padding-top:20px">
+                      <div style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px;letter-spacing:0.04em;color:var(--dim);margin-bottom:10px">{{ b.flowTitle }}</div>
+                      <div class="flow-diagram">
+                        <sc-for list="{{ b.diagram }}" as="d" hint-placeholder-count="6">
+                          <sc-if value="{{ d.isRow }}">
+                            <div class="flow-row"><sc-for list="{{ d.nodes }}" as="n" hint-placeholder-count="2"><span class="flow-node">{{ n }}</span></sc-for></div>
+                          </sc-if>
+                          <sc-if value="{{ d.isArrow }}"><div class="flow-arrow"><span class="flow-arrow-label">{{ d.label }}</span></div></sc-if>
+                          <sc-if value="{{ d.isNote }}"><div class="flow-note">{{ d.label }}</div></sc-if>
+                          <sc-if value="{{ d.isText }}"><div class="flow-text">{{ d.label }}</div></sc-if>
+                        </sc-for>
+                      </div>
+                      <sc-if value="{{ b.hasExtraFlow }}">
+                        <p style="font-size:11px;line-height:1.5;color:var(--dim);margin:18px 0 9px">{{ b.note }}</p>
+                        <div style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px;letter-spacing:0.04em;color:var(--dim);margin-bottom:10px">{{ b.extraFlowTitle }}</div>
+                        <div class="flow-diagram">
+                          <sc-for list="{{ b.extraDiagram }}" as="d" hint-placeholder-count="6">
+                            <sc-if value="{{ d.isRow }}"><div class="flow-row"><sc-for list="{{ d.nodes }}" as="n" hint-placeholder-count="2"><span class="flow-node">{{ n }}</span></sc-for></div></sc-if>
+                            <sc-if value="{{ d.isArrow }}"><div class="flow-arrow"><span class="flow-arrow-label">{{ d.label }}</span></div></sc-if>
+                            <sc-if value="{{ d.isNote }}"><div class="flow-note">{{ d.label }}</div></sc-if>
+                            <sc-if value="{{ d.isText }}"><div class="flow-text">{{ d.label }}</div></sc-if>
+                          </sc-for>
+                        </div>
+                      </sc-if>
+                    </div>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ b.isParaWithFlow }}">
+                  <div class="work-flow">
+                    <p style="font-size:14.5px;line-height:1.75;color:var(--fg);margin:0;max-width:78ch;text-wrap:pretty">{{ b.text }}</p>
+                    <div>
+                      <div style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px;letter-spacing:0.04em;color:var(--dim);margin-bottom:10px">{{ b.flowTitle }}</div>
+                      <div class="flow-diagram">
+                        <sc-for list="{{ b.diagram }}" as="d" hint-placeholder-count="6">
+                          <sc-if value="{{ d.isRow }}"><div class="flow-row"><sc-for list="{{ d.nodes }}" as="n" hint-placeholder-count="2"><span class="flow-node">{{ n }}</span></sc-for></div></sc-if>
+                          <sc-if value="{{ d.isArrow }}"><div class="flow-arrow"><span class="flow-arrow-label">{{ d.label }}</span></div></sc-if>
+                          <sc-if value="{{ d.isNote }}"><div class="flow-note">{{ d.label }}</div></sc-if>
+                          <sc-if value="{{ d.isText }}"><div class="flow-text">{{ d.label }}</div></sc-if>
+                        </sc-for>
+                      </div>
+                    </div>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ b.isH }}">
+                  <div style="display:flex;align-items:center;gap:12px;margin-top:16px">
+                    <h2 style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:18px;font-weight:400;letter-spacing:0.04em;color:var(--fg);margin:0;white-space:nowrap">{{ b.text }}</h2>
+                    <button onClick="{{ b.copy }}" title="copy link to this section" style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:15px;color:var(--dim);background:transparent;border:0;cursor:pointer;padding:0">#</button>
+                    <span style="flex:1;border-top:1px dashed var(--line)"></span>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ b.isPara }}">
+                  <p style="font-size:14.5px;line-height:1.75;color:var(--fg);margin:0;max-width:78ch;text-wrap:pretty">{{ b.text }}</p>
+                </sc-if>
+                <sc-if value="{{ b.isBullets }}">
+                  <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:13px">
+                    <sc-for list="{{ b.items }}" as="li" hint-placeholder-count="3">
+                      <li style="display:flex;gap:12px;align-items:baseline">
+                        <span style="font-family:'Departure Mono','JetBrains Mono',monospace;color:var(--accent);font-size:15px;flex:0 0 auto">*</span>
+                        <span style="font-size:14.5px;line-height:1.7;color:var(--fg);max-width:76ch;text-wrap:pretty">{{ li }}</span>
+                      </li>
+                    </sc-for>
+                  </ul>
+                </sc-if>
+                <sc-if value="{{ b.isPre }}">
+                  <pre style="margin:0;font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.65;color:var(--dim);white-space:pre-wrap;overflow-wrap:anywhere">{{ b.text }}</pre>
+                </sc-if>
+                <sc-if value="{{ b.isDiagram }}">
+                  <div class="flow-diagram">
+                    <sc-for list="{{ b.diagram }}" as="d" hint-placeholder-count="6">
+                      <sc-if value="{{ d.isRow }}"><div class="flow-row"><sc-for list="{{ d.nodes }}" as="n" hint-placeholder-count="2"><span class="flow-node">{{ n }}</span></sc-for></div></sc-if>
+                      <sc-if value="{{ d.isArrow }}"><div class="flow-arrow"><span class="flow-arrow-label">{{ d.label }}</span></div></sc-if>
+                      <sc-if value="{{ d.isNote }}"><div class="flow-note">{{ d.label }}</div></sc-if>
+                      <sc-if value="{{ d.isText }}"><div class="flow-text">{{ d.label }}</div></sc-if>
+                    </sc-for>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ b.isTags }}">
+                  <div style="display:flex;flex-wrap:wrap;gap:7px">
+                    <sc-for list="{{ b.items }}" as="t" hint-placeholder-count="6">
+                      <span style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px;color:var(--fg);background:var(--panel2);padding:3px 7px">{{ t }}</span>
+                    </sc-for>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ b.isLinks }}">
+                  <div style="display:flex;flex-wrap:wrap;gap:10px">
+                    <sc-for list="{{ b.items }}" as="l" hint-placeholder-count="2">
+                      <a href="{{ l.href }}" target="_blank" style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:15px;border:1px solid var(--accent);padding:7px 12px;color:var(--accent)" style-hover="background:var(--accent);color:var(--onaccent);text-decoration:none">{{ l.label }} ↗</a>
+                    </sc-for>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ b.isSee }}">
+                  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:baseline">
+                    <span style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:15px;color:var(--dim)">SEE ALSO</span>
+                    <sc-for list="{{ b.items }}" as="s" hint-placeholder-count="2">
+                      <a href="#page" onClick="{{ s.go }}" style="font-size:14px;background:var(--panel2);padding:2px 6px;color:var(--accent)">{{ s.label }}</a>
+                    </sc-for>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+        </article>
+      </sc-if>
+
+      <div style="margin-top:auto;padding:0 44px 30px;display:flex;gap:14px;justify-content:space-between">
+        <sc-if value="{{ hasPrev }}">
+          <a href="#page" onClick="{{ goPrev }}" style="flex:1;display:flex;flex-direction:column;gap:5px;border:1px dashed var(--line);padding:14px 16px;color:var(--fg);text-decoration:none" style-hover="border-color:var(--accent)">
+            <span style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:13px;color:var(--dim)">← PREVIOUS</span>
+            <span style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:15px;color:var(--accent)">{{ prevLabel }}</span>
+          </a>
+        </sc-if>
+        <sc-if value="{{ hasNext }}">
+          <a href="#page" onClick="{{ goNext }}" style="flex:1;display:flex;flex-direction:column;gap:5px;align-items:flex-end;border:1px dashed var(--line);padding:14px 16px;color:var(--fg);text-decoration:none" style-hover="border-color:var(--accent)">
+            <span style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:13px;color:var(--dim)">NEXT →</span>
+            <span style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:15px;color:var(--accent)">{{ nextLabel }}</span>
+          </a>
+        </sc-if>
+      </div>
+
+      <footer style="border-top:1px dashed var(--line);padding:16px 44px;display:flex;gap:22px;flex-wrap:wrap;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px;color:var(--dim)">
+        <span>j / k to move between pages</span>
+        <span>⌘K to search</span>
+        <span style="margin-left:auto">Tampa &amp; Gainesville, FL</span>
+      </footer>
+    </main>
+  </div>
+
+  <sc-if value="{{ paletteOpen }}">
+    <div onClick="{{ closePalette }}" style="position:fixed;inset:0;background:color-mix(in oklab, black 66%, transparent);z-index:60;display:flex;align-items:flex-start;justify-content:center;padding-top:13vh">
+      <div onClick="{{ stop }}" style="width:min(600px,92vw);background:var(--bg);border:1px solid var(--accent);display:flex;flex-direction:column">
+        <input ref="{{ searchRef }}" value="{{ q }}" onChange="{{ onQuery }}" placeholder="search pages…" style="font-family:'JetBrains Mono',monospace;font-size:14px;padding:15px 17px;background:transparent;border:0;border-bottom:1px dashed var(--line);color:var(--fg);outline:none">
+        <div style="max-height:54vh;overflow-y:auto">
+          <sc-for list="{{ results }}" as="r" hint-placeholder-count="6">
+            <div style="display:flex">
+              <sc-if value="{{ r.sel }}">
+                <a href="#page" onClick="{{ r.go }}" style="flex:1;display:flex;gap:14px;align-items:baseline;padding:10px 16px;background:var(--accent);color:var(--onaccent);text-decoration:none;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:15px">
+                  <span>{{ r.label }}</span><span style="margin-left:auto;font-size:13px;opacity:0.8">{{ r.section }}</span>
+                </a>
+              </sc-if>
+              <sc-if value="{{ r.unsel }}">
+                <a href="#page" onClick="{{ r.go }}" style="flex:1;display:flex;gap:14px;align-items:baseline;padding:10px 16px;color:var(--fg);text-decoration:none;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:15px" style-hover="background:var(--panel)">
+                  <span>{{ r.label }}</span><span style="margin-left:auto;font-size:13px;color:var(--dim)">{{ r.section }}</span>
+                </a>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;startTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;amber&quot;,&quot;dark&quot;,&quot;green&quot;,&quot;light&quot;,&quot;contrast&quot;],&quot;default&quot;:&quot;amber&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Site&quot;},&quot;showAscii&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Site&quot;}}">
+// ---- aligned diagram builder: every row is padded to one inner width ----
+function ctr(s,w){ const l=Math.max(0,Math.floor((w-s.length)/2)); return ' '.repeat(l)+s+' '.repeat(Math.max(0,w-s.length-l)); }
+function cellW(n,W){ const b=Math.floor((W-(n-1))/n); const a=Array(n).fill(b); a[n-1]+=W-(n-1)-b*n; return a; }
+function boxedD(spec){
+  let W = 46;
+  spec.forEach(s=>{ if(s.t==='row'){ const need=s.v.reduce((m,l)=>m+l.length+6,0)+(s.v.length-1); if(need>W) W=need; } });
+  const total = W+2, mid = Math.floor(total/2);
+  const out=[];
+  spec.forEach(s=>{
+    if(s.t==='row'){
+      const w=cellW(s.v.length,W);
+      out.push('┌'+w.map(x=>'─'.repeat(x)).join('┬')+'┐');
+      out.push('│'+s.v.map((l,i)=>ctr(l,w[i])).join('│')+'│');
+      out.push('└'+w.map(x=>'─'.repeat(x)).join('┴')+'┘');
+    } else if(s.t==='arrow'){
+      out.push(' '.repeat(mid)+'│'+(s.v?'   '+s.v:''));
+      out.push(' '.repeat(mid)+'▼');
+    } else if(s.t==='note'){
+      out.push(ctr(s.v,total));
+    } else {
+      out.push(ctr(s.v,total));
+    }
+  });
+  return out.join('\n');
+}
+
+function legacyD(spec){
+  return spec.map(s=>{
+    if(s.t==='row') return s.v.join('  +  ');
+    if(s.t==='arrow') return s.v ? '-> '+s.v : '↓';
+    if(s.t==='note') return '• '+s.v;
+    return s.v;
+  }).join('\n');
+}
+
+function D(spec){ return {diagram:spec}; }
+
+const ENTRIES = [
+  { slug:'reliaquest', section:'Experience', label:'ReliaQuest', abbr:'SWE', title:'ReliaQuest',
+    role:'Software Engineering Intern · Tampa, FL', meta:['Jun 2026 – Present','C / C++','Multithreading','AWS'],
+    blocks:[
+      {kind:'h',text:'WORK'},
+      {kind:'bullets',items:[
+        'Built interprocess communication for a legacy C/C++ endpoint agent, implementing subprocess state management and secure interaction with internal data stores (osquery, RocksDB) across 5+ coordinated subprocesses, cutting state-desync failures on agent restart by ~30%.',
+        'Engineered a dynamic config loader on a monitor thread for the endpoint agent\u2019s log forwarder, auto-tuning threading, output compression, buffer intervals, and recovery modes from live health/system metrics to cut destination ingress bytes and cost up to ~1.73x while raising throughput EPS ceilings and shrinking device footprint.',
+        'Proposed and designed an AWS load-balancing layer between client log sources (syslog/TCP) and the agent\u2019s log forwarders, routing input across agents by live per-agent metrics (EPS throughput, disk-buffer depth, CPU) to prevent buffer bloat and dropped logs during host network disruptions.'
+      ]},
+      {kind:'h',text:'SUBPROCESS COORDINATION'},
+      {kind:'pre',text:D([
+        {t:'row',v:['supervisor']},
+        {t:'arrow'},
+        {t:'row',v:['proc','proc','proc','proc','proc']},
+        {t:'arrow',v:'restart-safe shared state'},
+        {t:'row',v:['local stores']}
+      ])},
+      {kind:'para',text:'Generalized. Internal component names and topology are omitted.'},
+      {kind:'h',text:'LOAD BALANCING (PROPOSED)'},
+      {kind:'pre',text:D([
+        {t:'text',v:'log sources - syslog / TCP'},
+        {t:'arrow'},
+        {t:'row',v:['load-balancing layer']},
+        {t:'note',v:'routes on throughput · buffer depth · CPU'},
+        {t:'arrow'},
+        {t:'row',v:['forwarder','forwarder','forwarder']},
+        {t:'arrow'},
+        {t:'row',v:['destination']}
+      ])},
+      {kind:'h',text:'STACK'},
+      {kind:'tags',items:['C','C++','Multithreading','AWS','syslog/TCP','Networking','Linux','Git']},
+      {kind:'see',items:['machine-intelligence-lab','summit-analytics']}
+    ]},
+
+  { slug:'machine-intelligence-lab', section:'Experience', label:'Machine Intelligence Lab', abbr:'MIL', title:'Machine Intelligence Lab',
+    role:'Undergraduate Software Engineering Researcher · Gainesville, FL', meta:['Jan 2025 – Present','ROS2','Gazebo','C++'],
+    blocks:[
+      {kind:'h',text:'WORK'},
+      {kind:'bullets',items:[
+        'Refactored and migrated 10,000+ lines of legacy C++ ROS1 code to ROS2, consolidating mission logic into modular Mission classes and reducing per-mission boilerplate by ~35%.',
+        'Developed underwater Gazebo simulations modeling turbidity, buoyancy, and lighting, enabling reproducible testing that cut on-vehicle debugging cycles by ~50%.',
+        'Integrated computer vision frameworks (Detectron2, YOLO) to enhance real-time perception and autonomy, improving object detection accuracy by 25% in simulation.'
+      ]},
+      {kind:'h',text:'SIMULATION LOOP'},
+      {kind:'pre',text:D([
+        {t:'row',v:['Gazebo world - turbidity · buoyancy · lighting']},
+        {t:'arrow',v:'sensor streams'},
+        {t:'row',v:['perception - Detectron2 / YOLO']},
+        {t:'arrow',v:'detections'},
+        {t:'row',v:['Mission classes']},
+        {t:'arrow',v:'thruster commands'},
+        {t:'text',v:'back into the simulated vehicle'}
+      ])},
+      {kind:'h',text:'STACK'},
+      {kind:'tags',items:['ROS2','C++','Python','Gazebo','Detectron2','YOLO','OpenCV','Git']},
+      {kind:'see',items:['reliaquest','drift-zero']}
+    ]},
+
+  { slug:'summit-analytics', section:'Experience', label:'Summit Analytics', abbr:'SWE', title:'Summit Analytics',
+    role:'Software Engineering Intern · Gainesville, FL', meta:['May 2025 – Aug 2025','Python','Supabase','TypeScript'],
+    blocks:[
+      {kind:'h',text:'WORK'},
+      {kind:'bullets',items:[
+        'Developed a scalable LinkedIn data scraper using async I/O and BeautifulSoup, automating ingestion into Supabase via REST APIs and improving throughput by 40%.',
+        'Built a natural-language-to-SQL AI agent using Supabase (PostgreSQL) and the OpenAI Agents SDK, enabling real-time querying that cut ad-hoc data requests to engineering by ~50%.',
+        'Created an LLM-driven CSV parser powered by Gemini Flash with TypeScript to normalize and ingest unstructured client data, reducing preprocessing time by 60% and compute cost by 35%.'
+      ]},
+      {kind:'h',text:'INGESTION TO QUERY'},
+      {kind:'pre',text:D([
+        {t:'row',v:['async scraper','LLM CSV parser']},
+        {t:'arrow'},
+        {t:'row',v:['Supabase - PostgreSQL']},
+        {t:'arrow',v:'analyst question'},
+        {t:'row',v:['NL→SQL agent']},
+        {t:'arrow'},
+        {t:'row',v:['query results']}
+      ])},
+      {kind:'h',text:'STACK'},
+      {kind:'tags',items:['Python','asyncio','BeautifulSoup','Supabase','PostgreSQL','TypeScript','OpenAI Agents SDK','Gemini Flash']},
+      {kind:'see',items:['gatorai-ta','reliaquest']}
+    ]},
+
+  { slug:'gatorai-ta', section:'Experience', label:'GatorAI - AI Teaching Assistant', abbr:'LEAD', title:'GatorAI - AI Teaching Assistant',
+    role:'Software Lead · Gainesville, FL', meta:['Aug 2025 – Dec 2025','Team of 6','RAG','PEFT/LoRA'],
+    blocks:[
+      {kind:'h',text:'WORK'},
+      {kind:'bullets',items:[
+        'Led a team of 6 engineers to design and deploy an AI Teaching Assistant, developing RAG, fine-tuning, and guardrailing methods used across 3+ courses.',
+        'Architected the end-to-end system integrating LlamaIndex, ChromaDB, and Whisper into a scalable RAG pipeline with Canvas LTI integration, serving responses in under 3 seconds per query.',
+        'Fine-tuned domain-specific LLM models using PEFT/LoRA and implemented Guardrails.ai, reducing off-topic and hallucinated responses by ~40%.',
+        'Conducted code reviews and enforced Git workflows across the team.'
+      ]},
+      {kind:'h',text:'RAG PIPELINE'},
+      {kind:'pre',text:D([
+        {t:'row',v:['lecture audio → Whisper','course documents']},
+        {t:'arrow'},
+        {t:'row',v:['LlamaIndex ingest']},
+        {t:'arrow'},
+        {t:'row',v:['ChromaDB vector store']},
+        {t:'arrow',v:'retrieve · student query via Canvas LTI'},
+        {t:'row',v:['fine-tuned LLM - PEFT / LoRA']},
+        {t:'arrow'},
+        {t:'row',v:['Guardrails.ai']},
+        {t:'arrow'},
+        {t:'text',v:'answer in under 3 seconds'}
+      ])},
+      {kind:'h',text:'STACK'},
+      {kind:'tags',items:['LlamaIndex','ChromaDB','Whisper','PEFT/LoRA','Guardrails.ai','Canvas LTI','Python','Jira']},
+      {kind:'see',items:['gatorai-corp','summit-analytics']}
+    ]},
+
+  { slug:'gatorai-corp', section:'Experience', label:'GatorAI - Corporate Relations', abbr:'DIR', title:'GatorAI - Corporate Relations',
+    role:'Director of Corporate Relations · Gainesville, FL', meta:['Aug 2025 – May 2026','Partnerships'],
+    blocks:[
+      {kind:'h',text:'WORK'},
+      {kind:'bullets',items:[
+        'Managing corporate partnerships and sponsor outreach for one of the largest AI/ML student organizations at University of Florida.'
+      ]},
+      {kind:'see',items:['gatorai-ta']}
+    ]},
+
+  { slug:'florida-tech-pathways', section:'Experience', label:'Florida Tech Pathways', abbr:'ANLY', title:'Florida Tech Pathways',
+    role:'Analyst · Gainesville, FL', meta:['Sep 2025 – Dec 2025'],
+    blocks:[
+      {kind:'para',text:'Analyst role, September to December 2025, in Gainesville, Florida.'},
+      {kind:'see',items:['summit-analytics']}
+    ]},
+
+  { slug:'drift-zero', section:'Projects', label:'Drift Zero', abbr:'WIN', title:'Drift Zero - Satellite Threat Intelligence Platform',
+    role:'SCI Hackathon 2026 Winner · led a team of 4', meta:['2026','Databricks','FastAPI','IsolationForest'],
+    blocks:[
+      {kind:'para',text:'Drift Zero ingests two-line element sets for satellite constellations, detects maneuver events, and scores operator behavior to flag adversarial activity in orbit.'},
+      {kind:'h',text:'WORK'},
+      {kind:'bullets',items:[
+        'Led a team of 4 to design and deploy a Databricks ETL pipeline for TLE ingestion and maneuver event detection using SQL window functions, plus operator behavioral profiling to gauge self-clearing likelihood across constellations.',
+        'Engineered 4 adversarial satellite detection modules (incident reconstruction, mission mismatch, resurrection detection, economic impact scoring) using IsolationForest and z-score anomaly detection on orbital element deltas.',
+        'Extended the FastAPI REST backend with 8+ endpoints for real-time anomaly querying and wrote 1,500+ lines of integration tests validating 5 external data sources.'
+      ]},
+      {kind:'h',text:'ARCHITECTURE'},
+      {kind:'pre',text:D([
+        {t:'text',v:'TLE feeds - 5 external sources'},
+        {t:'arrow'},
+        {t:'row',v:['Databricks ETL']},
+        {t:'note',v:'SQL window functions → maneuver events'},
+        {t:'arrow',v:'orbital element deltas'},
+        {t:'row',v:['incident','mission','resurrect','economic']},
+        {t:'note',v:'IsolationForest + z-score anomaly detection'},
+        {t:'arrow'},
+        {t:'row',v:['FastAPI - 8+ endpoints']},
+        {t:'arrow'},
+        {t:'text',v:'operator behavioral profiles'}
+      ])},
+      {kind:'h',text:'STACK'},
+      {kind:'tags',items:['Databricks','SQL','Python','FastAPI','IsolationForest','scikit-learn','pytest','Vercel']},
+      {kind:'links',items:[{label:'Live demo',href:'https://drift-zero-blond.vercel.app/'},{label:'GitHub',href:'https://github.com/eshadesigns/Drift-Zero'}]},
+      {kind:'see',items:['machine-intelligence-lab','wikiroute']}
+    ]},
+
+  { slug:'gradient-attributions', section:'Projects', label:'Gradient-Based Attributions', abbr:'RSCH', title:'Gradient-Based Attributions - Neural Network Interpretability',
+    role:'PyTorch, ResNet50', meta:['Integrated Gradients','IDG','ImageNet'],
+    blocks:[
+      {kind:'h',text:'WORK'},
+      {kind:'bullets',items:[
+        'Reimplemented Integrated Gradients (Sundararajan et al.) and Integrated Decision Gradients (Walker, Jha et al.) from scratch in PyTorch, with no external attribution libraries, to attribute a pretrained ResNet50\u2019s ImageNet predictions at the pixel level.',
+        'Implemented IDG\u2019s confidence-derivative importance weighting over an m-step Riemann path integral to counter gradient saturation, producing sharper, decision-centric heatmaps than standard IG.'
+      ]},
+      {kind:'h',text:'ATTRIBUTION PATH'},
+      {kind:'pre',text:D([
+        {t:'text',v:'ImageNet input · baseline'},
+        {t:'arrow'},
+        {t:'row',v:['pretrained ResNet50']},
+        {t:'arrow',v:'m-step Riemann path integral'},
+        {t:'row',v:['Integrated Gradients','Integrated Decision Gradients']},
+        {t:'arrow',v:'confidence-derivative weighting'},
+        {t:'row',v:['pixel attribution heatmap']}
+      ])},
+      {kind:'h',text:'STACK'},
+      {kind:'tags',items:['PyTorch','ResNet50','NumPy','ImageNet']},
+      {kind:'links',items:[{label:'GitHub',href:'https://github.com/taherakolawala/gradient-based-attributions'}]},
+      {kind:'see',items:['chestnet']}
+    ]},
+
+  { slug:'wikiroute', section:'Projects', label:'WikiRoute', abbr:'C++', title:'WikiRoute - Wikipedia Graph Pathfinding Engine',
+    role:'C++, Python, Streamlit', meta:['100,000 pages','Dijkstra','Dial\u2019s algorithm'],
+    blocks:[
+      {kind:'h',text:'WORK'},
+      {kind:'bullets',items:[
+        'Built a scalable C++/Python system modeling Wikipedia\u2019s top 100,000 ranked pages as a directed graph, implementing Dijkstra\u2019s and Dial\u2019s shortest-path algorithms in C++ for high-performance traversal.',
+        'Benchmarked algorithm runtime and memory performance across large-scale graph queries with an interactive Streamlit UI.'
+      ]},
+      {kind:'h',text:'TRAVERSAL'},
+      {kind:'pre',text:D([
+        {t:'text',v:'top 100,000 Wikipedia pages'},
+        {t:'arrow'},
+        {t:'row',v:['directed link graph']},
+        {t:'arrow'},
+        {t:'row',v:['Dijkstra - C++','Dial\u2019s - C++']},
+        {t:'arrow',v:'runtime + memory benchmarks'},
+        {t:'row',v:['Streamlit UI']}
+      ])},
+      {kind:'h',text:'STACK'},
+      {kind:'tags',items:['C++','Python','Streamlit','Graph algorithms']},
+      {kind:'links',items:[{label:'GitHub',href:'https://github.com/taherakolawala/WikiRoute'}]},
+      {kind:'see',items:['drift-zero','fastbook']}
+    ]},
+
+  { slug:'browser4all', section:'Projects', label:'Browser4ALL', abbr:'SEMI', title:'Browser4ALL - Voice Browser Automation',
+    role:'Shell Hacks 2025 Semifinalist', meta:['2025','asyncio','ElevenLabs','browser-use'],
+    blocks:[
+      {kind:'h',text:'WORK'},
+      {kind:'bullets',items:[
+        'Architected a multi-threaded Python system using asyncio with browser-use for browser automation, streaming voice I/O, and multiple API integrations (OpenAI, ElevenLabs).',
+        'Engineered a stateful AI agent with custom context management and 50+ functions for multi-step web navigation and error recovery.',
+        'Designed a full-stack orchestration pipeline with dynamic API cost management and a custom tkinter UI for real-time visual feedback.'
+      ]},
+      {kind:'h',text:'AGENT LOOP'},
+      {kind:'pre',text:D([
+        {t:'text',v:'voice in'},
+        {t:'arrow'},
+        {t:'row',v:['speech-to-text']},
+        {t:'arrow'},
+        {t:'row',v:['stateful agent - 50+ functions']},
+        {t:'arrow'},
+        {t:'row',v:['browser-use driver']},
+        {t:'arrow',v:'page state back into context'},
+        {t:'row',v:['text-to-speech - ElevenLabs']},
+        {t:'arrow'},
+        {t:'text',v:'voice out'}
+      ])},
+      {kind:'h',text:'STACK'},
+      {kind:'tags',items:['Python','asyncio','browser-use','OpenAI','ElevenLabs','tkinter']},
+      {kind:'links',items:[{label:'GitHub',href:'https://github.com/taherakolawala/Browser4All'}]},
+      {kind:'see',items:['gatorai-ta','legalease']}
+    ]},
+
+  { slug:'chestnet', section:'Projects', label:'ChestNet', abbr:'CNN', title:'ChestNet - Thoracic Disease Classification',
+    role:'Python, TensorFlow, Keras, Pandas, NumPy', meta:['ChestMNIST','14 classes','AUC 0.7353'],
+    blocks:[
+      {kind:'h',text:'WORK'},
+      {kind:'bullets',items:[
+        'Developed a custom CNN to detect and classify 14 thoracic diseases from chest radiography images using the ChestMNIST dataset.',
+        'Implemented adaptive learning rate scheduling and early stopping, achieving 94.8% binary accuracy and a Test AUC of 0.7353.',
+        'Evaluated class imbalance impacts and sensitivity limitations for rare pathologies, informing recommendations for clinical integration.'
+      ]},
+      {kind:'h',text:'PIPELINE'},
+      {kind:'pre',text:D([
+        {t:'text',v:'ChestMNIST radiographs'},
+        {t:'arrow'},
+        {t:'row',v:['preprocessing']},
+        {t:'arrow'},
+        {t:'row',v:['custom CNN']},
+        {t:'note',v:'adaptive LR scheduling · early stopping'},
+        {t:'arrow'},
+        {t:'row',v:['14 thoracic disease classes']},
+        {t:'arrow'},
+        {t:'text',v:'94.8% binary accuracy · Test AUC 0.7353'}
+      ])},
+      {kind:'h',text:'STACK'},
+      {kind:'tags',items:['Python','TensorFlow','Keras','Pandas','NumPy']},
+      {kind:'links',items:[{label:'GitHub',href:'https://github.com/taherakolawala/chestnet'}]},
+      {kind:'see',items:['gradient-attributions']}
+    ]},
+
+  { slug:'legalease', section:'Projects', label:'LegalEase', abbr:'EXT', title:'LegalEase - Plain-English Terms of Service',
+    role:'Python, Flask, JavaScript, HTML, CSS', meta:['Chrome extension','GPT-4','Flask API'],
+    blocks:[
+      {kind:'h',text:'WORK'},
+      {kind:'bullets',items:[
+        'Developed a Chrome Extension using the chrome.tabs API to extract Terms of Service text and send it asynchronously to a Flask backend.',
+        'Built an AI service leveraging GPT-4 to summarize legal text into plain-English bullet points and flag risky clauses on data collection and liability.',
+        'Implemented a robust Flask API with structured JSON output, detailed error handling, and specific HTTP codes for client clarity.'
+      ]},
+      {kind:'h',text:'REQUEST PATH'},
+      {kind:'pre',text:D([
+        {t:'text',v:'Terms of Service page'},
+        {t:'arrow'},
+        {t:'row',v:['Chrome extension - chrome.tabs']},
+        {t:'arrow',v:'async request'},
+        {t:'row',v:['Flask API']},
+        {t:'arrow'},
+        {t:'row',v:['GPT-4 summarizer']},
+        {t:'arrow'},
+        {t:'text',v:'plain-English bullets · risky clauses flagged'}
+      ])},
+      {kind:'h',text:'STACK'},
+      {kind:'tags',items:['Python','Flask','JavaScript','GPT-4','Chrome APIs']},
+      {kind:'see',items:['browser4all']}
+    ]},
+
+  { slug:'fastbook', section:'Projects', label:'Fastbook', abbr:'HACK', title:'Fastbook - Textbook Problem Linker',
+    role:'Swamphacks 2025 · built with a team', meta:['Jan 2025','Python','Streamlit'],
+    blocks:[
+      {kind:'para',text:'Fastbook is a simple tool that auto-links textbook problems and solutions in a PDF, built with a team for Swamphacks 2025.'},
+      {kind:'h',text:'FLOW'},
+      {kind:'pre',text:D([
+        {t:'text',v:'textbook PDF'},
+        {t:'arrow'},
+        {t:'row',v:['problem / solution matcher']},
+        {t:'arrow'},
+        {t:'row',v:['Streamlit viewer']},
+        {t:'arrow'},
+        {t:'text',v:'auto-linked problems and solutions'}
+      ])},
+      {kind:'h',text:'STACK'},
+      {kind:'tags',items:['Python','Streamlit']},
+      {kind:'see',items:['wikiroute']}
+    ]}
+];
+
+const SECTIONS = ['Experience','Leadership & Involvement','Projects'];
+const THEMES = [
+  {id:'amber',label:'Amber'},{id:'dark',label:'Dark'},{id:'green',label:'Green'},
+  {id:'light',label:'Light'},{id:'contrast',label:'Contrast'}
+];
+const STATIC_CHARS = ['░','▒','▓','█','·',' '];
+const FONT = {
+  A:['01110','10001','10001','11111','10001','10001','10001'],
+  E:['11111','10000','10000','11110','10000','10000','11111'],
+  H:['10001','10001','10001','11111','10001','10001','10001'],
+  K:['10001','10010','10100','11000','10100','10010','10001'],
+  L:['10000','10000','10000','10000','10000','10000','11111'],
+  O:['01110','10001','10001','10001','10001','10001','01110'],
+  R:['11110','10001','10001','11110','10100','10010','10001'],
+  T:['11111','00100','00100','00100','00100','00100','00100'],
+  W:['10001','10001','10001','10101','10101','11011','10001']
+};
+
+class Component extends DCLogic {
+  constructor(p){
+    super(p);
+    this.state = {
+      route:'home', theme:p.startTheme||'amber',
+      open:{Experience:true,'Leadership & Involvement':true,Projects:true}, palette:false, q:'', sel:0
+    };
+    this.asciiRef = React.createRef();
+    this.nameRef = React.createRef();
+    this.searchRef = React.createRef();
+  }
+
+  componentDidMount(){
+    document.documentElement.setAttribute('data-theme', this.state.theme);
+    this._key = (e)=>this.onKey(e);
+    window.addEventListener('keydown', this._key);
+    this._resize = ()=>{ clearTimeout(this._rt); this._rt=setTimeout(()=>{ this._geom=null; },160); };
+    window.addEventListener('resize', this._resize);
+    if (this.props.showAscii !== false) this.startAscii();
+  }
+  componentWillUnmount(){
+    window.removeEventListener('keydown', this._key);
+    window.removeEventListener('resize', this._resize);
+    if (this._raf) cancelAnimationFrame(this._raf);
+  }
+
+  cellAdvance(node){
+    const probe=document.createElement('span');
+    probe.textContent='M'.repeat(50);
+    probe.style.cssText='position:absolute;visibility:hidden;white-space:pre;font:inherit;letter-spacing:inherit';
+    node.appendChild(probe);
+    const a=probe.getBoundingClientRect().width/50;
+    node.removeChild(probe);
+    return a>0?a:6.6;
+  }
+
+  geom(){
+    const node=this.asciiRef.current;
+    if (!node) return null;
+    if (this._geom) return this._geom;
+    const host=node.parentElement;
+    const avail=(host?host.clientWidth:900);
+    const W=Math.max(30, Math.floor(avail/this.cellAdvance(node)) - 1);
+    const words=['TAHER','AKOLAWALA'];
+    let s=2;
+    while (s>1 && (words[1].length*6-1)*s > W-2) s--;
+    const lh=7*s, gap=2*s;
+    const H=lh*2+gap+6;
+    const mask=new Uint8Array(W*H);
+    words.forEach((word,wi)=>{
+      const gw=(word.length*6-1)*s;
+      const ox=Math.max(0,Math.floor((W-gw)/2));
+      const oy=3+wi*(lh+gap);
+      word.split('').forEach((ch,i)=>{
+        const bm=FONT[ch]; if(!bm) return;
+        for(let r=0;r<7;r++) for(let c=0;c<5;c++){
+          if(bm[r][c]!=='1') continue;
+          for(let dy=0;dy<s;dy++) for(let dx=0;dx<s;dx++){
+            const x=ox+(i*6+c)*s+dx, y=oy+r*s+dy;
+            if(x>=0&&x<W&&y>=0&&y<H) mask[y*W+x]=1;
+          }
+        }
+      });
+    });
+    const near=new Uint8Array(W*H);
+    const radius=Math.max(2,s*2);
+    for(let y=0;y<H;y++) for(let x=0;x<W;x++) if(mask[y*W+x]){
+      for(let dy=-radius;dy<=radius;dy++) for(let dx=-radius;dx<=radius;dx++){
+        if(dx*dx+dy*dy>radius*radius) continue;
+        const nx=x+dx, ny=y+dy;
+        if(nx>=0&&nx<W&&ny>=0&&ny<H) near[ny*W+nx]=1;
+      }
+    }
+    const field=new Float32Array(W*H);
+    for(let i=0;i<field.length;i++) field[i]=Math.random();
+    this._geom={W,H,mask,near,field};
+    return this._geom;
+  }
+
+  legacyStartAscii(){
+    const CYCLE=13;
+    const draw=(now)=>{
+      const node=this.asciiRef.current;
+      const g=this.geom();
+      if(node&&g){
+        const {W,H,mask,field}=g;
+        const t=(now/1000)%CYCLE;
+        let phase=0;
+        if(t<0.8) phase=0;
+        else if(t<4.0) phase=(t-0.8)/3.2;
+        else if(t<9.5) phase=1;
+        else if(t<11.6) phase=1-(t-9.5)/2.1;
+        const rows=new Array(H);
+        for(let y=0;y<H;y++){
+          let line='';
+          for(let x=0;x<W;x++){
+            const i=y*W+x;
+            if(!mask[i]){ line+=' '; continue; }
+            if(phase>field[i]) line += mask[i] ? '█' : ' ';
+            else line += STATIC_CHARS[(Math.random()*STATIC_CHARS.length)|0];
+          }
+          rows[y]=line;
+        }
+        node.textContent=rows.join('\n');
+      }
+      this._raf=requestAnimationFrame(draw);
+    };
+    this._raf=requestAnimationFrame(draw);
+  }
+
+  startAscii(){
+    const draw=(now)=>{
+      if(!this._asciiStart) this._asciiStart=now;
+      const node=this.asciiRef.current, nameNode=this.nameRef.current, g=this.geom();
+      if(node&&nameNode&&g){
+        const {W,H,mask,near,field}=g;
+        const elapsed=(now-this._asciiStart)/1000;
+        const progress=Math.min(1,Math.max(0,(elapsed-0.15)/4.0));
+        const resolve=progress*progress*(3-2*progress);
+        const cloudRows=new Array(H), nameRows=new Array(H);
+        for(let y=0;y<H;y++){
+          let cloudLine='', nameLine='';
+          for(let x=0;x<W;x++){
+            const i=y*W+x, grain=STATIC_CHARS[(Math.floor(field[i]*1000)+i)%STATIC_CHARS.length];
+            const shell=mask[i] ? 0.62 : 0.52*(1-resolve);
+            cloudLine+=((mask[i]||near[i])&&field[i]<shell) ? grain : ' ';
+            nameLine+=mask[i] ? String.fromCharCode(0x2588) : ' ';
+          }
+          cloudRows[y]=cloudLine; nameRows[y]=nameLine;
+        }
+        node.textContent=cloudRows.join('\n');
+        nameNode.textContent=nameRows.join('\n');
+        node.style.opacity=String(1-resolve*0.88);
+        nameNode.style.opacity=String(resolve);
+      }
+      if((now-this._asciiStart)/1000<4.3) this._raf=requestAnimationFrame(draw);
+    };
+    this._raf=requestAnimationFrame(draw);
+  }
+
+  pages(){ return ['home'].concat(ENTRIES.map(e=>e.slug)).concat(['contact']); }
+  idx(){ return this.pages().indexOf(this.state.route); }
+  go(slug){ return (e)=>{ if(e&&e.preventDefault) e.preventDefault(); this.setState({route:slug,palette:false,q:''}); window.scrollTo(0,0); }; }
+  step(d){
+    const p=this.pages(), i=this.idx()+d;
+    if(i<0||i>=p.length) return;
+    this.setState({route:p[i]}); window.scrollTo(0,0);
+  }
+  onKey(e){
+    const tag=(e.target&&e.target.tagName)||'';
+    if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){
+      e.preventDefault();
+      this.setState({palette:!this.state.palette,q:'',sel:0},()=>{ if(this.searchRef.current) this.searchRef.current.focus(); });
+      return;
+    }
+    if(this.state.palette){
+      if(e.key==='Escape') this.setState({palette:false,q:''});
+      else if(e.key==='ArrowDown'){ e.preventDefault(); this.setState({sel:Math.min(this.matches().length-1,this.state.sel+1)}); }
+      else if(e.key==='ArrowUp'){ e.preventDefault(); this.setState({sel:Math.max(0,this.state.sel-1)}); }
+      else if(e.key==='Enter'){ const m=this.matches()[this.state.sel]; if(m) this.go(m.slug)(e); }
+      return;
+    }
+    if(tag==='INPUT'||tag==='TEXTAREA') return;
+    if(e.key==='j'||e.key==='ArrowDown'){ e.preventDefault(); this.step(1); }
+    else if(e.key==='k'||e.key==='ArrowUp'){ e.preventDefault(); this.step(-1); }
+    else if(e.key==='Escape'){ this.setState({route:'home'}); window.scrollTo(0,0); }
+  }
+  matches(){
+    const q=(this.state.q||'').toLowerCase().trim();
+    if(!q) return ENTRIES;
+    return ENTRIES.filter(en=>(en.title+' '+en.label+' '+en.section+' '+JSON.stringify(en.blocks)).toLowerCase().includes(q));
+  }
+  setTheme(id){ return ()=>{ document.documentElement.setAttribute('data-theme',id); this.setState({theme:id}); }; }
+
+  renderVals(){
+    const route=this.state.route;
+    const entry=ENTRIES.find(e=>e.slug===route);
+    const sectionFor=(en)=>['gatorai-corp','florida-tech-pathways'].includes(en.slug) ? 'Leadership & Involvement' : en.section;
+    const dec=(en)=>({ slug:en.slug, label:en.label, abbr:en.abbr, section:sectionFor(en),
+      active:route===en.slug, inactive:route!==en.slug, go:this.go(en.slug) });
+    const nav=[
+      { label:'Home', sign:'', open:true, toggle:()=>{}, items:[
+        { slug:'home', label:'README', abbr:'', active:route==='home', inactive:route!=='home', go:this.go('home') }
+      ]}
+    ].concat(SECTIONS.map(s=>{
+      const items=ENTRIES.filter(e=>sectionFor(e)===s);
+      return { label:s, sign:this.state.open[s]?'−':'+', open:!!this.state.open[s],
+        toggle:()=>this.setState(st=>({open:{...st.open,[s]:!st.open[s]}})), items:items.map(dec) };
+    })).concat([
+      { label:'Contact', sign:'', open:true, toggle:()=>{}, items:[
+        { slug:'contact', label:'Reach me', abbr:'', active:route==='contact', inactive:route!=='contact', go:this.go('contact') }
+      ]}
+    ]);
+    const p=this.pages(), i=this.idx();
+    const labelFor=(sl)=>{ if(sl==='home') return 'README'; if(sl==='contact') return 'Reach me'; const e=ENTRIES.find(x=>x.slug===sl); return e?e.label:sl; };
+    const sourceBlocks=entry?entry.blocks:[];
+    const groupedBlocks=[];
+    for(let bi=0;bi<sourceBlocks.length;bi++){
+      const b=sourceBlocks[bi], next=sourceBlocks[bi+1], flowHeading=sourceBlocks[bi+2], flow=sourceBlocks[bi+3];
+      if(b.kind==='h' && next&&next.kind==='bullets' && flowHeading&&flowHeading.kind==='h' && flow&&flow.kind==='pre'){
+        groupedBlocks.push({kind:'workWithFlow',text:b.text,items:next.items,flowTitle:flowHeading.text,flowText:flow.text});
+        bi+=3;
+      } else if(b.kind==='para' && next&&next.kind==='h' && flowHeading&&flowHeading.kind==='pre'){
+        const previous=groupedBlocks[groupedBlocks.length-1];
+        if(previous&&previous.kind==='workWithFlow'){
+          previous.extraFlowTitle=next.text; previous.extraFlowText=flowHeading.text; previous.note=b.text;
+        } else groupedBlocks.push({kind:'paraWithFlow',text:b.text,flowTitle:next.text,flowText:flowHeading.text});
+        bi+=2;
+      } else groupedBlocks.push(b);
+    }
+    const blocks=entry?groupedBlocks.map((b,bi)=>{
+      const diagram=b.kind==='workWithFlow' ? b.flowText?.diagram : b.text?.diagram;
+      return {
+      isH:b.kind==='h', isPara:b.kind==='para', isBullets:b.kind==='bullets', isPre:b.kind==='pre'&&!diagram, isWorkWithFlow:b.kind==='workWithFlow', isParaWithFlow:b.kind==='paraWithFlow', isDiagram:!!diagram&&b.kind!=='workWithFlow'&&b.kind!=='paraWithFlow',
+      isTags:b.kind==='tags', isLinks:b.kind==='links', isSee:b.kind==='see',
+      text:b.text, note:b.note, flowTitle:b.flowTitle, flowText:b.flowText,
+      diagram:(diagram||[]).map(s=>({isRow:s.t==='row',isArrow:s.t==='arrow',isNote:s.t==='note',isText:s.t==='text',nodes:s.v||[],label:s.v||''})),
+      hasExtraFlow:!!b.extraFlowText, extraFlowTitle:b.extraFlowTitle, extraDiagram:(b.extraFlowText?.diagram||[]).map(s=>({isRow:s.t==='row',isArrow:s.t==='arrow',isNote:s.t==='note',isText:s.t==='text',nodes:s.v||[],label:s.v||''})),
+      items: b.kind==='see' ? (b.items||[]).map(sl=>{ const t=ENTRIES.find(x=>x.slug===sl); return {label:t?t.label:sl, go:this.go(sl)}; }) : b.items,
+      copy:()=>{ try{ navigator.clipboard.writeText(location.origin+location.pathname+'#'+entry.slug+'-'+bi); }catch(err){} }
+    }; }):[];
+
+    return {
+      isHome:route==='home', isContact:route==='contact', isEntry:!!entry,
+      crumb:'/'+route,
+      nav, entry: entry?{...entry, blocks}:null,
+      themes: THEMES.map(t=>({ label:t.label, on:this.state.theme===t.id, off:this.state.theme!==t.id, set:this.setTheme(t.id) })),
+      asciiRef:this.asciiRef, nameRef:this.nameRef, searchRef:this.searchRef, goHome:this.go('home'),
+      hasPrev:i>0, hasNext:i>-1&&i<p.length-1,
+      prevLabel:i>0?labelFor(p[i-1]):'', nextLabel:(i>-1&&i<p.length-1)?labelFor(p[i+1]):'',
+      goPrev:(e)=>{e.preventDefault();this.step(-1);}, goNext:(e)=>{e.preventDefault();this.step(1);},
+      paletteOpen:this.state.palette, q:this.state.q,
+      openPalette:()=>this.setState({palette:true,q:'',sel:0},()=>{ if(this.searchRef.current) this.searchRef.current.focus(); }),
+      closePalette:()=>this.setState({palette:false,q:''}),
+      stop:(e)=>e.stopPropagation(),
+      onQuery:(e)=>this.setState({q:e.target.value,sel:0}),
+      results:this.matches().map((en,ri)=>({ label:en.label, section:sectionFor(en), sel:ri===this.state.sel, unsel:ri!==this.state.sel, go:this.go(en.slug) }))
+    };
+  }
+}
+</script>
+</body>
+</html>
