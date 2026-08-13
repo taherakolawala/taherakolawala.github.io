@@ -49,10 +49,15 @@
       <nav style="display:flex;flex-direction:column">
         <sc-for list="{{ nav }}" as="sec" hint-placeholder-count="4">
           <div style="display:flex;flex-direction:column">
-            <button onClick="{{ sec.toggle }}" style="display:flex;align-items:center;justify-content:space-between;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:16px;color:var(--fg);background:transparent;border:0;padding:9px 20px;cursor:pointer;text-align:left;width:100%">
-              <span>{{ sec.label }}</span><span style="color:var(--dim)">{{ sec.sign }}</span>
-            </button>
-            <sc-if value="{{ sec.open }}" hint-placeholder-val="{{ true }}">
+            <sc-if value="{{ sec.direct }}">
+              <a href="#/" onClick="{{ sec.go }}" style="display:flex;align-items:center;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:16px;padding:9px 20px;color:var(--fg);text-decoration:none" style-hover="background:var(--panel)">{{ sec.label }}</a>
+            </sc-if>
+            <sc-if value="{{ sec.group }}">
+              <button onClick="{{ sec.toggle }}" style="display:flex;align-items:center;justify-content:space-between;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:16px;color:var(--fg);background:transparent;border:0;padding:9px 20px;cursor:pointer;text-align:left;width:100%">
+                <span>{{ sec.label }}</span><span style="color:var(--dim)">{{ sec.sign }}</span>
+              </button>
+            </sc-if>
+            <sc-if value="{{ sec.showItems }}" hint-placeholder-val="{{ true }}">
               <div style="display:flex;flex-direction:column">
                 <sc-for list="{{ sec.items }}" as="it" hint-placeholder-count="4">
                   <div style="display:flex">
@@ -291,7 +296,7 @@
   </sc-if>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;startTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;amber&quot;,&quot;dark&quot;,&quot;green&quot;,&quot;light&quot;,&quot;paper&quot;,&quot;ice&quot;,&quot;lavender&quot;,&quot;contrast&quot;,&quot;cyan-contrast&quot;],&quot;default&quot;:&quot;amber&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Site&quot;},&quot;showAscii&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Site&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;startTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;amber&quot;,&quot;paper&quot;],&quot;default&quot;:&quot;amber&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Site&quot;},&quot;showAscii&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Site&quot;}}">
 // ---- aligned diagram builder: every row is padded to one inner width ----
 const { ENTRIES, SECTIONS, THEMES, STATIC_CHARS, FONT } = window.PORTFOLIO_DATA;
 
@@ -300,7 +305,7 @@ class Component extends DCLogic {
     super(p);
     this.state = {
       route:this.routeFromHash(), theme:p.startTheme||'amber',
-      open:{Experience:true,'Leadership & Involvement':true,Projects:true}, palette:false, q:'', sel:0
+      open:{Experience:false,'Leadership & Involvement':false,Projects:false}, palette:false, q:'', sel:0
     };
     this.asciiRef = React.createRef();
     this.nameRef = React.createRef();
@@ -498,15 +503,13 @@ class Component extends DCLogic {
     const dec=(en)=>({ slug:en.slug, label:en.label, abbr:en.abbr, section:sectionFor(en),
       active:route===en.slug, inactive:route!==en.slug, go:this.go(en.slug) });
     const nav=[
-      { label:'Home', sign:'', open:true, toggle:()=>{}, items:[
-        { slug:'home', label:'README', abbr:'', active:route==='home', inactive:route!=='home', go:this.go('home') }
-      ]}
+      { label:'README', direct:true, group:false, showItems:false, go:this.go('home') }
     ].concat(SECTIONS.map(s=>{
       const items=ENTRIES.filter(e=>sectionFor(e)===s);
-      return { label:s, sign:this.state.open[s]?'−':'+', open:!!this.state.open[s],
+      return { label:s, direct:false, group:true, sign:this.state.open[s]?'−':'+', open:!!this.state.open[s], showItems:!!this.state.open[s],
         toggle:()=>this.setState(st=>({open:{...st.open,[s]:!st.open[s]}})), items:items.map(dec) };
     })).concat([
-      { label:'Contact', sign:'', open:true, toggle:()=>{}, items:[
+      { label:'Contact', direct:false, group:true, sign:'', open:true, showItems:true, toggle:()=>{}, items:[
         { slug:'contact', label:'Reach me', abbr:'', active:route==='contact', inactive:route!=='contact', go:this.go('contact') }
       ]}
     ]);

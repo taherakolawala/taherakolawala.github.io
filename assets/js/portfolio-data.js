@@ -348,9 +348,7 @@ const ENTRIES = [
 
 const SECTIONS = ['Experience','Leadership & Involvement','Projects'];
 const THEMES = [
-  {id:'amber',label:'Amber'},{id:'dark',label:'Dark'},{id:'green',label:'Green'},
-  {id:'light',label:'Light'},{id:'paper',label:'Paper'},{id:'ice',label:'Ice'},
-  {id:'lavender',label:'Lavender'},{id:'contrast',label:'Violet HC'},{id:'cyan-contrast',label:'Cyan HC'}
+  {id:'amber',label:'Amber'},{id:'paper',label:'Paper'}
 ];
 const STATIC_CHARS = ['░','▒','▓','█','·',' '];
 const FONT = {
