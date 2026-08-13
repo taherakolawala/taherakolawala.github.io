@@ -22,6 +22,13 @@ a:hover{color:var(--fg);text-decoration:underline;text-underline-offset:3px}
 ::-webkit-scrollbar{width:10px;height:10px}
 ::-webkit-scrollbar-thumb{background:var(--line)}
 ::-webkit-scrollbar-track{background:var(--panel)}
+.wordmark-name{
+  text-shadow:
+    1px 1px 0 color-mix(in srgb,var(--accent) 78%,var(--bg)),
+    2px 2px 0 color-mix(in srgb,var(--accent) 58%,var(--bg)),
+    3px 3px 0 color-mix(in srgb,var(--accent) 38%,var(--bg)),
+    4px 4px 0 color-mix(in srgb,var(--accent) 22%,var(--bg));
+}
 .work-flow{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(220px,0.85fr);gap:38px;align-items:start}
 .flow-diagram{display:flex;flex-direction:column;gap:6px;color:var(--dim)}
 .flow-row{display:flex;justify-content:center;flex-wrap:wrap;gap:6px}
