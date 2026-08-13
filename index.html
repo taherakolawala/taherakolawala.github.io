@@ -19,18 +19,10 @@
   <header style="display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:20px;border-bottom:1px solid var(--line);padding:0 20px;height:56px;position:sticky;top:0;background:var(--bg);z-index:40">
     <a href="#home" onClick="{{ goHome }}" style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:19px;letter-spacing:0.04em;color:var(--fg);text-decoration:none">TAHER AKOLAWALA</a>
     <div style="display:flex;align-items:center;gap:18px">
-      <div style="display:flex;gap:12px;align-items:baseline;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px">
-        <sc-for list="{{ themes }}" as="th" hint-placeholder-count="5">
-          <div style="display:flex">
-            <sc-if value="{{ th.on }}">
-              <button onClick="{{ th.set }}" style="font-family:inherit;font-size:14px;background:transparent;border:0;padding:0;cursor:pointer;color:var(--fg)">{{ th.label }}</button>
-            </sc-if>
-            <sc-if value="{{ th.off }}">
-              <button onClick="{{ th.set }}" style="font-family:inherit;font-size:14px;background:transparent;border:0;padding:0;cursor:pointer;color:var(--dim)" style-hover="color:var(--fg)">{{ th.label }}</button>
-            </sc-if>
-          </div>
-        </sc-for>
-      </div>
+      <button onClick="{{ toggleTheme }}" aria-label="{{ themeToggleLabel }}" title="{{ themeToggleLabel }}" style="display:flex;align-items:center;gap:8px;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:13px;color:var(--dim);background:transparent;border:1px solid var(--line);padding:5px 8px;cursor:pointer" style-hover="color:var(--fg);border-color:var(--accent)">
+        <span>{{ themeLabel }}</span>
+        <span style="display:block;width:26px;height:14px;border:1px solid var(--line);padding:2px"><span style="display:block;width:8px;height:8px;background:var(--accent);transform:translateX({{ themeToggleX }}px);transition:transform 160ms ease"></span></span>
+      </button>
       <button onClick="{{ openPalette }}" style="display:flex;align-items:center;gap:10px;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px;color:var(--dim);background:transparent;border:1px solid var(--line);padding:6px 10px;cursor:pointer">
         <span>Search</span><span style="border:1px solid var(--line);padding:0 4px;font-size:12px">⌘K</span>
       </button>
@@ -495,6 +487,11 @@ class Component extends DCLogic {
     return ENTRIES.filter(en=>(en.title+' '+en.label+' '+en.section+' '+JSON.stringify(en.blocks)).toLowerCase().includes(q));
   }
   setTheme(id){ return ()=>{ document.documentElement.setAttribute('data-theme',id); this.setState({theme:id}); }; }
+  toggleTheme(){
+    const theme=this.state.theme==='paper'?'amber':'paper';
+    document.documentElement.setAttribute('data-theme',theme);
+    this.setState({theme});
+  }
 
   renderVals(){
     const route=this.state.route;
@@ -546,7 +543,10 @@ class Component extends DCLogic {
       isHome:route==='home', isContact:route==='contact', isEntry:!!entry,
       crumb:'/'+route,
       nav, entry: entry?{...entry, blocks}:null,
-      themes: THEMES.map(t=>({ label:t.label, on:this.state.theme===t.id, off:this.state.theme!==t.id, set:this.setTheme(t.id) })),
+      themeLabel:this.state.theme==='paper'?'PAPER':'AMBER',
+      themeToggleLabel:this.state.theme==='paper'?'Switch to Amber':'Switch to Paper',
+      themeToggleX:this.state.theme==='paper'?12:0,
+      toggleTheme:()=>this.toggleTheme(),
       asciiRef:this.asciiRef, nameRef:this.nameRef, searchRef:this.searchRef, goHome:this.go('home'),
       hasPrev:i>0, hasNext:i>-1&&i<p.length-1,
       prevLabel:i>0?labelFor(p[i-1]):'', nextLabel:(i>-1&&i<p.length-1)?labelFor(p[i+1]):'',
