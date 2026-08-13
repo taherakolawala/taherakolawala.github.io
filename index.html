@@ -323,6 +323,17 @@ class Component extends DCLogic {
     window.removeEventListener('resize', this._resize);
     if (this._raf) cancelAnimationFrame(this._raf);
   }
+  componentDidUpdate(_prevProps,prevState){
+    if(this.state.route==='home' && prevState.route!=='home') this.restartAscii();
+  }
+
+  restartAscii(){
+    if(this._raf) cancelAnimationFrame(this._raf);
+    this._raf=null;
+    this._asciiStart=null;
+    this._geom=null;
+    if(this.props.showAscii !== false) this.startAscii();
+  }
 
   cellAdvance(node){
     const probe=document.createElement('span');
