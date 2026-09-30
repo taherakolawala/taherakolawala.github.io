@@ -165,6 +165,34 @@ const ENTRIES = [
       {kind:'see',items:['summit-analytics']}
     ]},
 
+  { slug:'clench', section:'Projects', label:'Clench', abbr:'2ND', title:'Clench',
+    role:'ShellHacks 2026 · 2nd place overall', meta:['Sep 2026','300+ projects','850+ participants'],
+    blocks:[
+      {kind:'para',text:'Clench helps people with limited speech and mobility communicate and control a computer through eye tracking and jaw clenches. The team placed second overall at ShellHacks 2026, Florida\u2019s largest hackathon.'},
+      {kind:'h',text:'MY WORK'},
+      {kind:'bullets',items:[
+        'Built the Muse 2 input pipeline with calibrated jaw-clench detection, MNE-based double-blink detection, reusable profiles, and reproducible gesture tests that turn headband signals into input events.',
+        'Developed a Windows desktop agent that combines Eyedid gaze tracking with clench input for pointing, clicking, scrolling, dragging, and typing through a gaze keyboard; added calibration checks and gaze smoothing.',
+        'Integrated eye calibration into the React board and added large YouTube and Spotify control tiles, connecting gaze and gesture input to media playback controls.'
+      ]},
+      {kind:'h',text:'INPUT TO ACTION'},
+      {kind:'pre',text:D([
+        {t:'row',v:['Muse 2 signals','Eyedid gaze']},
+        {t:'arrow'},
+        {t:'row',v:['clench + blink detector','gaze calibration']},
+        {t:'arrow',v:'gesture + target events'},
+        {t:'row',v:['FastAPI session core']},
+        {t:'arrow',v:'select and confirm'},
+        {t:'row',v:['communication board','Windows desktop agent']},
+        {t:'arrow'},
+        {t:'text',v:'speech · messages · calls · computer control'}
+      ])},
+      {kind:'h',text:'STACK'},
+      {kind:'tags',items:['Python','BrainFlow','MNE-Python','Muse 2','Eyedid SDK','FastAPI','React','TypeScript']},
+      {kind:'links',items:[{label:'GitHub',href:'https://github.com/abhay-dronavalli/clench-muse-als/tree/main'},{label:'Devpost',href:'https://devpost.com/software/clench-ifdrmc'}]},
+      {kind:'see',items:['browser4all','machine-intelligence-lab']}
+    ]},
+
   { slug:'drift-zero', section:'Projects', label:'Drift Zero', abbr:'WIN', title:'Drift Zero - Satellite Threat Intelligence Platform',
     role:'SCI Hackathon 2026 Winner · led a team of 4', meta:['2026','Databricks','FastAPI','IsolationForest'],
     blocks:[
@@ -240,7 +268,7 @@ const ENTRIES = [
       {kind:'h',text:'STACK'},
       {kind:'tags',items:['C++','Python','Streamlit','Graph algorithms']},
       {kind:'links',items:[{label:'GitHub',href:'https://github.com/taherakolawala/WikiRoute'}]},
-      {kind:'see',items:['drift-zero','fastbook']}
+      {kind:'see',items:['drift-zero','browser4all']}
     ]},
 
   { slug:'browser4all', section:'Projects', label:'Browser4ALL', abbr:'SEMI', title:'Browser4ALL - Voice Browser Automation',
@@ -326,24 +354,6 @@ const ENTRIES = [
       {kind:'see',items:['browser4all']}
     ]},
 
-  { slug:'fastbook', section:'Projects', label:'Fastbook', abbr:'HACK', title:'Fastbook - Textbook Problem Linker',
-    role:'Swamphacks 2025 · built with a team', meta:['Jan 2025','Python','Streamlit'],
-    blocks:[
-      {kind:'para',text:'Fastbook is a simple tool that auto-links textbook problems and solutions in a PDF, built with a team for Swamphacks 2025.'},
-      {kind:'h',text:'FLOW'},
-      {kind:'pre',text:D([
-        {t:'text',v:'textbook PDF'},
-        {t:'arrow'},
-        {t:'row',v:['problem / solution matcher']},
-        {t:'arrow'},
-        {t:'row',v:['Streamlit viewer']},
-        {t:'arrow'},
-        {t:'text',v:'auto-linked problems and solutions'}
-      ])},
-      {kind:'h',text:'STACK'},
-      {kind:'tags',items:['Python','Streamlit']},
-      {kind:'see',items:['wikiroute']}
-    ]}
 ];
 
 const SECTIONS = ['Experience','Leadership & Involvement','Projects'];
