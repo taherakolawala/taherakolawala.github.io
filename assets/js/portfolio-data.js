@@ -243,7 +243,7 @@ const ENTRIES = [
       ])},
       {kind:'h',text:'STACK'},
       {kind:'tags',items:['PyTorch','ResNet50','NumPy','ImageNet']},
-      {kind:'links',items:[{label:'GitHub',href:'https://github.com/taherakolawala/gradient-based-attributions'}]},
+      {kind:'links',items:[{label:'Paper (PDF)',href:'papers/gradient-attributions-ieee.pdf'},{label:'LaTeX source',href:'papers/gradient-attributions-ieee.tex'},{label:'GitHub',href:'https://github.com/taherakolawala/gradient-based-attributions'}]},
       {kind:'see',items:['chestnet']}
     ]},
 
@@ -324,7 +324,7 @@ const ENTRIES = [
       ])},
       {kind:'h',text:'STACK'},
       {kind:'tags',items:['Python','TensorFlow','Keras','Pandas','NumPy']},
-      {kind:'links',items:[{label:'GitHub',href:'https://github.com/taherakolawala/chestnet'}]},
+      {kind:'links',items:[{label:'Paper (PDF)',href:'papers/chestnet-ieee.pdf'},{label:'LaTeX source',href:'papers/chestnet-ieee.tex'},{label:'GitHub',href:'https://github.com/taherakolawala/chestnet'}]},
       {kind:'see',items:['gradient-attributions']}
     ]},
 
