@@ -16,17 +16,17 @@
 </helmet>
 <div style="min-height:100vh;background:var(--bg);color:var(--fg);display:flex;flex-direction:column">
 
-  <header style="display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:20px;border-bottom:1px solid var(--line);padding:0 20px;height:56px;position:sticky;top:0;background:var(--bg);z-index:40">
+  <header class="site-header" style="display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:20px;border-bottom:1px solid var(--line);padding:0 20px;height:56px;position:sticky;top:0;background:var(--bg);z-index:40">
     <a href="#home" onClick="{{ goHome }}" style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:19px;letter-spacing:0.04em;color:var(--fg);text-decoration:none">TAHER AKOLAWALA</a>
-    <div style="display:flex;align-items:center;gap:18px">
-      <button onClick="{{ toggleTheme }}" aria-label="{{ themeToggleLabel }}" title="{{ themeToggleLabel }}" style="display:flex;align-items:center;gap:8px;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:13px;color:var(--dim);background:transparent;border:1px solid var(--line);padding:5px 8px;cursor:pointer" style-hover="color:var(--fg);border-color:var(--accent)">
-        <span>{{ themeLabel }}</span>
+    <div class="header-actions" style="display:flex;align-items:center;gap:18px">
+      <button class="theme-toggle" onClick="{{ toggleTheme }}" aria-label="{{ themeToggleLabel }}" title="{{ themeToggleLabel }}" style="display:flex;align-items:center;gap:8px;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:13px;color:var(--dim);background:transparent;border:1px solid var(--line);padding:5px 8px;cursor:pointer" style-hover="color:var(--fg);border-color:var(--accent)">
+        <span class="theme-label">{{ themeLabel }}</span>
         <span style="display:block;width:26px;height:14px;border:1px solid var(--line);padding:2px"><span style="display:block;width:8px;height:8px;background:var(--accent);transform:translateX({{ themeToggleX }}px);transition:transform 160ms ease"></span></span>
       </button>
-      <button onClick="{{ openPalette }}" style="display:flex;align-items:center;gap:10px;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px;color:var(--dim);background:transparent;border:1px solid var(--line);padding:6px 10px;cursor:pointer">
-        <span>Search</span><span style="border:1px solid var(--line);padding:0 4px;font-size:12px">⌘K</span>
+      <button class="search-button" onClick="{{ openPalette }}" style="display:flex;align-items:center;gap:10px;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px;color:var(--dim);background:transparent;border:1px solid var(--line);padding:6px 10px;cursor:pointer">
+        <span>Search</span><span class="shortcut" style="border:1px solid var(--line);padding:0 4px;font-size:12px">⌘K</span>
       </button>
-      <div style="display:flex;gap:12px;align-items:baseline;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px">
+      <div class="header-socials" style="display:flex;gap:12px;align-items:baseline;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px">
         <a href="https://github.com/taherakolawala" target="_blank" style="color:var(--dim)" style-hover="color:var(--fg)">GitHub ↗</a>
         <a href="https://linkedin.com/in/taher51" target="_blank" style="color:var(--dim)" style-hover="color:var(--fg)">LinkedIn ↗</a>
       </div>
@@ -34,11 +34,12 @@
     </div>
   </header>
 
-  <div style="display:grid;grid-template-columns:300px minmax(0,1fr);flex:1;align-items:start">
+  <div class="site-layout" style="display:grid;grid-template-columns:300px minmax(0,1fr);flex:1;align-items:start">
 
-    <aside style="border-right:1px dashed var(--line);position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto;padding:22px 0 60px">
-      <div style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:15px;letter-spacing:0.08em;color:var(--fg);padding:0 20px 18px">TABLE OF CONTENTS</div>
-      <nav style="display:flex;flex-direction:column">
+    <aside class="site-sidebar" data-open="{{ navOpen }}" style="border-right:1px dashed var(--line);position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto;padding:22px 0 60px">
+      <div class="sidebar-title" style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:15px;letter-spacing:0.08em;color:var(--fg);padding:0 20px 18px">TABLE OF CONTENTS</div>
+      <button class="mobile-nav-toggle" type="button" aria-controls="portfolio-nav" aria-expanded="{{ navOpen }}" onClick="{{ toggleNav }}">Pages <span aria-hidden="true">{{ navSign }}</span></button>
+      <nav class="site-nav" id="portfolio-nav" aria-label="Portfolio pages" style="display:flex;flex-direction:column">
         <sc-for list="{{ nav }}" as="sec" hint-placeholder-count="4">
           <div style="display:flex;flex-direction:column">
             <sc-if value="{{ sec.direct }}">
@@ -74,10 +75,10 @@
       </nav>
     </aside>
 
-    <main style="min-width:0;display:flex;flex-direction:column;min-height:calc(100vh - 56px)">
+    <main class="site-main" style="min-width:0;display:flex;flex-direction:column;min-height:calc(100vh - 56px)">
       <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
-        <section style="padding:14px 44px 70px">
-          <div class="wordmark" style="position:relative;margin:0 0 34px;font-family:'JetBrains Mono',monospace;font-size:10px;line-height:1;letter-spacing:0.04em;color:var(--accent);white-space:pre;user-select:none;overflow:hidden"><pre ref="{{ asciiRef }}" style="margin:0"></pre><pre class="wordmark-name" ref="{{ nameRef }}" style="position:absolute;inset:0;margin:0;opacity:0"></pre></div><p style="margin: 0; font-size: 14.5px">I study computer science at the University of Florida with a minor in electrical engineering, graduating May 2028. I write systems software at <span style="background:var(--panel2);padding:1px 4px">ReliaQuest</span> and research autonomy at the <span style="background:var(--panel2);padding:1px 4px">Machine Intelligence Lab</span>, and most of what I build sits somewhere between low-level systems and applied machine learning.</p><h1 style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:30px;font-weight:400;letter-spacing:0.04em;margin:0 0 26px;color:var(--fg)"><br></h1>
+        <section class="content-section home-section" style="padding:14px 44px 70px">
+          <div class="wordmark" aria-hidden="true" style="position:relative;margin:0 0 34px;font-family:'JetBrains Mono',monospace;font-size:10px;line-height:1;letter-spacing:0.04em;color:var(--accent);white-space:pre;user-select:none;overflow:hidden"><pre ref="{{ asciiRef }}" style="margin:0"></pre><pre class="wordmark-name" ref="{{ nameRef }}" style="position:absolute;inset:0;margin:0;opacity:0"></pre></div><h1 class="mobile-heading">TAHER<br>AKOLAWALA</h1><p style="margin: 0; font-size: 14.5px">I study computer science at the University of Florida with a minor in electrical engineering, graduating May 2028. I write systems software at <span style="background:var(--panel2);padding:1px 4px">ReliaQuest</span> and research autonomy at the <span style="background:var(--panel2);padding:1px 4px">Machine Intelligence Lab</span>, and most of what I build sits somewhere between low-level systems and applied machine learning.</p>
 
           <div style="display:flex;flex-direction:column;gap:16px;max-width:78ch;font-size:14.5px;line-height:1.75;color:var(--fg);text-wrap:pretty">
 
@@ -87,18 +88,18 @@
       </sc-if>
 
       <sc-if value="{{ isContact }}">
-        <section style="padding:14px 44px 70px">
+        <section class="content-section" style="padding:14px 44px 70px">
           <h1 style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:30px;font-weight:400;letter-spacing:0.04em;margin:0 0 28px;color:var(--fg)">CONTACT</h1>
           <div style="display:flex;flex-direction:column;gap:0;max-width:620px;border-top:1px dashed var(--line)">
-            <a href="https://github.com/taherakolawala" target="_blank" style="display:flex;gap:20px;align-items:baseline;padding:16px 4px;border-bottom:1px dashed var(--line);color:var(--fg);text-decoration:none" style-hover="background:var(--panel)">
+            <a class="contact-link" href="https://github.com/taherakolawala" target="_blank" style="display:flex;gap:20px;align-items:baseline;padding:16px 4px;border-bottom:1px dashed var(--line);color:var(--fg);text-decoration:none" style-hover="background:var(--panel)">
               <span style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:15px;color:var(--dim);min-width:110px">GITHUB</span>
               <span style="font-size:14px;color:var(--accent)">github.com/taherakolawala ↗</span>
             </a>
-            <a href="https://linkedin.com/in/taher51" target="_blank" style="display:flex;gap:20px;align-items:baseline;padding:16px 4px;border-bottom:1px dashed var(--line);color:var(--fg);text-decoration:none" style-hover="background:var(--panel)">
+            <a class="contact-link" href="https://linkedin.com/in/taher51" target="_blank" style="display:flex;gap:20px;align-items:baseline;padding:16px 4px;border-bottom:1px dashed var(--line);color:var(--fg);text-decoration:none" style-hover="background:var(--panel)">
               <span style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:15px;color:var(--dim);min-width:110px">LINKEDIN</span>
               <span style="font-size:14px;color:var(--accent)">linkedin.com/in/taher51 ↗</span>
             </a>
-            <a href="taher-akolawala-resume.pdf" target="_blank" style="display:flex;gap:20px;align-items:baseline;padding:16px 4px;border-bottom:1px dashed var(--line);color:var(--fg);text-decoration:none" style-hover="background:var(--panel)">
+            <a class="contact-link" href="taher-akolawala-resume.pdf" target="_blank" style="display:flex;gap:20px;align-items:baseline;padding:16px 4px;border-bottom:1px dashed var(--line);color:var(--fg);text-decoration:none" style-hover="background:var(--panel)">
               <span style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:15px;color:var(--dim);min-width:110px">RESUME</span>
               <span style="font-size:14px;color:var(--accent)">taher-akolawala-resume.pdf ↓</span>
             </a>
@@ -107,7 +108,7 @@
       </sc-if>
 
       <sc-if value="{{ isEntry }}">
-        <article style="padding:14px 44px 60px">
+        <article class="content-section" style="padding:14px 44px 60px">
           <h1 style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:30px;font-weight:400;letter-spacing:0.03em;line-height:1.25;margin:0 0 12px;color:var(--fg);text-wrap:pretty">{{ entry.title }}</h1>
           <div style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:16px;color:var(--dim);margin-bottom:20px">{{ entry.role }}</div>
 
@@ -240,7 +241,7 @@
         </article>
       </sc-if>
 
-      <div style="margin-top:auto;padding:0 44px 30px;display:flex;gap:14px;justify-content:space-between">
+      <div class="page-pager" style="margin-top:auto;padding:0 44px 30px;display:flex;gap:14px;justify-content:space-between">
         <sc-if value="{{ hasPrev }}">
           <a href="#page" onClick="{{ goPrev }}" style="flex:1;display:flex;flex-direction:column;gap:5px;border:1px dashed var(--line);padding:14px 16px;color:var(--fg);text-decoration:none" style-hover="border-color:var(--accent)">
             <span style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:13px;color:var(--dim)">← PREVIOUS</span>
@@ -255,7 +256,7 @@
         </sc-if>
       </div>
 
-      <footer style="border-top:1px dashed var(--line);padding:16px 44px;display:flex;gap:22px;flex-wrap:wrap;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px;color:var(--dim)">
+      <footer class="site-footer" style="border-top:1px dashed var(--line);padding:16px 44px;display:flex;gap:22px;flex-wrap:wrap;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px;color:var(--dim)">
         <span>j / k to move between pages</span>
         <span>⌘K to search</span>
         <span style="margin-left:auto">Tampa &amp; Gainesville, FL</span>
@@ -297,7 +298,7 @@ class Component extends DCLogic {
     super(p);
     this.state = {
       route:this.routeFromHash(), theme:p.startTheme||'amber',
-      open:{Experience:false,'Leadership & Involvement':false,Projects:false}, palette:false, q:'', sel:0
+      open:{Experience:false,'Leadership & Involvement':false,Projects:false}, mobileNavOpen:false, palette:false, q:'', sel:0
     };
     this.asciiRef = React.createRef();
     this.nameRef = React.createRef();
@@ -307,7 +308,7 @@ class Component extends DCLogic {
   componentDidMount(){
     document.documentElement.setAttribute('data-theme', this.state.theme);
     this._key = (e)=>this.onKey(e);
-    this._hash = ()=>{ const route=this.routeFromHash(); this.setState({route,palette:false,q:''},()=>{ window.scrollTo(0,0); if(route==='home') this.restartAscii(); }); };
+    this._hash = ()=>{ const route=this.routeFromHash(); this.setState({route,palette:false,q:'',mobileNavOpen:false},()=>{ window.scrollTo(0,0); if(route==='home') this.restartAscii(); }); };
     window.addEventListener('keydown', this._key);
     window.addEventListener('hashchange', this._hash);
     this._resize = ()=>{ clearTimeout(this._rt); this._rt=setTimeout(()=>{ this._geom=null; },160); };
@@ -456,11 +457,11 @@ class Component extends DCLogic {
     return '#/'+section+'/'+slug;
   }
   idx(){ return this.pages().indexOf(this.state.route); }
-  go(slug){ return (e)=>{ if(e&&e.preventDefault) e.preventDefault(); const path=this.pathFor(slug); if(location.hash!==path) history.pushState(null,'',path); this.setState({route:slug,palette:false,q:''},()=>{ window.scrollTo(0,0); if(slug==='home') this.restartAscii(); }); }; }
+  go(slug){ return (e)=>{ if(e&&e.preventDefault) e.preventDefault(); const path=this.pathFor(slug); if(location.hash!==path) history.pushState(null,'',path); this.setState({route:slug,palette:false,q:'',mobileNavOpen:false},()=>{ window.scrollTo(0,0); if(slug==='home') this.restartAscii(); }); }; }
   step(d){
     const p=this.pages(), i=this.idx()+d;
     if(i<0||i>=p.length) return;
-    this.setState({route:p[i]}); window.scrollTo(0,0);
+    this.setState({route:p[i],mobileNavOpen:false}); window.scrollTo(0,0);
   }
   onKey(e){
     const tag=(e.target&&e.target.tagName)||'';
@@ -543,6 +544,8 @@ class Component extends DCLogic {
       isHome:route==='home', isContact:route==='contact', isEntry:!!entry,
       crumb:'/'+route,
       nav, entry: entry?{...entry, blocks}:null,
+      navOpen:this.state.mobileNavOpen, navSign:this.state.mobileNavOpen?'−':'+',
+      toggleNav:()=>this.setState(st=>({mobileNavOpen:!st.mobileNavOpen})),
       themeLabel:this.state.theme==='paper'?'LIGHT':'DARK',
       themeToggleLabel:this.state.theme==='paper'?'Switch to dark mode':'Switch to light mode',
       themeToggleX:this.state.theme==='paper'?12:0,
