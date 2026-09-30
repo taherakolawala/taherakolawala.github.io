@@ -47,7 +47,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 
 @media (max-width:900px){
   .header-socials{display:none!important}
-  .site-layout{grid-template-columns:minmax(0,1fr)!important}
+  .site-layout{grid-template-columns:minmax(0,1fr)!important;align-content:start}
   .site-sidebar{
     position:static!important;
     height:auto!important;
