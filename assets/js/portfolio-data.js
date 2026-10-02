@@ -168,25 +168,15 @@ const ENTRIES = [
   { slug:'clench', section:'Projects', group:'Hackathons', label:'Clench', abbr:'WIN', title:'Clench',
     role:'ShellHacks 2026 · 2nd place overall', meta:['Sep 2026','300+ projects','850+ participants'],
     blocks:[
-      {kind:'para',text:'Clench helps people with limited speech and mobility communicate and control a computer through eye tracking and jaw clenches. The team placed second overall at ShellHacks 2026, Florida\u2019s largest hackathon.'},
+      {kind:'para',text:'Clench helps people with limited speech and mobility communicate through eye tracking and jaw clenches. The team placed second overall at ShellHacks 2026, Florida\u2019s largest hackathon.'},
       {kind:'h',text:'MY WORK'},
       {kind:'bullets',items:[
-        'Built the Muse 2 input pipeline with calibrated jaw-clench detection, MNE-based double-blink detection, reusable profiles, and reproducible gesture tests that turn headband signals into input events.',
-        'Developed a Windows desktop agent that combines Eyedid gaze tracking with clench input for pointing, clicking, scrolling, dragging, and typing through a gaze keyboard; added calibration checks and gaze smoothing.',
-        'Integrated eye calibration into the React board and added large YouTube and Spotify control tiles, connecting gaze and gesture input to media playback controls.'
+        'Built the Muse 2 input pipeline with calibrated jaw-clench detection, MNE-based double-blink detection, reusable profiles, and reproducible gesture tests.',
+        'Integrated Eyedid eye tracking into the React communication board so gaze highlights large choices, with a calibration check before selection.',
+        'Added large YouTube and Spotify control tiles and refined how the player screen scans its own controls for gaze and clench selection.'
       ]},
-      {kind:'h',text:'INPUT TO ACTION'},
-      {kind:'pre',text:D([
-        {t:'row',v:['Muse 2 signals','Eyedid gaze']},
-        {t:'arrow'},
-        {t:'row',v:['clench + blink detector','gaze calibration']},
-        {t:'arrow',v:'gesture + target events'},
-        {t:'row',v:['FastAPI session core']},
-        {t:'arrow',v:'select and confirm'},
-        {t:'row',v:['communication board','Windows desktop agent']},
-        {t:'arrow'},
-        {t:'text',v:'speech · messages · calls · computer control'}
-      ])},
+      {kind:'h',text:'LOOK, CLENCH, CONFIRM'},
+      {kind:'clenchFlow'},
       {kind:'h',text:'STACK'},
       {kind:'tags',items:['Python','BrainFlow','MNE-Python','Muse 2','Eyedid SDK','FastAPI','React','TypeScript']},
       {kind:'links',items:[{label:'Demo video',href:'https://www.youtube.com/watch?v=CRticYNFvGA'},{label:'GitHub',href:'https://github.com/abhay-dronavalli/clench-muse-als/tree/main'},{label:'Devpost',href:'https://devpost.com/software/clench-ifdrmc'}]},

@@ -43,8 +43,29 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .flow-arrow::after{content:'';position:absolute;width:4px;height:4px;border-radius:50%;background:var(--accent);animation:flow-signal 2.5s ease-in-out infinite}
 .flow-arrow-label{position:absolute;left:calc(50% + 9px);max-width:18ch;font-size:10px;line-height:1.25;color:var(--dim)}
 .flow-note,.flow-text{font-size:10px;line-height:1.45;text-align:center;color:var(--dim)}
+.clench-flow{margin:0;width:100%;box-sizing:border-box;border:1px dashed var(--line);background:var(--panel);padding:12px 13px;font-family:'Departure Mono','JetBrains Mono',monospace;color:var(--fg)}
+.clench-flow-step>span{display:block;color:var(--accent);font-size:10px;letter-spacing:.08em;margin-bottom:6px}
+.clench-flow-step small{display:block;color:var(--dim);font-size:9px;line-height:1.4;margin-top:5px}
+.clench-flow-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px}
+.clench-flow-tiles i{font-size:9px;font-style:normal;text-align:center;border:1px solid var(--line);padding:6px 2px;min-width:0}
+.clench-flow-tiles i.is-focused{border:1px solid var(--accent);color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.clench-flow-link{display:flex;align-items:center;gap:8px;margin:9px 0;padding-left:10px;border-left:1px solid var(--line);min-height:22px;color:var(--dim);font-size:9px;letter-spacing:.02em}
+.clench-flow-link b{color:var(--accent);font-size:10px;font-weight:400}
+.clench-flow-phrase{border:1px solid var(--line);padding:8px 9px;background:var(--bg);font-size:11px;line-height:1.35}
+.clench-flow-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px}
+.clench-flow-actions span{background:var(--accent);color:var(--onaccent);font-size:9px;text-align:center;padding:6px 1px;min-width:0}
+.clench-flow-tiles .is-focused{animation:clench-gaze 6s ease-in-out infinite}
+.clench-flow-select b{animation:clench-select 6s ease-in-out infinite}
+.clench-flow-phrase{animation:clench-draft 6s ease-in-out infinite}
+.clench-flow-confirm b{animation:clench-confirm 6s ease-in-out infinite}
+.clench-flow-actions span:first-child{animation:clench-output 6s ease-in-out infinite}
+@keyframes clench-gaze{0%,13%,28%,100%{box-shadow:inset 0 0 0 1px var(--accent)}20%{box-shadow:inset 0 0 0 2px var(--accent),0 0 0 3px color-mix(in srgb,var(--accent) 25%,transparent)}}
+@keyframes clench-select{0%,28%,40%,100%{transform:scale(1)}33%{transform:scale(1.75)}}
+@keyframes clench-draft{0%,43%,58%,100%{border-color:var(--line)}50%{border-color:var(--accent)}}
+@keyframes clench-confirm{0%,62%,74%,100%{transform:scale(1)}68%{transform:scale(1.75)}}
+@keyframes clench-output{0%,78%,96%,100%{box-shadow:none}86%{box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 35%,transparent)}}
 @keyframes flow-signal{0%,100%{transform:translateY(-7px);opacity:0}20%,80%{opacity:1}50%{transform:translateY(7px);opacity:1}}
-@media (prefers-reduced-motion:reduce){.flow-arrow::after{animation:none;transform:translateY(0);opacity:1}}
+@media (prefers-reduced-motion:reduce){.flow-arrow::after{animation:none;transform:translateY(0);opacity:1}.clench-flow-tiles .is-focused,.clench-flow-select b,.clench-flow-phrase,.clench-flow-confirm b,.clench-flow-actions span:first-child{animation:none;transform:none}}
 @media (max-width:760px){.work-flow{grid-template-columns:1fr;gap:20px}}
 
 @media (max-width:900px){

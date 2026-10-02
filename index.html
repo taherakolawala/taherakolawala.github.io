@@ -142,6 +142,16 @@
                     </div>
                     <div style="padding-top:20px">
                       <div style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px;letter-spacing:0.04em;color:var(--dim);margin-bottom:10px">{{ b.flowTitle }}</div>
+                      <sc-if value="{{ b.isClenchFlow }}">
+                        <figure class="clench-flow" aria-label="Clench communication sequence: look at a tile, clench to select it, review a drafted phrase, then clench again to confirm an action">
+                          <div class="clench-flow-step"><span>01 / LOOK</span><div class="clench-flow-tiles"><i>REST</i><i class="is-focused">WATER</i><i>HELP</i></div><small>Eye gaze highlights a tile</small></div>
+                          <div class="clench-flow-link clench-flow-select"><b>◆</b><span>JAW CLENCH / SELECT</span></div>
+                          <div class="clench-flow-step"><span>02 / DRAFT</span><div class="clench-flow-phrase">“Could I have water?”</div><small>Selections become a phrase</small></div>
+                          <div class="clench-flow-link clench-flow-confirm"><b>◆</b><span>JAW CLENCH / CONFIRM</span></div>
+                          <div class="clench-flow-actions"><span>SPEAK</span><span>MESSAGE</span><span>CALL</span></div>
+                        </figure>
+                      </sc-if>
+                      <sc-if value="{{ b.hasStandardFlow }}">
                       <div class="flow-diagram">
                         <sc-for list="{{ b.diagram }}" as="d" hint-placeholder-count="6">
                           <sc-if value="{{ d.isRow }}">
@@ -152,6 +162,7 @@
                           <sc-if value="{{ d.isText }}"><div class="flow-text">{{ d.label }}</div></sc-if>
                         </sc-for>
                       </div>
+                      </sc-if>
                       <sc-if value="{{ b.hasExtraFlow }}">
                         <p style="font-size:11px;line-height:1.5;color:var(--dim);margin:18px 0 9px">{{ b.note }}</p>
                         <div style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px;letter-spacing:0.04em;color:var(--dim);margin-bottom:10px">{{ b.extraFlowTitle }}</div>
@@ -526,8 +537,8 @@ class Component extends DCLogic {
     const groupedBlocks=[];
     for(let bi=0;bi<sourceBlocks.length;bi++){
       const b=sourceBlocks[bi], next=sourceBlocks[bi+1], flowHeading=sourceBlocks[bi+2], flow=sourceBlocks[bi+3];
-      if(b.kind==='h' && next&&next.kind==='bullets' && flowHeading&&flowHeading.kind==='h' && flow&&flow.kind==='pre'){
-        groupedBlocks.push({kind:'workWithFlow',text:b.text,items:next.items,flowTitle:flowHeading.text,flowText:flow.text});
+      if(b.kind==='h' && next&&next.kind==='bullets' && flowHeading&&flowHeading.kind==='h' && flow&&['pre','clenchFlow'].includes(flow.kind)){
+        groupedBlocks.push({kind:'workWithFlow',text:b.text,items:next.items,flowTitle:flowHeading.text,flowText:flow.kind==='clenchFlow'?{clench:true}:flow.text});
         bi+=3;
       } else if(b.kind==='para' && next&&next.kind==='h' && flowHeading&&flowHeading.kind==='pre'){
         const previous=groupedBlocks[groupedBlocks.length-1];
@@ -540,7 +551,7 @@ class Component extends DCLogic {
     const blocks=entry?groupedBlocks.map((b,bi)=>{
       const diagram=b.kind==='workWithFlow' ? b.flowText?.diagram : b.text?.diagram;
       return {
-      isH:b.kind==='h', isPara:b.kind==='para', isBullets:b.kind==='bullets', isPre:b.kind==='pre'&&!diagram, isWorkWithFlow:b.kind==='workWithFlow', isParaWithFlow:b.kind==='paraWithFlow', isDiagram:!!diagram&&b.kind!=='workWithFlow'&&b.kind!=='paraWithFlow',
+      isH:b.kind==='h', isPara:b.kind==='para', isBullets:b.kind==='bullets', isPre:b.kind==='pre'&&!diagram, isWorkWithFlow:b.kind==='workWithFlow', isParaWithFlow:b.kind==='paraWithFlow', isDiagram:!!diagram&&b.kind!=='workWithFlow'&&b.kind!=='paraWithFlow', isClenchFlow:!!b.flowText?.clench, hasStandardFlow:!!diagram,
       isTags:b.kind==='tags', isLinks:b.kind==='links', isSee:b.kind==='see',
       text:b.text, note:b.note, flowTitle:b.flowTitle, flowText:b.flowText,
       diagram:(diagram||[]).map(s=>({isRow:s.t==='row',isArrow:s.t==='arrow',isNote:s.t==='note',isText:s.t==='text',nodes:s.v||[],label:s.v||''})),
