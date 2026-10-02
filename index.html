@@ -295,7 +295,9 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;startTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;amber&quot;,&quot;paper&quot;],&quot;default&quot;:&quot;paper&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Site&quot;},&quot;showAscii&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Site&quot;}}">
 // ---- aligned diagram builder: every row is padded to one inner width ----
 const { ENTRIES, SECTIONS, THEMES, STATIC_CHARS, FONT } = window.PORTFOLIO_DATA;
-const PROJECT_ENTRIES = ENTRIES.filter(e=>e.section==='Projects'&&e.group==='Hackathons').concat(ENTRIES.filter(e=>e.section==='Projects'&&!e.group));
+const HACKATHON_ENTRIES = ENTRIES.filter(e=>e.section==='Projects'&&e.group==='Hackathons')
+  .sort((a,b)=>Number(b.abbr==='WIN')-Number(a.abbr==='WIN'));
+const PROJECT_ENTRIES = HACKATHON_ENTRIES.concat(ENTRIES.filter(e=>e.section==='Projects'&&!e.group));
 const ORDERED_ENTRIES = ENTRIES.filter(e=>e.section!=='Projects').concat(PROJECT_ENTRIES);
 
 class Component extends DCLogic {
