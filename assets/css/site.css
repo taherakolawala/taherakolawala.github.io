@@ -33,6 +33,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .mobile-heading{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .mobile-nav-toggle{display:none}
 .project-group-label{width:100%;margin:8px 20px 2px 36px;padding:9px 0 2px;border-top:1px dashed var(--line);font-family:'Departure Mono','JetBrains Mono',monospace;font-size:12px;line-height:1.35;color:var(--dim)}
+.hackathon-nav-item{margin-left:14px}
 .work-flow{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(220px,0.85fr);gap:38px;align-items:start}
 .flow-diagram{display:flex;flex-direction:column;gap:6px;color:var(--dim)}
 .flow-row{display:flex;justify-content:center;flex-wrap:wrap;gap:6px}
@@ -95,6 +96,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   .site-nav a[href="#page"]{padding-left:24px!important}
   .project-group-label{margin-left:24px}
   .site-nav a[href="#page"] span + span{display:none}
+  .site-nav .hackathon-nav-item a[href="#page"] span + span{display:inline}
   .site-main{min-height:0!important}
   .content-section{padding:24px 20px 44px!important;min-width:0;overflow-wrap:anywhere}
   .content-section h1{font-size:clamp(24px,7vw,30px)!important;line-height:1.2!important}

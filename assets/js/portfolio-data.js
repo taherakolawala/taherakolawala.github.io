@@ -165,7 +165,7 @@ const ENTRIES = [
       {kind:'see',items:['summit-analytics']}
     ]},
 
-  { slug:'clench', section:'Projects', group:'Hackathons', label:'Clench', abbr:'2ND', title:'Clench',
+  { slug:'clench', section:'Projects', group:'Hackathons', label:'Clench', abbr:'WIN', title:'Clench',
     role:'ShellHacks 2026 · 2nd place overall', meta:['Sep 2026','300+ projects','850+ participants'],
     blocks:[
       {kind:'para',text:'Clench helps people with limited speech and mobility communicate and control a computer through eye tracking and jaw clenches. The team placed second overall at ShellHacks 2026, Florida\u2019s largest hackathon.'},
@@ -223,7 +223,7 @@ const ENTRIES = [
       {kind:'see',items:['machine-intelligence-lab','wikiroute']}
     ]},
 
-  { slug:'gradient-attributions', section:'Projects', label:'Gradient-Based Attributions', abbr:'RSCH', title:'Gradient-Based Attributions - Neural Network Interpretability',
+  { slug:'gradient-attributions', section:'Projects', label:'Gradient-Based Attributions', abbr:'', title:'Gradient-Based Attributions - Neural Network Interpretability',
     role:'PyTorch, ResNet50', meta:['Integrated Gradients','IDG','ImageNet'],
     blocks:[
       {kind:'h',text:'WORK'},
@@ -247,7 +247,7 @@ const ENTRIES = [
       {kind:'see',items:['chestnet']}
     ]},
 
-  { slug:'wikiroute', section:'Projects', label:'WikiRoute', abbr:'C++', title:'WikiRoute - Wikipedia Graph Pathfinding Engine',
+  { slug:'wikiroute', section:'Projects', label:'WikiRoute', abbr:'', title:'WikiRoute - Wikipedia Graph Pathfinding Engine',
     role:'C++, Python, Streamlit', meta:['100,000 pages','Dijkstra','Dial\u2019s algorithm'],
     blocks:[
       {kind:'h',text:'WORK'},
@@ -271,7 +271,7 @@ const ENTRIES = [
       {kind:'see',items:['drift-zero','browser4all']}
     ]},
 
-  { slug:'browser4all', section:'Projects', group:'Hackathons', label:'Browser4ALL', abbr:'SEMI', title:'Browser4ALL - Voice Browser Automation',
+  { slug:'browser4all', section:'Projects', group:'Hackathons', label:'Browser4ALL', abbr:'', title:'Browser4ALL - Voice Browser Automation',
     role:'Shell Hacks 2025 Semifinalist', meta:['2025','asyncio','ElevenLabs','browser-use'],
     blocks:[
       {kind:'h',text:'WORK'},
@@ -300,7 +300,7 @@ const ENTRIES = [
       {kind:'see',items:['gatorai-ta','clench']}
     ]},
 
-  { slug:'chestnet', section:'Projects', label:'ChestNet', abbr:'CNN', title:'ChestNet - Thoracic Disease Classification',
+  { slug:'chestnet', section:'Projects', label:'ChestNet', abbr:'', title:'ChestNet - Thoracic Disease Classification',
     role:'Python, TensorFlow, Keras, Pandas, NumPy', meta:['ChestMNIST','14 classes','AUC 0.7353'],
     blocks:[
       {kind:'h',text:'WORK'},
@@ -328,7 +328,7 @@ const ENTRIES = [
       {kind:'see',items:['gradient-attributions']}
     ]},
 
-  { slug:'fennecxr', section:'Projects', group:'Hackathons', label:'FennecXR', abbr:'1ST', title:'FennecXR - Carthage Underfoot',
+  { slug:'fennecxr', section:'Projects', group:'Hackathons', label:'FennecXR', abbr:'WIN', title:'FennecXR - Carthage Underfoot',
     role:'CityCamp Gainesville Hack Day · 1st place, Best Use of Gemini', meta:['React Three Fiber','Tanit XR','Gemini'],
     blocks:[
       {kind:'para',text:'A walkable 3D heritage landscape that places Tanit XR scans in a spatial story about Carthage, with archive records kept distinct from interpretive scenery.'},
@@ -354,7 +354,7 @@ const ENTRIES = [
       {kind:'see',items:['clench','wikiroute']}
     ]},
 
-  { slug:'satellite-ship-detection', section:'Projects', label:'Satellite Ship Detection', abbr:'ML', title:'Satellite Ship Detection - Dimensionality Reduction for Ship Imagery',
+  { slug:'satellite-ship-detection', section:'Projects', label:'Satellite Ship Detection', abbr:'', title:'Satellite Ship Detection - Dimensionality Reduction for Ship Imagery',
     role:'Machine learning case study', meta:['4,000 images','PCA + SVM','Test F1 0.8495'],
     blocks:[
       {kind:'para',text:'Compared linear and nonlinear dimensionality reduction methods for ship detection on 4,000 labeled 80×80 RGB satellite images.'},

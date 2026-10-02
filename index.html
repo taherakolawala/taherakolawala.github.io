@@ -53,20 +53,20 @@
             <sc-if value="{{ sec.showItems }}" hint-placeholder-val="{{ true }}">
               <div style="display:flex;flex-direction:column">
                 <sc-for list="{{ sec.items }}" as="it" hint-placeholder-count="4">
-                  <div style="display:flex">
+                  <div class="{{ it.navClass }}" style="display:flex">
                     <sc-if value="{{ it.heading }}">
                       <div class="project-group-label" role="heading" aria-level="3">{{ it.label }}</div>
                     </sc-if>
                     <sc-if value="{{ it.active }}">
                       <a href="#page" onClick="{{ it.go }}" style="flex:1;display:flex;align-items:baseline;gap:8px;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:15px;padding:7px 20px 7px 36px;background:var(--accent);color:var(--onaccent);text-decoration:none">
                         <span>{{ it.label }}</span>
-                        <span style="font-size:12px;border:1px solid var(--onaccent);padding:0 4px;margin-left:auto;white-space:nowrap;opacity:0.75">{{ it.abbr }}</span>
+                        <sc-if value="{{ it.abbr }}"><span style="font-size:12px;border:1px solid var(--onaccent);padding:0 4px;margin-left:auto;white-space:nowrap;opacity:0.75">{{ it.abbr }}</span></sc-if>
                       </a>
                     </sc-if>
                     <sc-if value="{{ it.inactive }}">
                       <a href="#page" onClick="{{ it.go }}" style="flex:1;display:flex;align-items:baseline;gap:8px;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:15px;padding:7px 20px 7px 36px;color:var(--fg);text-decoration:none" style-hover="background:var(--panel)">
                         <span>{{ it.label }}</span>
-                        <span style="font-size:12px;background:var(--panel2);color:var(--dim);padding:0 4px;margin-left:auto;white-space:nowrap">{{ it.abbr }}</span>
+                        <sc-if value="{{ it.abbr }}"><span style="font-size:12px;background:var(--panel2);color:var(--dim);padding:0 4px;margin-left:auto;white-space:nowrap">{{ it.abbr }}</span></sc-if>
                       </a>
                     </sc-if>
                   </div>
@@ -503,7 +503,7 @@ class Component extends DCLogic {
     const route=this.state.route;
     const entry=ENTRIES.find(e=>e.slug===route);
     const sectionFor=(en)=>['gatorai-corp','florida-tech-pathways'].includes(en.slug) ? 'Leadership & Involvement' : en.section;
-    const dec=(en)=>({ slug:en.slug, label:en.label, abbr:en.abbr, section:sectionFor(en),
+    const dec=(en)=>({ slug:en.slug, label:en.label, abbr:en.abbr, section:sectionFor(en), navClass:en.group==='Hackathons'?'hackathon-nav-item':'',
       active:route===en.slug, inactive:route!==en.slug, go:this.go(en.slug) });
     const nav=[
       { label:'README', direct:true, group:false, showItems:false, go:this.go('home') }
