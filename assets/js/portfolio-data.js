@@ -165,7 +165,7 @@ const ENTRIES = [
       {kind:'see',items:['summit-analytics']}
     ]},
 
-  { slug:'clench', section:'Projects', label:'Clench', abbr:'2ND', title:'Clench',
+  { slug:'clench', section:'Projects', group:'Hackathons', label:'Clench', abbr:'2ND', title:'Clench',
     role:'ShellHacks 2026 · 2nd place overall', meta:['Sep 2026','300+ projects','850+ participants'],
     blocks:[
       {kind:'para',text:'Clench helps people with limited speech and mobility communicate and control a computer through eye tracking and jaw clenches. The team placed second overall at ShellHacks 2026, Florida\u2019s largest hackathon.'},
@@ -189,11 +189,11 @@ const ENTRIES = [
       ])},
       {kind:'h',text:'STACK'},
       {kind:'tags',items:['Python','BrainFlow','MNE-Python','Muse 2','Eyedid SDK','FastAPI','React','TypeScript']},
-      {kind:'links',items:[{label:'GitHub',href:'https://github.com/abhay-dronavalli/clench-muse-als/tree/main'},{label:'Devpost',href:'https://devpost.com/software/clench-ifdrmc'}]},
+      {kind:'links',items:[{label:'Demo video',href:'https://www.youtube.com/watch?v=CRticYNFvGA'},{label:'GitHub',href:'https://github.com/abhay-dronavalli/clench-muse-als/tree/main'},{label:'Devpost',href:'https://devpost.com/software/clench-ifdrmc'}]},
       {kind:'see',items:['browser4all','machine-intelligence-lab']}
     ]},
 
-  { slug:'drift-zero', section:'Projects', label:'Drift Zero', abbr:'WIN', title:'Drift Zero - Satellite Threat Intelligence Platform',
+  { slug:'drift-zero', section:'Projects', group:'Hackathons', label:'Drift Zero', abbr:'WIN', title:'Drift Zero - Satellite Threat Intelligence Platform',
     role:'SCI Hackathon 2026 Winner · led a team of 4', meta:['2026','Databricks','FastAPI','IsolationForest'],
     blocks:[
       {kind:'para',text:'Drift Zero ingests two-line element sets for satellite constellations, detects maneuver events, and scores operator behavior to flag adversarial activity in orbit.'},
@@ -271,7 +271,7 @@ const ENTRIES = [
       {kind:'see',items:['drift-zero','browser4all']}
     ]},
 
-  { slug:'browser4all', section:'Projects', label:'Browser4ALL', abbr:'SEMI', title:'Browser4ALL - Voice Browser Automation',
+  { slug:'browser4all', section:'Projects', group:'Hackathons', label:'Browser4ALL', abbr:'SEMI', title:'Browser4ALL - Voice Browser Automation',
     role:'Shell Hacks 2025 Semifinalist', meta:['2025','asyncio','ElevenLabs','browser-use'],
     blocks:[
       {kind:'h',text:'WORK'},
@@ -296,8 +296,8 @@ const ENTRIES = [
       ])},
       {kind:'h',text:'STACK'},
       {kind:'tags',items:['Python','asyncio','browser-use','OpenAI','ElevenLabs','tkinter']},
-      {kind:'links',items:[{label:'GitHub',href:'https://github.com/taherakolawala/Browser4All'}]},
-      {kind:'see',items:['gatorai-ta','legalease']}
+      {kind:'links',items:[{label:'Demo video',href:'https://www.youtube.com/watch?v=D0L6IPorGCQ'},{label:'GitHub',href:'https://github.com/taherakolawala/Browser4All'}]},
+      {kind:'see',items:['gatorai-ta','clench']}
     ]},
 
   { slug:'chestnet', section:'Projects', label:'ChestNet', abbr:'CNN', title:'ChestNet - Thoracic Disease Classification',
@@ -328,30 +328,56 @@ const ENTRIES = [
       {kind:'see',items:['gradient-attributions']}
     ]},
 
-  { slug:'legalease', section:'Projects', label:'LegalEase', abbr:'EXT', title:'LegalEase - Plain-English Terms of Service',
-    role:'Python, Flask, JavaScript, HTML, CSS', meta:['Chrome extension','GPT-4','Flask API'],
+  { slug:'fennecxr', section:'Projects', group:'Hackathons', label:'FennecXR', abbr:'1ST', title:'FennecXR - Carthage Underfoot',
+    role:'CityCamp Gainesville Hack Day · 1st place, Best Use of Gemini', meta:['React Three Fiber','Tanit XR','Gemini'],
     blocks:[
-      {kind:'h',text:'WORK'},
+      {kind:'para',text:'A walkable 3D heritage landscape that places Tanit XR scans in a spatial story about Carthage, with archive records kept distinct from interpretive scenery.'},
+      {kind:'h',text:'MY WORK'},
       {kind:'bullets',items:[
-        'Developed a Chrome Extension using the chrome.tabs API to extract Terms of Service text and send it asynchronously to a Flask backend.',
-        'Built an AI service leveraging GPT-4 to summarize legal text into plain-English bullet points and flag risky clauses on data collection and liability.',
-        'Implemented a robust Flask API with structured JSON output, detailed error handling, and specific HTTP codes for client clarity.'
+        'Built and refined the walkable React Three Fiber world, architectural scenes, lighting, time-of-day controls, and interactions for exploring artifact records.',
+        'Integrated Tanit XR photogrammetry scans and optimized 16 unique GLB assets with WebP and meshopt, reducing the browser asset payload from 56.6 MB to 7.1 MB.',
+        'Implemented a Gemini recommendation endpoint constrained to documented archive IDs, with input validation and a grounded fallback path.'
       ]},
-      {kind:'h',text:'REQUEST PATH'},
+      {kind:'h',text:'VISITOR FLOW'},
       {kind:'pre',text:D([
-        {t:'text',v:'Terms of Service page'},
+        {t:'row',v:['Tanit XR scans','archive records']},
+        {t:'arrow',v:'optimized WebP + meshopt assets'},
+        {t:'row',v:['walkable 3D landscape']},
+        {t:'arrow',v:'nearby artifact + visitor interest'},
+        {t:'row',v:['record viewer','Gemini recommender']},
         {t:'arrow'},
-        {t:'row',v:['Chrome extension - chrome.tabs']},
-        {t:'arrow',v:'async request'},
-        {t:'row',v:['Flask API']},
-        {t:'arrow'},
-        {t:'row',v:['GPT-4 summarizer']},
-        {t:'arrow'},
-        {t:'text',v:'plain-English bullets · risky clauses flagged'}
+        {t:'text',v:'grounded object context and suggested next stop'}
       ])},
       {kind:'h',text:'STACK'},
-      {kind:'tags',items:['Python','Flask','JavaScript','GPT-4','Chrome APIs']},
-      {kind:'see',items:['browser4all']}
+      {kind:'tags',items:['React','Three.js','React Three Fiber','Vite','Gemini','WebP','meshopt']},
+      {kind:'links',items:[{label:'Demo video',href:'https://www.youtube.com/watch?v=jmN1wAe-3Pw'},{label:'GitHub',href:'https://github.com/abhay-dronavalli/FennecXR'},{label:'Hack Day',href:'https://citycamp-hack-day.devpost.com/'}]},
+      {kind:'see',items:['clench','wikiroute']}
+    ]},
+
+  { slug:'satellite-ship-detection', section:'Projects', label:'Satellite Ship Detection', abbr:'ML', title:'Satellite Ship Detection - Dimensionality Reduction for Ship Imagery',
+    role:'Machine learning case study', meta:['4,000 images','PCA + SVM','Test F1 0.8495'],
+    blocks:[
+      {kind:'para',text:'Compared linear and nonlinear dimensionality reduction methods for ship detection on 4,000 labeled 80×80 RGB satellite images.'},
+      {kind:'h',text:'WORK'},
+      {kind:'bullets',items:[
+        'Prepared 19,200-feature image vectors and compared SVM and logistic regression baselines with PCA, Isomap, and locally linear embedding pipelines.',
+        'Used three-fold cross-validation to select PCA and classifier settings; the selected PCA + SVM model used 150 components and reached 0.8495 F1 on the held-out test set.',
+        'Examined explained variance, reconstruction error, inference time, and failure cases to identify tradeoffs between compact representations and detection quality.'
+      ]},
+      {kind:'h',text:'EXPERIMENT'},
+      {kind:'pre',text:D([
+        {t:'row',v:['80×80 RGB satellite chips']},
+        {t:'arrow',v:'flatten to 19,200 features'},
+        {t:'row',v:['raw baseline','PCA','Isomap / LLE']},
+        {t:'arrow'},
+        {t:'row',v:['SVM','logistic regression']},
+        {t:'arrow',v:'held-out evaluation'},
+        {t:'text',v:'best test F1: 0.8495 · PCA + SVM'}
+      ])},
+      {kind:'h',text:'STACK'},
+      {kind:'tags',items:['Python','scikit-learn','NumPy','PCA','SVM','Isomap','LLE']},
+      {kind:'links',items:[{label:'Paper (PDF)',href:'papers/satellite-ship-detection-ieee.pdf'},{label:'GitHub',href:'https://github.com/taherakolawala/satellite-ship-detection'}]},
+      {kind:'see',items:['gradient-attributions','chestnet']}
     ]},
 
 ];

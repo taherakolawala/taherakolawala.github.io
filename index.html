@@ -54,6 +54,9 @@
               <div style="display:flex;flex-direction:column">
                 <sc-for list="{{ sec.items }}" as="it" hint-placeholder-count="4">
                   <div style="display:flex">
+                    <sc-if value="{{ it.heading }}">
+                      <div class="project-group-label" role="heading" aria-level="3">{{ it.label }}</div>
+                    </sc-if>
                     <sc-if value="{{ it.active }}">
                       <a href="#page" onClick="{{ it.go }}" style="flex:1;display:flex;align-items:baseline;gap:8px;font-family:'Departure Mono','JetBrains Mono',monospace;font-size:15px;padding:7px 20px 7px 36px;background:var(--accent);color:var(--onaccent);text-decoration:none">
                         <span>{{ it.label }}</span>
@@ -292,6 +295,8 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;startTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;amber&quot;,&quot;paper&quot;],&quot;default&quot;:&quot;paper&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Site&quot;},&quot;showAscii&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Site&quot;}}">
 // ---- aligned diagram builder: every row is padded to one inner width ----
 const { ENTRIES, SECTIONS, THEMES, STATIC_CHARS, FONT } = window.PORTFOLIO_DATA;
+const PROJECT_ENTRIES = ENTRIES.filter(e=>e.section==='Projects'&&e.group==='Hackathons').concat(ENTRIES.filter(e=>e.section==='Projects'&&!e.group));
+const ORDERED_ENTRIES = ENTRIES.filter(e=>e.section!=='Projects').concat(PROJECT_ENTRIES);
 
 class Component extends DCLogic {
   constructor(p){
@@ -443,7 +448,7 @@ class Component extends DCLogic {
     this._raf=requestAnimationFrame(draw);
   }
 
-  pages(){ return ['home'].concat(ENTRIES.map(e=>e.slug)).concat(['contact']); }
+  pages(){ return ['home'].concat(ORDERED_ENTRIES.map(e=>e.slug)).concat(['contact']); }
   routeFromHash(){
     const parts=(location.hash||'').replace(/^#\/?/,'').split('/').filter(Boolean);
     const slug=parts[parts.length-1]||'home';
@@ -484,8 +489,8 @@ class Component extends DCLogic {
   }
   matches(){
     const q=(this.state.q||'').toLowerCase().trim();
-    if(!q) return ENTRIES;
-    return ENTRIES.filter(en=>(en.title+' '+en.label+' '+en.section+' '+JSON.stringify(en.blocks)).toLowerCase().includes(q));
+    if(!q) return ORDERED_ENTRIES;
+    return ORDERED_ENTRIES.filter(en=>(en.title+' '+en.label+' '+en.section+' '+en.group+' '+JSON.stringify(en.blocks)).toLowerCase().includes(q));
   }
   setTheme(id){ return ()=>{ document.documentElement.setAttribute('data-theme',id); this.setState({theme:id}); }; }
   toggleTheme(){
@@ -503,9 +508,11 @@ class Component extends DCLogic {
     const nav=[
       { label:'README', direct:true, group:false, showItems:false, go:this.go('home') }
     ].concat(SECTIONS.map(s=>{
-      const items=ENTRIES.filter(e=>sectionFor(e)===s);
+      const items=s==='Projects'
+        ? [{label:'Hackathons',heading:true},...PROJECT_ENTRIES.filter(e=>e.group==='Hackathons').map(dec),...PROJECT_ENTRIES.filter(e=>!e.group).map(dec)]
+        : ENTRIES.filter(e=>sectionFor(e)===s).map(dec);
       return { label:s, direct:false, group:true, sign:this.state.open[s]?'−':'+', open:!!this.state.open[s], showItems:!!this.state.open[s],
-        toggle:()=>this.setState(st=>({open:{...st.open,[s]:!st.open[s]}})), items:items.map(dec) };
+        toggle:()=>this.setState(st=>({open:{...st.open,[s]:!st.open[s]}})), items };
     })).concat([
       { label:'Contact', direct:false, group:true, sign:'', open:true, showItems:true, toggle:()=>{}, items:[
         { slug:'contact', label:'Reach me', abbr:'', active:route==='contact', inactive:route!=='contact', go:this.go('contact') }
