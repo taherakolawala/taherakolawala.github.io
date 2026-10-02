@@ -151,6 +151,86 @@
                           <div class="clench-flow-actions"><span>SPEAK</span><span>MESSAGE</span><span>CALL</span></div>
                         </figure>
                       </sc-if>
+                      <sc-if value="{{ b.isDriftArchitecture }}">
+                        <figure class="drift-network">
+                          <svg viewBox="0 0 260 372" role="img" aria-labelledby="drift-network-title drift-network-desc">
+                            <title id="drift-network-title">Drift Zero system architecture</title>
+                            <desc id="drift-network-desc">The Space-Track API supplies orbital data to Shield collision analysis, Databricks batch history and profiles, and Rogue anomaly analysis. NOAA solar weather also feeds Rogue. Shield and Rogue results meet at FastAPI and reach the React and Cesium dashboard.</desc>
+                            <path class="drift-wire" d="M130 40V72H45V94M130 72H215V94M130 72V94"/>
+                            <path class="drift-wire" d="M220 40H249V106H226"/>
+                            <path class="drift-wire drift-wire-output" d="M45 118H20V252H118M215 118H240V252H142M141 106H173V199H135"/>
+                            <path class="drift-wire" d="M130 263V307"/>
+                            <g class="drift-data-packets" aria-hidden="true">
+                              <rect class="drift-data-packet" x="-2" y="-2" width="4" height="4"><animateMotion path="M130 40V72H45V94" dur="6s" keyTimes="0;.28;1" keyPoints="0;1;1" calcMode="linear" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;.03;.25;.28;1" dur="6s" repeatCount="indefinite"/></rect>
+                              <rect class="drift-data-packet" x="-2" y="-2" width="4" height="4"><animateMotion path="M130 40V94" dur="6s" keyTimes="0;.28;1" keyPoints="0;1;1" calcMode="linear" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;.03;.25;.28;1" dur="6s" repeatCount="indefinite"/></rect>
+                              <rect class="drift-data-packet" x="-2" y="-2" width="4" height="4"><animateMotion path="M130 40V72H215V94" dur="6s" keyTimes="0;.28;1" keyPoints="0;1;1" calcMode="linear" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;.03;.25;.28;1" dur="6s" repeatCount="indefinite"/></rect>
+                              <rect class="drift-data-packet" x="-2" y="-2" width="4" height="4"><animateMotion path="M220 40H249V106H226" begin=".25s" dur="6s" keyTimes="0;.28;1" keyPoints="0;1;1" calcMode="linear" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;.03;.25;.28;1" begin=".25s" dur="6s" repeatCount="indefinite"/></rect>
+                              <rect class="drift-data-packet" x="-2" y="-2" width="4" height="4"><animateMotion path="M45 118H20V252H118" begin="1.75s" dur="6s" keyTimes="0;.28;1" keyPoints="0;1;1" calcMode="linear" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;.03;.25;.28;1" begin="1.75s" dur="6s" repeatCount="indefinite"/></rect>
+                              <rect class="drift-data-packet" x="-2" y="-2" width="4" height="4"><animateMotion path="M215 118H240V252H142" begin="1.75s" dur="6s" keyTimes="0;.28;1" keyPoints="0;1;1" calcMode="linear" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;.03;.25;.28;1" begin="1.75s" dur="6s" repeatCount="indefinite"/></rect>
+                              <rect class="drift-data-packet" x="-2" y="-2" width="4" height="4"><animateMotion path="M141 106H173V199H135" begin="1.75s" dur="6s" keyTimes="0;.28;1" keyPoints="0;1;1" calcMode="linear" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;.03;.25;.28;1" begin="1.75s" dur="6s" repeatCount="indefinite"/></rect>
+                              <rect class="drift-data-packet" x="-2" y="-2" width="4" height="4"><animateMotion path="M130 263V307" begin="3.55s" dur="6s" keyTimes="0;.28;1" keyPoints="0;1;1" calcMode="linear" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;.03;.25;.28;1" begin="3.55s" dur="6s" repeatCount="indefinite"/></rect>
+                            </g>
+                            <g class="drift-node-group drift-node-source" tabindex="0" onClick="{{ b.focusDiagramNode }}" aria-label="Space-Track API: TLE and conjunction data feed the system">
+                              <rect class="drift-hit" x="78" y="0" width="104" height="62"/>
+                              <text class="drift-label drift-label-strong" x="130" y="10">SPACE-TRACK API</text><text class="drift-help" x="184" y="14">?</text>
+                              <g class="drift-icon" transform="translate(130 28)" shape-rendering="crispEdges">
+                                <rect x="-24" y="-8" width="12" height="16"/><rect x="12" y="-8" width="12" height="16"/><rect x="-7" y="-6" width="14" height="12"/>
+                                <path class="drift-icon-line" d="M-24-3h12M-24 3h12M12-3h12M12 3h12M-12 0h5M7 0h5M0-6v-8h4"/><rect class="drift-icon-fill" x="-3" y="-3" width="6" height="6"/>
+                              </g>
+                              <text class="drift-label drift-detail" x="130" y="56">TLE + CDM feeds</text>
+                            </g>
+                            <g class="drift-node-group drift-node-source" tabindex="0" onClick="{{ b.focusDiagramNode }}" aria-label="NOAA: solar F10.7 flux and Kp geomagnetic index feed Rogue anomaly scoring">
+                              <rect class="drift-hit" x="193" y="0" width="62" height="62"/>
+                              <text class="drift-label drift-label-strong" x="220" y="13">NOAA</text><text class="drift-help" x="239" y="17">?</text>
+                              <g class="drift-icon" transform="translate(220 28)" shape-rendering="crispEdges">
+                                <rect x="-4" y="-4" width="8" height="8"/><path class="drift-icon-line" d="M0-11v5M0 6v5M-11 0h5M6 0h5M-8-8l3 3M5 5l3 3M8-8L5-5M-5 5l-3 3"/>
+                              </g>
+                              <text class="drift-label drift-detail" x="220" y="56">F10.7 + Kp</text>
+                            </g>
+                            <g class="drift-node-group drift-node-analysis" tabindex="0" onClick="{{ b.focusDiagramNode }}" aria-label="Shield: SGP4 propagation, closest approach, collision probability, and maneuver options">
+                              <rect class="drift-hit" x="5" y="89" width="77" height="91"/>
+                              <g class="drift-icon" transform="translate(45 106)" shape-rendering="crispEdges">
+                                <path d="M-9-10H9V0H7V5H5V8H2V10H-2V8H-5V5H-7V0H-9Z"/><path class="drift-icon-line" d="M0-6V5M-4-1H4"/>
+                              </g>
+                              <text class="drift-label drift-label-strong" x="45" y="137">SHIELD</text><text class="drift-help" x="68" y="141">?</text>
+                              <text class="drift-label drift-detail" x="45" y="156">SGP4 · TCA · Pc</text><text class="drift-label drift-detail" x="45" y="171">maneuver options</text>
+                            </g>
+                            <g class="drift-node-group drift-node-analysis" tabindex="0" onClick="{{ b.focusDiagramNode }}" aria-label="Databricks: TLE history, SQL maneuver events, and operator profiles">
+                              <rect class="drift-hit" x="84" y="89" width="94" height="91"/>
+                              <g class="drift-icon" transform="translate(130 106)" shape-rendering="crispEdges">
+                                <rect x="-10" y="-9" width="20" height="4"/><rect x="-10" y="-2" width="20" height="4"/><rect x="-10" y="5" width="20" height="4"/>
+                              </g>
+                              <text class="drift-label drift-label-strong" x="130" y="137">DATABRICKS</text><text class="drift-help" x="166" y="141">?</text>
+                              <text class="drift-label drift-detail" x="130" y="156">batch TLE history</text><text class="drift-label drift-detail" x="130" y="171">events + profiles</text>
+                            </g>
+                            <g class="drift-node-group drift-node-analysis" tabindex="0" onClick="{{ b.focusDiagramNode }}" aria-label="Rogue: TLE deltas, IsolationForest and z-score anomaly detection, with CDM proximity">
+                              <rect class="drift-hit" x="179" y="89" width="76" height="91"/>
+                              <g class="drift-icon" transform="translate(215 106)" shape-rendering="crispEdges">
+                                <path class="drift-icon-line" d="M-10-9h6M-10-9v6M10-9H4M10-9v6M-10 9h6M-10 9V3M10 9H4M10 9V3"/><rect class="drift-icon-fill" x="-2" y="-2" width="4" height="4"/>
+                              </g>
+                              <text class="drift-label drift-label-strong" x="215" y="137">ROGUE</text><text class="drift-help" x="235" y="141">?</text>
+                              <text class="drift-label drift-detail" x="215" y="156">TLE deltas · CDM</text><text class="drift-label drift-detail" x="215" y="171">IF + z-score</text>
+                            </g>
+                            <rect class="drift-terminal" x="125" y="194" width="10" height="10"/><text class="drift-label drift-label-muted" x="130" y="219">HISTORY + PROFILES</text>
+                            <g class="drift-node-group drift-node-api" tabindex="0" onClick="{{ b.focusDiagramNode }}" aria-label="FastAPI: REST endpoints for Shield collision risk and Rogue anomaly events">
+                              <rect class="drift-hit" x="73" y="239" width="114" height="63"/>
+                              <g class="drift-icon" transform="translate(130 252)" shape-rendering="crispEdges">
+                                <path class="drift-icon-line" d="M-5-9h-4v6h-3v6h3v6h4M5-9h4v6h3v6H9v6H5"/><path class="drift-icon-line" d="M-2 5L2-5"/>
+                              </g>
+                              <text class="drift-label drift-label-strong" x="130" y="282">FASTAPI</text><text class="drift-help" x="159" y="286">?</text>
+                              <text class="drift-label drift-detail" x="130" y="297">risk + anomaly queries</text>
+                            </g>
+                            <g class="drift-node-group drift-node-dashboard" tabindex="0" onClick="{{ b.focusDiagramNode }}" aria-label="React and Cesium: interactive orbital dashboard">
+                              <rect class="drift-hit" x="58" y="306" width="144" height="64"/>
+                              <g class="drift-icon" transform="translate(130 318)" shape-rendering="crispEdges">
+                                <rect x="-12" y="-8" width="24" height="15"/><path class="drift-icon-line" d="M0 7v4M-6 11H6M-5-2h10M0-5v10"/>
+                              </g>
+                              <text class="drift-label drift-label-strong" x="130" y="346">REACT + CESIUM</text><text class="drift-help" x="180" y="350">?</text>
+                              <text class="drift-label drift-detail" x="130" y="363">3D orbital dashboard</text>
+                            </g>
+                          </svg>
+                        </figure>
+                      </sc-if>
                       <sc-if value="{{ b.hasStandardFlow }}">
                       <div class="flow-diagram">
                         <sc-for list="{{ b.diagram }}" as="d" hint-placeholder-count="6">
@@ -537,8 +617,8 @@ class Component extends DCLogic {
     const groupedBlocks=[];
     for(let bi=0;bi<sourceBlocks.length;bi++){
       const b=sourceBlocks[bi], next=sourceBlocks[bi+1], flowHeading=sourceBlocks[bi+2], flow=sourceBlocks[bi+3];
-      if(b.kind==='h' && next&&next.kind==='bullets' && flowHeading&&flowHeading.kind==='h' && flow&&['pre','clenchFlow'].includes(flow.kind)){
-        groupedBlocks.push({kind:'workWithFlow',text:b.text,items:next.items,flowTitle:flowHeading.text,flowText:flow.kind==='clenchFlow'?{clench:true}:flow.text});
+      if(b.kind==='h' && next&&next.kind==='bullets' && flowHeading&&flowHeading.kind==='h' && flow&&['pre','clenchFlow','driftArchitecture'].includes(flow.kind)){
+        groupedBlocks.push({kind:'workWithFlow',text:b.text,items:next.items,flowTitle:flowHeading.text,flowText:flow.kind==='clenchFlow'?{clench:true}:flow.kind==='driftArchitecture'?{drift:true}:flow.text});
         bi+=3;
       } else if(b.kind==='para' && next&&next.kind==='h' && flowHeading&&flowHeading.kind==='pre'){
         const previous=groupedBlocks[groupedBlocks.length-1];
@@ -551,13 +631,14 @@ class Component extends DCLogic {
     const blocks=entry?groupedBlocks.map((b,bi)=>{
       const diagram=b.kind==='workWithFlow' ? b.flowText?.diagram : b.text?.diagram;
       return {
-      isH:b.kind==='h', isPara:b.kind==='para', isBullets:b.kind==='bullets', isPre:b.kind==='pre'&&!diagram, isWorkWithFlow:b.kind==='workWithFlow', isParaWithFlow:b.kind==='paraWithFlow', isDiagram:!!diagram&&b.kind!=='workWithFlow'&&b.kind!=='paraWithFlow', isClenchFlow:!!b.flowText?.clench, hasStandardFlow:!!diagram,
+      isH:b.kind==='h', isPara:b.kind==='para', isBullets:b.kind==='bullets', isPre:b.kind==='pre'&&!diagram, isWorkWithFlow:b.kind==='workWithFlow', isParaWithFlow:b.kind==='paraWithFlow', isDiagram:!!diagram&&b.kind!=='workWithFlow'&&b.kind!=='paraWithFlow', isClenchFlow:!!b.flowText?.clench, isDriftArchitecture:!!b.flowText?.drift, hasStandardFlow:!!diagram,
       isTags:b.kind==='tags', isLinks:b.kind==='links', isSee:b.kind==='see',
       text:b.text, note:b.note, flowTitle:b.flowTitle, flowText:b.flowText,
       diagram:(diagram||[]).map(s=>({isRow:s.t==='row',isArrow:s.t==='arrow',isNote:s.t==='note',isText:s.t==='text',nodes:s.v||[],label:s.v||''})),
       hasExtraFlow:!!b.extraFlowText, extraFlowTitle:b.extraFlowTitle, extraDiagram:(b.extraFlowText?.diagram||[]).map(s=>({isRow:s.t==='row',isArrow:s.t==='arrow',isNote:s.t==='note',isText:s.t==='text',nodes:s.v||[],label:s.v||''})),
       items: b.kind==='see' ? (b.items||[]).map(sl=>{ const t=ENTRIES.find(x=>x.slug===sl); return {label:t?t.label:sl, go:this.go(sl)}; }) : b.items,
-      copy:()=>{ try{ navigator.clipboard.writeText(location.origin+location.pathname+'#'+entry.slug+'-'+bi); }catch(err){} }
+      copy:()=>{ try{ navigator.clipboard.writeText(location.origin+location.pathname+'#'+entry.slug+'-'+bi); }catch(err){} },
+      focusDiagramNode:(e)=>e.currentTarget.focus()
     }; }):[];
 
     return {

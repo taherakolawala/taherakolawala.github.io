@@ -184,29 +184,17 @@ const ENTRIES = [
     ]},
 
   { slug:'drift-zero', section:'Projects', group:'Hackathons', label:'Drift Zero', abbr:'WIN', title:'Drift Zero - Satellite Threat Intelligence Platform',
-    role:'SCI Hackathon 2026 Winner · led a team of 4', meta:['2026','Databricks','FastAPI','IsolationForest'],
+    role:'SCI Hackathon 2026 Winner', meta:['2026','Databricks','FastAPI','IsolationForest'],
     blocks:[
       {kind:'para',text:'Drift Zero ingests two-line element sets for satellite constellations, detects maneuver events, and scores operator behavior to flag adversarial activity in orbit.'},
       {kind:'h',text:'WORK'},
       {kind:'bullets',items:[
-        'Led a team of 4 to design and deploy a Databricks ETL pipeline for TLE ingestion and maneuver event detection using SQL window functions, plus operator behavioral profiling to gauge self-clearing likelihood across constellations.',
+        'Built the Databricks ETL pipeline for TLE ingestion and maneuver event detection using SQL window functions, plus operator behavioral profiling to gauge self-clearing likelihood across constellations.',
         'Engineered 4 adversarial satellite detection modules (incident reconstruction, mission mismatch, resurrection detection, economic impact scoring) using IsolationForest and z-score anomaly detection on orbital element deltas.',
         'Extended the FastAPI REST backend with 8+ endpoints for real-time anomaly querying and wrote 1,500+ lines of integration tests validating 5 external data sources.'
       ]},
       {kind:'h',text:'ARCHITECTURE'},
-      {kind:'pre',text:D([
-        {t:'text',v:'TLE feeds - 5 external sources'},
-        {t:'arrow'},
-        {t:'row',v:['Databricks ETL']},
-        {t:'note',v:'SQL window functions → maneuver events'},
-        {t:'arrow',v:'orbital element deltas'},
-        {t:'row',v:['incident','mission','resurrect','economic']},
-        {t:'note',v:'IsolationForest + z-score anomaly detection'},
-        {t:'arrow'},
-        {t:'row',v:['FastAPI - 8+ endpoints']},
-        {t:'arrow'},
-        {t:'text',v:'operator behavioral profiles'}
-      ])},
+      {kind:'driftArchitecture'},
       {kind:'h',text:'STACK'},
       {kind:'tags',items:['Databricks','SQL','Python','FastAPI','IsolationForest','scikit-learn','pytest','Vercel']},
       {kind:'links',items:[{label:'Live demo',href:'https://drift-zero-blond.vercel.app/'},{label:'GitHub',href:'https://github.com/eshadesigns/Drift-Zero'}]},
