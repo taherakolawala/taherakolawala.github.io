@@ -165,6 +165,62 @@ const ENTRIES = [
       {kind:'see',items:['summit-analytics']}
     ]},
 
+  { slug:'apprentice', section:'Projects', group:'Hackathons', label:'Apprentice', abbr:'WIN', title:'Apprentice - Learning from Demonstration',
+    role:'Knight Hacks 2026 Winner · Best AI Hack', meta:['Oct 2026','200+ projects','1,100+ participants'],
+    blocks:[
+      {kind:'para',text:'Apprentice turns a demonstration of building with colored blocks into a lesson for both a person and an SO-101 robot arm. An overhead camera checks each student against the same rules.'},
+      {kind:'h',text:'SYSTEM'},
+      {kind:'bullets',items:[
+        'Extracts ordered lessons from live demonstrations or recorded video on a 3×3 board, then validates the steps before teaching them.',
+        'Uses OpenCV perception on an NVIDIA Jetson and a deterministic checker to detect wrong cells, colors, and stack levels. Uncertain camera readings pause progress; a 3D monitor gives the learner targeted hints.',
+        'Runs camera-verified robot pick-and-place with bounded retries and placement corrections. Session journals feed Databricks analytics on errors, hints, and completion times.'
+      ]},
+      {kind:'h',text:'TEACH, TRY, CHECK'},
+      {kind:'pre',text:D([
+        {t:'row',v:['live build / recorded video']},
+        {t:'arrow',v:'extract steps · validate lesson'},
+        {t:'row',v:['shared lesson']},
+        {t:'arrow'},
+        {t:'row',v:['human learner','SO-101 robot']},
+        {t:'arrow',v:'observe each placement'},
+        {t:'row',v:['camera + deterministic checker']},
+        {t:'arrow',v:'pass → next step · error → hint / retry'},
+        {t:'text',v:'repeat until the lesson is complete'}
+      ])},
+      {kind:'h',text:'STACK'},
+      {kind:'tags',items:['Python','OpenCV','NVIDIA Jetson','AprilTags','LeRobot','FastAPI','Three.js','Databricks']},
+      {kind:'links',items:[{label:'GitHub',href:'https://github.com/NSang22/apprentice'},{label:'Devpost',href:'https://devpost.com/software/apprentice-0owzs7'}]},
+      {kind:'see',items:['roblotix','machine-intelligence-lab']}
+    ]},
+
+  { slug:'roblotix', section:'Projects', group:'Hackathons', label:'Roblotix', abbr:'WIN', title:'Roblotix - A Robot-Powered Roblox Arcade',
+    role:'Swamp Hacks 2026 Winner · Best Use of Roblox Studio', meta:['Oct 2026','150+ projects','450+ participants'],
+    blocks:[
+      {kind:'para',text:'Roblotix connects a physical SO-101 robot arm to a Roblox arcade. One player operates the arm while another plays on screen: real blocks become in-game platforms, and game events affect the real arm.'},
+      {kind:'h',text:'SYSTEM'},
+      {kind:'bullets',items:[
+        'A Python WebSocket bridge streams arm poses and camera-derived board state into Roblox Studio, keeping the physical table and virtual world in a shared coordinate system.',
+        'The camera reads the board after the gripper releases a block, preserving the last known layout between reads. Luau game modules turn that state into obstacle courses, pattern-matching challenges, and an arm-controlled dragon.',
+        'Game events send effects such as tremors, lag, and reversed motion back to the arm. Effect limits, calibrated joint bounds, and a kill key constrain physical motion; a mock bridge supports development without hardware.'
+      ]},
+      {kind:'h',text:'PHYSICAL ↔ VIRTUAL'},
+      {kind:'pre',text:D([
+        {t:'row',v:['SO-101 arm','overhead camera']},
+        {t:'arrow',v:'joint poses + board state'},
+        {t:'row',v:['Python WebSocket bridge']},
+        {t:'arrow'},
+        {t:'row',v:['Roblox Studio arcade']},
+        {t:'arrow',v:'game events return through the bridge'},
+        {t:'row',v:['bounded motion effects']},
+        {t:'arrow'},
+        {t:'text',v:'back to the real arm'}
+      ])},
+      {kind:'h',text:'STACK'},
+      {kind:'tags',items:['Python','Luau','Roblox Studio','WebSockets','LeRobot','SO-101','OpenCV','OpenAI API']},
+      {kind:'links',items:[{label:'GitHub',href:'https://github.com/abhay-dronavalli/Roblotix'},{label:'Devpost',href:'https://devpost.com/software/roblotix'}]},
+      {kind:'see',items:['apprentice','clench']}
+    ]},
+
   { slug:'clench', section:'Projects', group:'Hackathons', label:'Clench', abbr:'WIN', title:'Clench',
     role:'ShellHacks 2026 · 2nd place overall', meta:['Sep 2026','300+ projects','850+ participants'],
     blocks:[
