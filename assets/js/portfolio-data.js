@@ -176,17 +176,7 @@ const ENTRIES = [
         'Runs camera-verified robot pick-and-place with bounded retries and placement corrections. Session journals feed Databricks analytics on errors, hints, and completion times.'
       ]},
       {kind:'h',text:'TEACH, TRY, CHECK'},
-      {kind:'pre',text:D([
-        {t:'row',v:['live build / recorded video']},
-        {t:'arrow',v:'extract steps · validate lesson'},
-        {t:'row',v:['shared lesson']},
-        {t:'arrow'},
-        {t:'row',v:['human learner','SO-101 robot']},
-        {t:'arrow',v:'observe each placement'},
-        {t:'row',v:['camera + deterministic checker']},
-        {t:'arrow',v:'pass → next step · error → hint / retry'},
-        {t:'text',v:'repeat until the lesson is complete'}
-      ])},
+      {kind:'apprenticeOrigami'},
       {kind:'h',text:'STACK'},
       {kind:'tags',items:['Python','OpenCV','NVIDIA Jetson','AprilTags','LeRobot','FastAPI','Three.js','Databricks']},
       {kind:'links',items:[{label:'GitHub',href:'https://github.com/NSang22/apprentice'},{label:'Devpost',href:'https://devpost.com/software/apprentice-0owzs7'}]},

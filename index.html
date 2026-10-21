@@ -142,6 +142,104 @@
                     </div>
                     <div style="padding-top:20px">
                       <div style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px;letter-spacing:0.04em;color:var(--dim);margin-bottom:10px">{{ b.flowTitle }}</div>
+                      <sc-if value="{{ b.isApprenticeOrigami }}">
+                        <figure class="apprentice-origami">
+                          <svg viewBox="0 0 400 530" role="img" aria-labelledby="apprentice-origami-title apprentice-origami-desc">
+                            <title id="apprentice-origami-title">One lesson, two learners</title>
+                            <desc id="apprentice-origami-desc">A demonstration becomes a shared lesson for a human and an SO-101 robot. Both build with blocks. One camera and deterministic checker verify each placement, advancing on a pass or providing a hint or retry on an error.</desc>
+                            <defs>
+                              <marker id="apprentice-arrow" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1L6 4L1 7" fill="none" stroke="context-stroke" stroke-width="1.2"/></marker>
+                            </defs>
+                            <!-- A folded lesson sheet: a recorded build becomes reusable steps. -->
+                            <g class="apprentice-paper" stroke-linejoin="round">
+                              <path d="M160 14L219 14L244 38L237 107L153 99Z" fill="#fff1d7"/>
+                              <path d="M160 14L192 60L153 99Z" fill="#f9c79e"/>
+                              <path d="M219 14L216 41L244 38Z" fill="#ef6934"/>
+                              <path d="M219 14L244 38L228 33Z" fill="#ffb477"/>
+                              <path d="M160 14L192 60L237 107M192 60L244 38" fill="none" opacity=".45"/>
+                              <path d="M182 39L207 53L182 66Z" fill="#ef6934"/>
+                              <path d="M177 78L220 82M176 87L208 90" fill="none"/>
+                            </g>
+                            <text class="apprentice-label" x="200" y="132">One demonstration. One lesson.</text>
+                            <path class="apprentice-route" d="M200 145V163H100V183M200 163H300V183" marker-end="url(#apprentice-arrow)"/>
+                            <path class="apprentice-route" d="M100 173V183" marker-end="url(#apprentice-arrow)"/>
+                            <!-- The human learner, built from flat triangular folds. -->
+                            <g class="apprentice-paper" stroke-linejoin="round">
+                              <path d="M54 231L72 215L104 219L124 241L133 289L52 289Z" fill="#ef6934"/>
+                              <path d="M54 231L78 252L52 289Z" fill="#ffb477"/>
+                              <path d="M72 215L78 252L92 227Z" fill="#fff1d7"/>
+                              <path d="M104 219L92 227L78 252L112 286Z" fill="#db512c"/>
+                              <path d="M78 252L73 288L112 286Z" fill="#ff9054"/>
+                              <path d="M124 241L105 252L126 277L150 287L155 278L137 263Z" fill="#ffb477"/>
+                              <path d="M105 252L137 263L126 277Z" fill="#ef6934"/>
+                              <path d="M150 287L162 285L165 279L155 278Z" fill="#fff1d7"/>
+                              <path d="M72 194L84 182L106 190L110 210L94 230L77 218Z" fill="#ffcfaa"/>
+                              <path d="M84 182L88 209L77 218L72 194Z" fill="#e68d61"/>
+                              <path d="M88 209L110 210L94 230Z" fill="#ffb477"/>
+                              <path d="M72 194L77 177L97 174L110 188L106 199L84 187Z" fill="#829db7"/>
+                              <path d="M77 177L84 187L97 174Z" fill="#bdd0de"/>
+                              <path d="M84 187L106 199L110 188Z" fill="#506b8a"/>
+                            </g>
+                            <!-- SO-101 silhouette: base, shoulder, elbow, wrist and open gripper. -->
+                            <g class="apprentice-paper" stroke-linejoin="round">
+                              <path d="M309 292L339 283L365 302L336 320L304 306Z" fill="#ff9054"/>
+                              <path d="M309 292L336 302L365 302L339 283Z" fill="#ffbf86"/>
+                              <path d="M336 302L336 320L365 302Z" fill="#bb412b"/>
+                              <path d="M319 288L321 260L338 255L348 293L336 302Z" fill="#ef6934"/>
+                              <path d="M321 260L336 272L336 302L319 288Z" fill="#ffb477"/>
+                              <path d="M321 260L342 205L359 209L338 278Z" fill="#ef6934"/>
+                              <path d="M321 260L342 205L347 225L336 272Z" fill="#ffbf86"/>
+                              <path d="M347 225L359 209L338 278L336 272Z" fill="#bb412b"/>
+                              <path d="M345 198L359 209L348 226L333 216Z" fill="#ffd5a5"/>
+                              <path d="M333 216L275 202L271 185L345 198Z" fill="#ef6934"/>
+                              <path d="M271 185L345 198L333 207Z" fill="#ffbf86"/>
+                              <path d="M275 202L333 216L333 207Z" fill="#bb412b"/>
+                              <path d="M271 185L286 197L273 224L258 216Z" fill="#ff9054"/>
+                              <path d="M271 185L271 209L258 216Z" fill="#ffd5a5"/>
+                              <path d="M258 216L273 224L270 238L255 230Z" fill="#829db7"/>
+                              <path d="M255 230L247 242L252 258L260 256L255 244L262 235M270 238L279 246L273 261L266 258L272 248L265 241" fill="#bdd0de"/>
+                            </g>
+                            <!-- Matching isometric 3-by-3 boards. -->
+                            <g class="apprentice-paper" stroke-linejoin="round">
+                              <path d="M39 318L103 287L171 319L106 354Z" fill="#fff1d7"/>
+                              <path d="M39 318L106 350L171 319L171 326L106 361L39 325Z" fill="#c1ced6"/>
+                              <path d="M60 308L128 341M82 298L150 330M62 329L126 298M84 340L149 309" fill="none" opacity=".55"/>
+                              <path d="M222 318L286 287L354 319L289 354Z" fill="#fff1d7"/>
+                              <path d="M222 318L289 350L354 319L354 326L289 361L222 325Z" fill="#c1ced6"/>
+                              <path d="M243 308L311 341M265 298L333 330M245 329L309 298M267 340L332 309" fill="none" opacity=".55"/>
+                              <!-- Orange blocks: top, lit face, shaded face. -->
+                              <path d="M82 293L103 283L124 293L103 304Z" fill="#ffbf86"/>
+                              <path d="M82 293L103 304L103 326L82 315Z" fill="#ef6934"/>
+                              <path d="M103 304L124 293L124 315L103 326Z" fill="#bb412b"/>
+                              <path d="M265 293L286 283L307 293L286 304Z" fill="#ffbf86"/>
+                              <path d="M265 293L286 304L286 326L265 315Z" fill="#ef6934"/>
+                              <path d="M286 304L307 293L307 315L286 326Z" fill="#bb412b"/>
+                              <!-- Blue blocks are a second step in the same pattern. -->
+                              <path d="M105 326L125 316L146 326L125 337Z" fill="#d5e4eb"/>
+                              <path d="M105 326L125 337L125 351L105 340Z" fill="#90adc3"/>
+                              <path d="M125 337L146 326L146 340L125 351Z" fill="#506b8a"/>
+                              <path d="M288 326L308 316L329 326L308 337Z" fill="#d5e4eb"/>
+                              <path d="M288 326L308 337L308 351L288 340Z" fill="#90adc3"/>
+                              <path d="M308 337L329 326L329 340L308 351Z" fill="#506b8a"/>
+                            </g>
+                            <text class="apprentice-label" x="105" y="386">Human learner</text>
+                            <text class="apprentice-label" x="293" y="386">SO-101 robot</text>
+                            <path class="apprentice-route apprentice-observe" d="M105 398L177 433M293 398L223 433" marker-end="url(#apprentice-arrow)"/>
+                            <!-- A shared camera/checker, with a faceted lens. -->
+                            <g class="apprentice-paper" stroke-linejoin="round">
+                              <path d="M173 422L185 413L208 413L217 423L230 427L230 459L170 459L170 430Z" fill="#bdd0de"/>
+                              <path d="M170 430L194 437L170 459Z" fill="#829db7"/>
+                              <path d="M217 423L194 437L230 459L230 427Z" fill="#91adc4"/>
+                              <path d="M194 425L207 425L216 435L216 447L205 454L192 450L186 439Z" fill="#fff1d7"/>
+                              <path d="M194 425L203 437L186 439Z" fill="#ffbf86"/>
+                              <path d="M203 437L216 447L205 454L192 450Z" fill="#ef6934"/>
+                              <path d="M194 425L207 425L216 435L203 437Z" fill="#ff9054"/>
+                            </g>
+                            <text class="apprentice-label" x="200" y="487">Same camera. Same rules.</text>
+                            <text class="apprentice-sub" x="200" y="511">Pass → advance · Error → hint / retry</text>
+                          </svg>
+                        </figure>
+                      </sc-if>
                       <sc-if value="{{ b.isClenchFlow }}">
                         <figure class="clench-flow" aria-label="Clench communication sequence: look at a tile, clench to select it, review a drafted phrase, then clench again to confirm an action">
                           <div class="clench-flow-step"><span>01 / LOOK</span><div class="clench-flow-tiles"><i>REST</i><i class="is-focused">WATER</i><i>HELP</i></div><small>Eye gaze highlights a tile</small></div>
@@ -617,8 +715,8 @@ class Component extends DCLogic {
     const groupedBlocks=[];
     for(let bi=0;bi<sourceBlocks.length;bi++){
       const b=sourceBlocks[bi], next=sourceBlocks[bi+1], flowHeading=sourceBlocks[bi+2], flow=sourceBlocks[bi+3];
-      if(b.kind==='h' && next&&next.kind==='bullets' && flowHeading&&flowHeading.kind==='h' && flow&&['pre','clenchFlow','driftArchitecture'].includes(flow.kind)){
-        groupedBlocks.push({kind:'workWithFlow',text:b.text,items:next.items,flowTitle:flowHeading.text,flowText:flow.kind==='clenchFlow'?{clench:true}:flow.kind==='driftArchitecture'?{drift:true}:flow.text});
+      if(b.kind==='h' && next&&next.kind==='bullets' && flowHeading&&flowHeading.kind==='h' && flow&&['pre','clenchFlow','driftArchitecture','apprenticeOrigami'].includes(flow.kind)){
+        groupedBlocks.push({kind:'workWithFlow',text:b.text,items:next.items,flowTitle:flowHeading.text,flowText:flow.kind==='apprenticeOrigami'?{apprentice:true}:flow.kind==='clenchFlow'?{clench:true}:flow.kind==='driftArchitecture'?{drift:true}:flow.text});
         bi+=3;
       } else if(b.kind==='para' && next&&next.kind==='h' && flowHeading&&flowHeading.kind==='pre'){
         const previous=groupedBlocks[groupedBlocks.length-1];
@@ -632,6 +730,7 @@ class Component extends DCLogic {
       const diagram=b.kind==='workWithFlow' ? b.flowText?.diagram : b.text?.diagram;
       return {
       isH:b.kind==='h', isPara:b.kind==='para', isBullets:b.kind==='bullets', isPre:b.kind==='pre'&&!diagram, isWorkWithFlow:b.kind==='workWithFlow', isParaWithFlow:b.kind==='paraWithFlow', isDiagram:!!diagram&&b.kind!=='workWithFlow'&&b.kind!=='paraWithFlow', isClenchFlow:!!b.flowText?.clench, isDriftArchitecture:!!b.flowText?.drift, hasStandardFlow:!!diagram,
+      isApprenticeOrigami:!!b.flowText?.apprentice,
       isTags:b.kind==='tags', isLinks:b.kind==='links', isSee:b.kind==='see',
       text:b.text, note:b.note, flowTitle:b.flowTitle, flowText:b.flowText,
       diagram:(diagram||[]).map(s=>({isRow:s.t==='row',isArrow:s.t==='arrow',isNote:s.t==='note',isText:s.t==='text',nodes:s.v||[],label:s.v||''})),
