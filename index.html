@@ -143,15 +143,15 @@
                     <div style="padding-top:20px">
                       <div style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px;letter-spacing:0.04em;color:var(--dim);margin-bottom:10px">{{ b.flowTitle }}</div>
                       <sc-if value="{{ b.isApprenticeOrigami }}">
-                        <figure class="apprentice-origami">
-                          <svg viewBox="0 0 400 530" role="img" aria-labelledby="apprentice-origami-title apprentice-origami-desc">
-                            <title id="apprentice-origami-title">One lesson, two learners</title>
-                            <desc id="apprentice-origami-desc">A demonstration becomes a shared lesson for a human and an SO-101 robot. Both build with blocks. One camera and deterministic checker verify each placement, advancing on a pass or providing a hint or retry on an error.</desc>
+                        <figure class="project-origami">
+                          <svg viewBox="0 0 400 530" role="img" aria-labelledby="project-origami-title project-origami-desc">
+                            <title id="project-origami-title">One lesson, two learners</title>
+                            <desc id="project-origami-desc">A demonstration becomes a shared lesson for a human and an SO-101 robot. Both build with blocks. One camera and deterministic checker verify each placement, advancing on a pass or providing a hint or retry on an error.</desc>
                             <defs>
                               <marker id="apprentice-arrow" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1L6 4L1 7" fill="none" stroke="context-stroke" stroke-width="1.2"/></marker>
                             </defs>
                             <!-- A folded lesson sheet: a recorded build becomes reusable steps. -->
-                            <g class="apprentice-paper" stroke-linejoin="round">
+                            <g class="origami-paper" stroke-linejoin="round">
                               <path d="M160 14L219 14L244 38L237 107L153 99Z" fill="#fff1d7"/>
                               <path d="M160 14L192 60L153 99Z" fill="#f9c79e"/>
                               <path d="M219 14L216 41L244 38Z" fill="#ef6934"/>
@@ -160,11 +160,11 @@
                               <path d="M182 39L207 53L182 66Z" fill="#ef6934"/>
                               <path d="M177 78L220 82M176 87L208 90" fill="none"/>
                             </g>
-                            <text class="apprentice-label" x="200" y="132">One demonstration. One lesson.</text>
-                            <path class="apprentice-route" d="M200 145V163H100V183M200 163H300V183" marker-end="url(#apprentice-arrow)"/>
-                            <path class="apprentice-route" d="M100 173V183" marker-end="url(#apprentice-arrow)"/>
+                            <text class="origami-label" x="200" y="132">One demonstration. One lesson.</text>
+                            <path class="origami-route" d="M200 145V163H100V183M200 163H300V183" marker-end="url(#apprentice-arrow)"/>
+                            <path class="origami-route" d="M100 173V183" marker-end="url(#apprentice-arrow)"/>
                             <!-- The human learner, built from flat triangular folds. -->
-                            <g class="apprentice-paper" stroke-linejoin="round">
+                            <g class="origami-paper" stroke-linejoin="round">
                               <path d="M54 231L72 215L104 219L124 241L133 289L52 289Z" fill="#ef6934"/>
                               <path d="M54 231L78 252L52 289Z" fill="#ffb477"/>
                               <path d="M72 215L78 252L92 227Z" fill="#fff1d7"/>
@@ -181,7 +181,7 @@
                               <path d="M84 187L106 199L110 188Z" fill="#506b8a"/>
                             </g>
                             <!-- SO-101 silhouette: base, shoulder, elbow, wrist and open gripper. -->
-                            <g class="apprentice-paper" stroke-linejoin="round">
+                            <g class="origami-paper" stroke-linejoin="round">
                               <path d="M309 292L339 283L365 302L336 320L304 306Z" fill="#ff9054"/>
                               <path d="M309 292L336 302L365 302L339 283Z" fill="#ffbf86"/>
                               <path d="M336 302L336 320L365 302Z" fill="#bb412b"/>
@@ -200,7 +200,7 @@
                               <path d="M255 230L247 242L252 258L260 256L255 244L262 235M270 238L279 246L273 261L266 258L272 248L265 241" fill="#bdd0de"/>
                             </g>
                             <!-- Matching isometric 3-by-3 boards. -->
-                            <g class="apprentice-paper" stroke-linejoin="round">
+                            <g class="origami-paper" stroke-linejoin="round">
                               <path d="M39 318L103 287L171 319L106 354Z" fill="#fff1d7"/>
                               <path d="M39 318L106 350L171 319L171 326L106 361L39 325Z" fill="#c1ced6"/>
                               <path d="M60 308L128 341M82 298L150 330M62 329L126 298M84 340L149 309" fill="none" opacity=".55"/>
@@ -222,11 +222,11 @@
                               <path d="M288 326L308 337L308 351L288 340Z" fill="#90adc3"/>
                               <path d="M308 337L329 326L329 340L308 351Z" fill="#506b8a"/>
                             </g>
-                            <text class="apprentice-label" x="105" y="386">Human learner</text>
-                            <text class="apprentice-label" x="293" y="386">SO-101 robot</text>
-                            <path class="apprentice-route apprentice-observe" d="M105 398L177 433M293 398L223 433" marker-end="url(#apprentice-arrow)"/>
+                            <text class="origami-label" x="105" y="386">Human learner</text>
+                            <text class="origami-label" x="293" y="386">SO-101 robot</text>
+                            <path class="origami-route origami-observe" d="M105 398L177 433M293 398L223 433" marker-end="url(#apprentice-arrow)"/>
                             <!-- A shared camera/checker, with a faceted lens. -->
-                            <g class="apprentice-paper" stroke-linejoin="round">
+                            <g class="origami-paper" stroke-linejoin="round">
                               <path d="M173 422L185 413L208 413L217 423L230 427L230 459L170 459L170 430Z" fill="#bdd0de"/>
                               <path d="M170 430L194 437L170 459Z" fill="#829db7"/>
                               <path d="M217 423L194 437L230 459L230 427Z" fill="#91adc4"/>
@@ -235,18 +235,214 @@
                               <path d="M203 437L216 447L205 454L192 450Z" fill="#ef6934"/>
                               <path d="M194 425L207 425L216 435L203 437Z" fill="#ff9054"/>
                             </g>
-                            <text class="apprentice-label" x="200" y="487">Same camera. Same rules.</text>
-                            <text class="apprentice-sub" x="200" y="511">Pass → advance · Error → hint / retry</text>
+                            <text class="origami-label" x="200" y="487">Same camera. Same rules.</text>
+                            <text class="origami-sub" x="200" y="511">Pass → advance · Error → hint / retry</text>
                           </svg>
                         </figure>
                       </sc-if>
-                      <sc-if value="{{ b.isClenchFlow }}">
-                        <figure class="clench-flow" aria-label="Clench communication sequence: look at a tile, clench to select it, review a drafted phrase, then clench again to confirm an action">
-                          <div class="clench-flow-step"><span>01 / LOOK</span><div class="clench-flow-tiles"><i>REST</i><i class="is-focused">WATER</i><i>HELP</i></div><small>Eye gaze highlights a tile</small></div>
-                          <div class="clench-flow-link clench-flow-select"><b>◆</b><span>JAW CLENCH / SELECT</span></div>
-                          <div class="clench-flow-step"><span>02 / DRAFT</span><div class="clench-flow-phrase">“Could I have water?”</div><small>Selections become a phrase</small></div>
-                          <div class="clench-flow-link clench-flow-confirm"><b>◆</b><span>JAW CLENCH / CONFIRM</span></div>
-                          <div class="clench-flow-actions"><span>SPEAK</span><span>MESSAGE</span><span>CALL</span></div>
+                      <sc-if value="{{ b.isRoblotixOrigami }}">
+                        <figure class="project-origami">
+                          <svg viewBox="0 0 400 530" role="img" aria-labelledby="roblotix-origami-title roblotix-origami-desc">
+                            <title id="roblotix-origami-title">The table becomes the game</title>
+                            <desc id="roblotix-origami-desc">An SO-101 arm and overhead camera send joint poses and block positions through a Python WebSocket bridge to Roblox. Game events return through bounded motion effects to the physical arm.</desc>
+                            <defs><marker id="roblotix-arrow" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1L6 4L1 7" fill="none" stroke="context-stroke" stroke-width="1.2"/></marker></defs>
+
+                            <!-- The physical rig: folded arm, overhead camera and block mat. -->
+                            <g class="origami-paper" stroke-linejoin="round">
+                              <path d="M76 153L108 137L140 154L108 171Z" fill="#ff9054"/>
+                              <path d="M108 171L140 154L140 161L108 179L76 161L76 153Z" fill="#bb412b"/>
+                              <path d="M95 150L99 111L115 108L121 153L108 163Z" fill="#ef6934"/>
+                              <path d="M99 111L108 128L108 163L95 150Z" fill="#ffbf86"/>
+                              <path d="M99 111L74 54L89 45L117 113L108 128Z" fill="#ef6934"/>
+                              <path d="M74 54L89 45L90 68L108 128L99 111Z" fill="#ffbf86"/>
+                              <path d="M74 54L79 37L98 35L101 51L90 68Z" fill="#ffd5a5"/>
+                              <path d="M98 35L166 50L165 69L90 58L101 51Z" fill="#ef6934"/>
+                              <path d="M98 35L166 50L147 57L101 51Z" fill="#ffbf86"/>
+                              <path d="M101 51L147 57L165 69L90 58Z" fill="#bb412b"/>
+                              <path d="M166 50L180 61L173 84L160 78Z" fill="#ff9054"/>
+                              <path d="M166 50L168 69L160 78Z" fill="#ffd5a5"/>
+                              <path d="M160 78L173 84L171 95L158 91Z" fill="#829db7"/>
+                              <path d="M158 91L149 102L151 116L158 115L157 104L165 97M171 95L182 104L177 117L170 114L175 105L167 100" fill="#bdd0de"/>
+                              <path d="M130 156L197 125L263 157L197 191Z" fill="#fff1d7"/>
+                              <path d="M130 156L197 188L263 157L263 164L197 198L130 163Z" fill="#bdd0de"/>
+                              <path d="M152 146L219 179M174 136L241 168M152 167L220 136M174 178L241 147" fill="none" opacity=".5"/>
+                              <path d="M174 134L195 124L216 134L195 145Z" fill="#ffbf86"/>
+                              <path d="M174 134L195 145L195 169L174 158Z" fill="#ef6934"/>
+                              <path d="M195 145L216 134L216 158L195 169Z" fill="#bb412b"/>
+                              <path d="M273 45L284 35L310 35L318 45L332 49L332 77L269 77L269 49Z" fill="#bdd0de"/>
+                              <path d="M269 49L294 59L269 77Z" fill="#829db7"/>
+                              <path d="M318 45L294 59L332 77Z" fill="#90adc3"/>
+                              <path d="M294 48L306 48L315 59L308 70L294 70L286 59Z" fill="#fff1d7"/>
+                              <path d="M294 48L301 59L286 59L294 70L308 70L301 59L315 59" fill="#ef6934"/>
+                            </g>
+                            <path class="origami-route origami-observe" d="M295 86L241 132" marker-end="url(#roblotix-arrow)"/>
+                            <text class="origami-label" x="200" y="219">Arm poses + block positions</text>
+                            <path class="origami-route" d="M200 230V263" marker-end="url(#roblotix-arrow)"/>
+                            <text class="origami-sub" x="282" y="250">WebSocket bridge</text>
+                            <!-- A folded monitor contains a tiny Roblox obstacle course. -->
+                            <g class="origami-paper" stroke-linejoin="round">
+                              <path d="M77 276L317 276L328 413L69 413Z" fill="#bdd0de"/>
+                              <path d="M77 276L89 290L80 401L69 413Z" fill="#829db7"/>
+                              <path d="M89 290L305 290L315 401L80 401Z" fill="#fff1d7"/>
+                              <path d="M69 413L328 413L348 428L52 428Z" fill="#90adc3"/>
+                              <path d="M52 428L348 428L319 438L76 438Z" fill="#506b8a"/>
+                              <path d="M99 374L142 352L184 373L142 396Z" fill="#bdd0de"/>
+                              <path d="M160 351L201 330L243 351L201 374Z" fill="#90adc3"/>
+                              <path d="M225 326L263 307L298 326L263 347Z" fill="#bdd0de"/>
+                              <path d="M180 335L201 324L223 335L201 346Z" fill="#ffbf86"/>
+                              <path d="M180 335L201 346L201 371L180 360Z" fill="#ef6934"/>
+                              <path d="M201 346L223 335L223 360L201 371Z" fill="#bb412b"/>
+                              <path d="M125 329L139 323L150 330L150 344L138 350L125 343Z" fill="#ffbf86"/>
+                              <path d="M125 343L138 350L150 344L157 361L141 369L122 359Z" fill="#ef6934"/>
+                              <path d="M138 350L141 369L157 361L150 344Z" fill="#bb412b"/>
+                            </g>
+                            <text class="origami-label" x="200" y="462">Roblox Studio arcade</text>
+                            <!-- The return route closes the physical / virtual loop. -->
+                            <path class="origami-route origami-observe" d="M331 357H373V496H29V127H72" marker-end="url(#roblotix-arrow)"/>
+                            <text class="origami-label" x="200" y="490">Game events → bounded effects</text>
+                            <text class="origami-sub" x="200" y="519">The game changes the real arm, too.</text>
+
+                          </svg>
+                        </figure>
+                      </sc-if>
+                      <sc-if value="{{ b.isClenchOrigami }}">
+                        <figure class="project-origami">
+                          <svg viewBox="0 0 400 530" role="img" aria-labelledby="clench-origami-title clench-origami-desc">
+                            <title id="clench-origami-title">Look, select, confirm</title>
+                            <desc id="clench-origami-desc">Eye gaze highlights a tile. A Muse 2 headband detects a jaw clench to select it. Selections form a draft phrase. A second confirming clench is required before speaking, messaging, or calling.</desc>
+                            <defs><marker id="clench-arrow" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1L6 4L1 7" fill="none" stroke="context-stroke" stroke-width="1.2"/></marker></defs>
+
+                            <!-- A faceted profile wearing the Muse headband. -->
+                            <g class="origami-paper" stroke-linejoin="round">
+                              <path d="M40 157L48 127L79 111L108 121L120 157Z" fill="#ef6934"/>
+                              <path d="M48 127L79 142L40 157Z" fill="#ffbf86"/>
+                              <path d="M79 111L79 142L108 121Z" fill="#fff1d7"/>
+                              <path d="M79 142L120 157L108 121Z" fill="#bb412b"/>
+                              <path d="M60 56L76 38L105 43L119 68L113 81L126 94L113 99L110 116L90 128L67 109Z" fill="#ffd5a5"/>
+                              <path d="M60 56L85 75L67 109Z" fill="#e68d61"/>
+                              <path d="M85 75L113 81L126 94L93 95Z" fill="#ffbf86"/>
+                              <path d="M67 109L93 95L90 128L110 116Z" fill="#ef6934"/>
+                              <path d="M60 56L57 42L78 26L104 30L115 49L105 56L76 43Z" fill="#829db7"/>
+                              <path d="M78 26L76 43L104 30Z" fill="#bdd0de"/>
+                              <path d="M60 59L110 61L115 71L63 69Z" fill="#506b8a"/>
+                              <path d="M63 63L69 65L70 74L62 72Z" fill="#ef6934"/>
+                              <path d="M99 81L109 82" fill="none" stroke-width="2"/>
+                              <!-- Six large choices on an angled tablet. -->
+                              <path d="M226 39L344 48L337 155L217 143Z" fill="#829db7"/>
+                              <path d="M237 51L332 58L326 141L229 132Z" fill="#fff1d7"/>
+                              <path d="M237 51L332 58L279 96Z" fill="#f9e0c7"/>
+                              <path d="M242 60L276 63L274 82L240 79ZM286 64L321 67L320 86L284 83ZM239 89L273 92L271 111L237 108ZM283 93L318 96L317 115L281 112ZM236 118L270 121L269 130L235 127ZM280 122L316 125L315 134L279 131Z" fill="#bdd0de"/>
+                              <path d="M239 89L273 92L271 111L237 108Z" fill="#ef6934"/>
+                              <path d="M239 89L255 101L271 111L237 108Z" fill="#ffbf86"/>
+                              <path d="M252 96L252 104L260 105L261 97" fill="none"/>
+                            </g>
+                            <path class="origami-route origami-observe" d="M133 83L228 100" marker-end="url(#clench-arrow)"/>
+                            <text class="origami-sub" x="171" y="73">gaze</text>
+                            <text class="origami-label" x="200" y="184">Look to highlight a choice</text>
+                            <path class="origami-route" d="M200 196V232" marker-end="url(#clench-arrow)"/>
+                            <text class="origami-sub" x="282" y="220">Clench to select</text>
+                            <!-- The message is visibly a draft, before confirmation. -->
+                            <g class="origami-paper" stroke-linejoin="round">
+                              <path d="M71 248L322 248L329 318L145 318L117 344L119 318L65 318Z" fill="#fff1d7"/>
+                              <path d="M71 248L110 282L65 318Z" fill="#ffbf86"/>
+                              <path d="M322 248L291 281L329 318Z" fill="#f9c79e"/>
+                              <path d="M119 318L145 318L117 344Z" fill="#ef6934"/>
+                            </g>
+                            <text x="198" y="290" text-anchor="middle" fill="#34496b" font-family="inherit" font-size="13">Could I have water?</text>
+                            <text class="origami-sub" x="200" y="365">Review the drafted phrase</text>
+                            <path class="origami-route" d="M200 378V413" marker-end="url(#clench-arrow)"/>
+                            <text class="origami-sub" x="289" y="394">Clench to confirm</text>
+                            <!-- Three intentional actions after the confirmation gate. -->
+                            <g class="origami-paper" stroke-linejoin="round">
+                              <path d="M55 442L71 442L94 425L94 480L71 463L55 463Z" fill="#ef6934"/>
+                              <path d="M71 442L94 425L82 453L94 480L71 463Z" fill="#ffbf86"/>
+                              <path d="M102 440L112 452L102 465M113 432L129 452L113 474" fill="none"/>
+                              <path d="M167 433L231 433L234 477L164 477Z" fill="#ffbf86"/>
+                              <path d="M167 433L200 457L231 433Z" fill="#fff1d7"/>
+                              <path d="M164 477L188 448L200 457L212 448L234 477Z" fill="#ef6934"/>
+                              <path d="M291 426L306 426L311 444L302 450L318 465L326 457L341 466L338 482L323 487L304 472L287 453L283 438Z" fill="#ef6934"/>
+                              <path d="M291 426L302 450L287 453L283 438Z" fill="#ffbf86"/>
+                              <path d="M304 472L318 465L323 487Z" fill="#bb412b"/>
+                              <path d="M326 457L341 466L323 487L318 465Z" fill="#ffbf86"/>
+                            </g>
+                            <text class="origami-label" x="88" y="513">Speak</text>
+                            <text class="origami-label" x="200" y="513">Message</text>
+                            <text class="origami-label" x="313" y="513">Call</text>
+
+                          </svg>
+                        </figure>
+                      </sc-if>
+                      <sc-if value="{{ b.isFennecOrigami }}">
+                        <figure class="project-origami">
+                          <svg viewBox="0 0 400 530" role="img" aria-labelledby="fennec-origami-title fennec-origami-desc">
+                            <title id="fennec-origami-title">From archive to landscape</title>
+                            <desc id="fennec-origami-desc">Tanit XR object scans and documented archive records feed a walkable interpretive landscape. Visitors inspect an object record or receive a Gemini recommendation constrained to archive IDs. The landscape is an interpretation, not a measured reconstruction.</desc>
+                            <defs><marker id="fennec-arrow" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1L6 4L1 7" fill="none" stroke="context-stroke" stroke-width="1.2"/></marker></defs>
+
+                            <!-- A scanned column capital, shown as a small faceted fragment. -->
+                            <g class="origami-paper" stroke-linejoin="round">
+                              <path d="M67 39L116 24L153 41L105 59Z" fill="#ffd5a5"/>
+                              <path d="M67 39L105 59L153 41L144 62L106 78L75 60Z" fill="#ef6934"/>
+                              <path d="M75 60L106 78L89 62L87 97L110 108L132 94L132 66L144 62L126 109L110 118L86 107Z" fill="#ffbf86"/>
+                              <path d="M106 78L110 118L126 109L132 66Z" fill="#bb412b"/>
+                              <path d="M67 39L116 24L105 59M75 60L89 62M116 24L153 41" fill="none"/>
+                              <!-- The archive is represented separately from the scan. -->
+                              <path d="M254 32L313 37L325 111L252 112Z" fill="#90adc3"/>
+                              <path d="M264 22L311 22L332 44L327 101L257 96Z" fill="#fff1d7"/>
+                              <path d="M311 22L310 46L332 44Z" fill="#ef6934"/>
+                              <path d="M264 22L281 61L257 96Z" fill="#f9c79e"/>
+                              <path d="M278 57L316 60M277 69L315 72M276 81L302 83" fill="none"/>
+                            </g>
+                            <text class="origami-label" x="110" y="143">Tanit XR scans</text>
+                            <text class="origami-label" x="291" y="143">Archive records</text>
+                            <path class="origami-route" d="M110 155L200 185M291 155L200 185V204" marker-end="url(#fennec-arrow)"/>
+                            <!-- A deliberately interpretive Carthage landscape. -->
+                            <g class="origami-paper" stroke-linejoin="round">
+                              <path d="M36 297L104 258L173 277L254 250L363 301L299 344L199 363L95 337Z" fill="#bdd0de"/>
+                              <path d="M36 297L95 337L199 363L120 301Z" fill="#829db7"/>
+                              <path d="M120 301L199 363L254 250Z" fill="#d5e4eb"/>
+                              <path d="M254 250L299 344L363 301Z" fill="#90adc3"/>
+                              <path d="M83 293L141 264L208 297L149 328Z" fill="#fff1d7"/>
+                              <path d="M83 293L149 322L208 291L208 302L149 334L83 302Z" fill="#ffbf86"/>
+                              <!-- Three columns and a folded pediment. -->
+                              <path d="M98 248L110 253L110 302L98 296Z" fill="#ffbf86"/>
+                              <path d="M110 253L118 248L118 296L110 302Z" fill="#bb412b"/>
+                              <path d="M133 263L145 268L145 319L133 313Z" fill="#ffbf86"/>
+                              <path d="M145 268L153 263L153 313L145 319Z" fill="#bb412b"/>
+                              <path d="M168 247L180 253L180 302L168 296Z" fill="#ffbf86"/>
+                              <path d="M180 253L188 247L188 296L180 302Z" fill="#bb412b"/>
+                              <path d="M83 244L127 198L151 215L202 246L145 275Z" fill="#ef6934"/>
+                              <path d="M83 244L127 198L145 275Z" fill="#ffbf86"/>
+                              <path d="M127 198L151 215L202 246L145 275Z" fill="#db512c"/>
+                              <path d="M127 198L154 243L202 246M83 244L154 243L145 275" fill="none"/>
+                              <!-- An artifact on its plinth; independent of the scenery. -->
+                              <path d="M247 292L278 277L309 292L279 308Z" fill="#fff1d7"/>
+                              <path d="M247 292L279 308L279 322L247 306Z" fill="#90adc3"/>
+                              <path d="M279 308L309 292L309 307L279 322Z" fill="#506b8a"/>
+                              <path d="M266 249L285 246L294 263L289 291L274 299L262 278Z" fill="#ffbf86"/>
+                              <path d="M266 249L278 270L262 278L274 299Z" fill="#ef6934"/>
+                              <path d="M285 246L278 270L289 291L294 263Z" fill="#bb412b"/>
+                              <path d="M266 249L285 246L278 270Z" fill="#fff1d7"/>
+                            </g>
+                            <text class="origami-label" x="200" y="388">Explore the landscape</text>
+                            <text class="origami-sub" x="200" y="407">Real scans · interpretive setting</text>
+                            <path class="origami-route" d="M200 418V431H110V444M200 431H293V444" marker-end="url(#fennec-arrow)"/>
+                            <path class="origami-route" d="M110 435V444" marker-end="url(#fennec-arrow)"/>
+                            <g class="origami-paper" stroke-linejoin="round">
+                              <path d="M81 453L128 453L143 468L139 491L78 491Z" fill="#fff1d7"/>
+                              <path d="M128 453L127 470L143 468Z" fill="#ef6934"/>
+                              <path d="M81 453L101 475L78 491Z" fill="#ffbf86"/>
+                              <path d="M99 467L120 467M98 479L128 479" fill="none"/>
+                              <path d="M294 443L304 464L325 474L304 483L294 504L284 483L263 474L284 464Z" fill="#ffbf86"/>
+                              <path d="M294 443L294 474L304 464Z" fill="#ef6934"/>
+                              <path d="M325 474L294 474L304 483Z" fill="#bb412b"/>
+                              <path d="M294 504L294 474L284 483Z" fill="#ef6934"/>
+                              <path d="M263 474L294 474L284 464Z" fill="#fff1d7"/>
+                            </g>
+                            <text class="origami-label" x="110" y="520">Object record</text>
+                            <text class="origami-label" x="293" y="520">Next stop</text>
+
+                          </svg>
                         </figure>
                       </sc-if>
                       <sc-if value="{{ b.isDriftArchitecture }}">
@@ -715,8 +911,8 @@ class Component extends DCLogic {
     const groupedBlocks=[];
     for(let bi=0;bi<sourceBlocks.length;bi++){
       const b=sourceBlocks[bi], next=sourceBlocks[bi+1], flowHeading=sourceBlocks[bi+2], flow=sourceBlocks[bi+3];
-      if(b.kind==='h' && next&&next.kind==='bullets' && flowHeading&&flowHeading.kind==='h' && flow&&['pre','clenchFlow','driftArchitecture','apprenticeOrigami'].includes(flow.kind)){
-        groupedBlocks.push({kind:'workWithFlow',text:b.text,items:next.items,flowTitle:flowHeading.text,flowText:flow.kind==='apprenticeOrigami'?{apprentice:true}:flow.kind==='clenchFlow'?{clench:true}:flow.kind==='driftArchitecture'?{drift:true}:flow.text});
+      if(b.kind==='h' && next&&next.kind==='bullets' && flowHeading&&flowHeading.kind==='h' && flow&&['pre','clenchOrigami','roblotixOrigami','fennecOrigami','driftArchitecture','apprenticeOrigami'].includes(flow.kind)){
+        groupedBlocks.push({kind:'workWithFlow',text:b.text,items:next.items,flowTitle:flowHeading.text,flowText:flow.kind==='apprenticeOrigami'?{apprentice:true}:flow.kind==='clenchOrigami'?{clench:true}:flow.kind==='roblotixOrigami'?{roblotix:true}:flow.kind==='fennecOrigami'?{fennec:true}:flow.kind==='driftArchitecture'?{drift:true}:flow.text});
         bi+=3;
       } else if(b.kind==='para' && next&&next.kind==='h' && flowHeading&&flowHeading.kind==='pre'){
         const previous=groupedBlocks[groupedBlocks.length-1];
@@ -729,8 +925,8 @@ class Component extends DCLogic {
     const blocks=entry?groupedBlocks.map((b,bi)=>{
       const diagram=b.kind==='workWithFlow' ? b.flowText?.diagram : b.text?.diagram;
       return {
-      isH:b.kind==='h', isPara:b.kind==='para', isBullets:b.kind==='bullets', isPre:b.kind==='pre'&&!diagram, isWorkWithFlow:b.kind==='workWithFlow', isParaWithFlow:b.kind==='paraWithFlow', isDiagram:!!diagram&&b.kind!=='workWithFlow'&&b.kind!=='paraWithFlow', isClenchFlow:!!b.flowText?.clench, isDriftArchitecture:!!b.flowText?.drift, hasStandardFlow:!!diagram,
-      isApprenticeOrigami:!!b.flowText?.apprentice,
+      isH:b.kind==='h', isPara:b.kind==='para', isBullets:b.kind==='bullets', isPre:b.kind==='pre'&&!diagram, isWorkWithFlow:b.kind==='workWithFlow', isParaWithFlow:b.kind==='paraWithFlow', isDiagram:!!diagram&&b.kind!=='workWithFlow'&&b.kind!=='paraWithFlow', isClenchOrigami:!!b.flowText?.clench, isDriftArchitecture:!!b.flowText?.drift, hasStandardFlow:!!diagram,
+      isApprenticeOrigami:!!b.flowText?.apprentice, isRoblotixOrigami:!!b.flowText?.roblotix, isFennecOrigami:!!b.flowText?.fennec,
       isTags:b.kind==='tags', isLinks:b.kind==='links', isSee:b.kind==='see',
       text:b.text, note:b.note, flowTitle:b.flowTitle, flowText:b.flowText,
       diagram:(diagram||[]).map(s=>({isRow:s.t==='row',isArrow:s.t==='arrow',isNote:s.t==='note',isText:s.t==='text',nodes:s.v||[],label:s.v||''})),

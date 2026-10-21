@@ -194,17 +194,7 @@ const ENTRIES = [
         'Game events send effects such as tremors, lag, and reversed motion back to the arm. Effect limits, calibrated joint bounds, and a kill key constrain physical motion; a mock bridge supports development without hardware.'
       ]},
       {kind:'h',text:'PHYSICAL ↔ VIRTUAL'},
-      {kind:'pre',text:D([
-        {t:'row',v:['SO-101 arm','overhead camera']},
-        {t:'arrow',v:'joint poses + board state'},
-        {t:'row',v:['Python WebSocket bridge']},
-        {t:'arrow'},
-        {t:'row',v:['Roblox Studio arcade']},
-        {t:'arrow',v:'game events return through the bridge'},
-        {t:'row',v:['bounded motion effects']},
-        {t:'arrow'},
-        {t:'text',v:'back to the real arm'}
-      ])},
+      {kind:'roblotixOrigami'},
       {kind:'h',text:'STACK'},
       {kind:'tags',items:['Python','Luau','Roblox Studio','WebSockets','LeRobot','SO-101','OpenCV','OpenAI API']},
       {kind:'links',items:[{label:'GitHub',href:'https://github.com/abhay-dronavalli/Roblotix'},{label:'Devpost',href:'https://devpost.com/software/roblotix'}]},
@@ -222,7 +212,7 @@ const ENTRIES = [
         'Added large YouTube and Spotify control tiles and refined how the player screen scans its own controls for gaze and clench selection.'
       ]},
       {kind:'h',text:'LOOK, CLENCH, CONFIRM'},
-      {kind:'clenchFlow'},
+      {kind:'clenchOrigami'},
       {kind:'h',text:'STACK'},
       {kind:'tags',items:['Python','BrainFlow','MNE-Python','Muse 2','Eyedid SDK','FastAPI','React','TypeScript']},
       {kind:'links',items:[{label:'Demo video',href:'https://www.youtube.com/watch?v=CRticYNFvGA'},{label:'GitHub',href:'https://github.com/abhay-dronavalli/clench-muse-als/tree/main'},{label:'Devpost',href:'https://devpost.com/software/clench-ifdrmc'}]},
@@ -363,15 +353,7 @@ const ENTRIES = [
         'Implemented a Gemini recommendation endpoint constrained to documented archive IDs, with input validation and a grounded fallback path.'
       ]},
       {kind:'h',text:'VISITOR FLOW'},
-      {kind:'pre',text:D([
-        {t:'row',v:['Tanit XR scans','archive records']},
-        {t:'arrow',v:'optimized WebP + meshopt assets'},
-        {t:'row',v:['walkable 3D landscape']},
-        {t:'arrow',v:'nearby artifact + visitor interest'},
-        {t:'row',v:['record viewer','Gemini recommender']},
-        {t:'arrow'},
-        {t:'text',v:'grounded object context and suggested next stop'}
-      ])},
+      {kind:'fennecOrigami'},
       {kind:'h',text:'STACK'},
       {kind:'tags',items:['React','Three.js','React Three Fiber','Vite','Gemini','WebP','meshopt']},
       {kind:'links',items:[{label:'Demo video',href:'https://www.youtube.com/watch?v=jmN1wAe-3Pw'},{label:'GitHub',href:'https://github.com/abhay-dronavalli/FennecXR'},{label:'Hack Day',href:'https://citycamp-hack-day.devpost.com/'}]},
