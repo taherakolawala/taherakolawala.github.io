@@ -353,7 +353,15 @@ const ENTRIES = [
         'Implemented a Gemini recommendation endpoint constrained to documented archive IDs, with input validation and a grounded fallback path.'
       ]},
       {kind:'h',text:'VISITOR FLOW'},
-      {kind:'fennecOrigami'},
+      {kind:'pre',text:D([
+        {t:'row',v:['Tanit XR scans','archive records']},
+        {t:'arrow',v:'optimized WebP + meshopt assets'},
+        {t:'row',v:['walkable 3D landscape']},
+        {t:'arrow',v:'nearby artifact + visitor interest'},
+        {t:'row',v:['record viewer','Gemini recommender']},
+        {t:'arrow'},
+        {t:'text',v:'grounded object context and suggested next stop'}
+      ])},
       {kind:'h',text:'STACK'},
       {kind:'tags',items:['React','Three.js','React Three Fiber','Vite','Gemini','WebP','meshopt']},
       {kind:'links',items:[{label:'Demo video',href:'https://www.youtube.com/watch?v=jmN1wAe-3Pw'},{label:'GitHub',href:'https://github.com/abhay-dronavalli/FennecXR'},{label:'Hack Day',href:'https://citycamp-hack-day.devpost.com/'}]},

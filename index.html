@@ -372,79 +372,6 @@
                           </svg>
                         </figure>
                       </sc-if>
-                      <sc-if value="{{ b.isFennecOrigami }}">
-                        <figure class="project-origami">
-                          <svg viewBox="0 0 400 530" role="img" aria-labelledby="fennec-origami-title fennec-origami-desc">
-                            <title id="fennec-origami-title">From archive to landscape</title>
-                            <desc id="fennec-origami-desc">Tanit XR object scans and documented archive records feed a walkable interpretive landscape. Visitors inspect an object record or receive a Gemini recommendation constrained to archive IDs. The landscape is an interpretation, not a measured reconstruction.</desc>
-                            <defs><marker id="fennec-arrow" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1L6 4L1 7" fill="none" stroke="context-stroke" stroke-width="1.2"/></marker></defs>
-
-                            <!-- A scanned column capital, shown as a small faceted fragment. -->
-                            <g class="origami-paper" stroke-linejoin="round">
-                              <path d="M67 39L116 24L153 41L105 59Z" fill="#ffd5a5"/>
-                              <path d="M67 39L105 59L153 41L144 62L106 78L75 60Z" fill="#ef6934"/>
-                              <path d="M75 60L106 78L89 62L87 97L110 108L132 94L132 66L144 62L126 109L110 118L86 107Z" fill="#ffbf86"/>
-                              <path d="M106 78L110 118L126 109L132 66Z" fill="#bb412b"/>
-                              <path d="M67 39L116 24L105 59M75 60L89 62M116 24L153 41" fill="none"/>
-                              <!-- The archive is represented separately from the scan. -->
-                              <path d="M254 32L313 37L325 111L252 112Z" fill="#90adc3"/>
-                              <path d="M264 22L311 22L332 44L327 101L257 96Z" fill="#fff1d7"/>
-                              <path d="M311 22L310 46L332 44Z" fill="#ef6934"/>
-                              <path d="M264 22L281 61L257 96Z" fill="#f9c79e"/>
-                              <path d="M278 57L316 60M277 69L315 72M276 81L302 83" fill="none"/>
-                            </g>
-                            <text class="origami-label" x="110" y="143">Tanit XR scans</text>
-                            <text class="origami-label" x="291" y="143">Archive records</text>
-                            <path class="origami-route" d="M110 155L200 185M291 155L200 185V204" marker-end="url(#fennec-arrow)"/>
-                            <!-- A deliberately interpretive Carthage landscape. -->
-                            <g class="origami-paper" stroke-linejoin="round">
-                              <path d="M36 297L104 258L173 277L254 250L363 301L299 344L199 363L95 337Z" fill="#bdd0de"/>
-                              <path d="M36 297L95 337L199 363L120 301Z" fill="#829db7"/>
-                              <path d="M120 301L199 363L254 250Z" fill="#d5e4eb"/>
-                              <path d="M254 250L299 344L363 301Z" fill="#90adc3"/>
-                              <path d="M83 293L141 264L208 297L149 328Z" fill="#fff1d7"/>
-                              <path d="M83 293L149 322L208 291L208 302L149 334L83 302Z" fill="#ffbf86"/>
-                              <!-- Three columns and a folded pediment. -->
-                              <path d="M98 248L110 253L110 302L98 296Z" fill="#ffbf86"/>
-                              <path d="M110 253L118 248L118 296L110 302Z" fill="#bb412b"/>
-                              <path d="M133 263L145 268L145 319L133 313Z" fill="#ffbf86"/>
-                              <path d="M145 268L153 263L153 313L145 319Z" fill="#bb412b"/>
-                              <path d="M168 247L180 253L180 302L168 296Z" fill="#ffbf86"/>
-                              <path d="M180 253L188 247L188 296L180 302Z" fill="#bb412b"/>
-                              <path d="M83 244L127 198L151 215L202 246L145 275Z" fill="#ef6934"/>
-                              <path d="M83 244L127 198L145 275Z" fill="#ffbf86"/>
-                              <path d="M127 198L151 215L202 246L145 275Z" fill="#db512c"/>
-                              <path d="M127 198L154 243L202 246M83 244L154 243L145 275" fill="none"/>
-                              <!-- An artifact on its plinth; independent of the scenery. -->
-                              <path d="M247 292L278 277L309 292L279 308Z" fill="#fff1d7"/>
-                              <path d="M247 292L279 308L279 322L247 306Z" fill="#90adc3"/>
-                              <path d="M279 308L309 292L309 307L279 322Z" fill="#506b8a"/>
-                              <path d="M266 249L285 246L294 263L289 291L274 299L262 278Z" fill="#ffbf86"/>
-                              <path d="M266 249L278 270L262 278L274 299Z" fill="#ef6934"/>
-                              <path d="M285 246L278 270L289 291L294 263Z" fill="#bb412b"/>
-                              <path d="M266 249L285 246L278 270Z" fill="#fff1d7"/>
-                            </g>
-                            <text class="origami-label" x="200" y="388">Explore the landscape</text>
-                            <text class="origami-sub" x="200" y="407">Real scans · interpretive setting</text>
-                            <path class="origami-route" d="M200 418V431H110V444M200 431H293V444" marker-end="url(#fennec-arrow)"/>
-                            <path class="origami-route" d="M110 435V444" marker-end="url(#fennec-arrow)"/>
-                            <g class="origami-paper" stroke-linejoin="round">
-                              <path d="M81 453L128 453L143 468L139 491L78 491Z" fill="#fff1d7"/>
-                              <path d="M128 453L127 470L143 468Z" fill="#ef6934"/>
-                              <path d="M81 453L101 475L78 491Z" fill="#ffbf86"/>
-                              <path d="M99 467L120 467M98 479L128 479" fill="none"/>
-                              <path d="M294 443L304 464L325 474L304 483L294 504L284 483L263 474L284 464Z" fill="#ffbf86"/>
-                              <path d="M294 443L294 474L304 464Z" fill="#ef6934"/>
-                              <path d="M325 474L294 474L304 483Z" fill="#bb412b"/>
-                              <path d="M294 504L294 474L284 483Z" fill="#ef6934"/>
-                              <path d="M263 474L294 474L284 464Z" fill="#fff1d7"/>
-                            </g>
-                            <text class="origami-label" x="110" y="520">Object record</text>
-                            <text class="origami-label" x="293" y="520">Next stop</text>
-
-                          </svg>
-                        </figure>
-                      </sc-if>
                       <sc-if value="{{ b.isDriftArchitecture }}">
                         <figure class="drift-network">
                           <svg viewBox="0 0 260 372" role="img" aria-labelledby="drift-network-title drift-network-desc">
@@ -911,8 +838,8 @@ class Component extends DCLogic {
     const groupedBlocks=[];
     for(let bi=0;bi<sourceBlocks.length;bi++){
       const b=sourceBlocks[bi], next=sourceBlocks[bi+1], flowHeading=sourceBlocks[bi+2], flow=sourceBlocks[bi+3];
-      if(b.kind==='h' && next&&next.kind==='bullets' && flowHeading&&flowHeading.kind==='h' && flow&&['pre','clenchOrigami','roblotixOrigami','fennecOrigami','driftArchitecture','apprenticeOrigami'].includes(flow.kind)){
-        groupedBlocks.push({kind:'workWithFlow',text:b.text,items:next.items,flowTitle:flowHeading.text,flowText:flow.kind==='apprenticeOrigami'?{apprentice:true}:flow.kind==='clenchOrigami'?{clench:true}:flow.kind==='roblotixOrigami'?{roblotix:true}:flow.kind==='fennecOrigami'?{fennec:true}:flow.kind==='driftArchitecture'?{drift:true}:flow.text});
+      if(b.kind==='h' && next&&next.kind==='bullets' && flowHeading&&flowHeading.kind==='h' && flow&&['pre','clenchOrigami','roblotixOrigami','driftArchitecture','apprenticeOrigami'].includes(flow.kind)){
+        groupedBlocks.push({kind:'workWithFlow',text:b.text,items:next.items,flowTitle:flowHeading.text,flowText:flow.kind==='apprenticeOrigami'?{apprentice:true}:flow.kind==='clenchOrigami'?{clench:true}:flow.kind==='roblotixOrigami'?{roblotix:true}:flow.kind==='driftArchitecture'?{drift:true}:flow.text});
         bi+=3;
       } else if(b.kind==='para' && next&&next.kind==='h' && flowHeading&&flowHeading.kind==='pre'){
         const previous=groupedBlocks[groupedBlocks.length-1];
@@ -926,7 +853,7 @@ class Component extends DCLogic {
       const diagram=b.kind==='workWithFlow' ? b.flowText?.diagram : b.text?.diagram;
       return {
       isH:b.kind==='h', isPara:b.kind==='para', isBullets:b.kind==='bullets', isPre:b.kind==='pre'&&!diagram, isWorkWithFlow:b.kind==='workWithFlow', isParaWithFlow:b.kind==='paraWithFlow', isDiagram:!!diagram&&b.kind!=='workWithFlow'&&b.kind!=='paraWithFlow', isClenchOrigami:!!b.flowText?.clench, isDriftArchitecture:!!b.flowText?.drift, hasStandardFlow:!!diagram,
-      isApprenticeOrigami:!!b.flowText?.apprentice, isRoblotixOrigami:!!b.flowText?.roblotix, isFennecOrigami:!!b.flowText?.fennec,
+      isApprenticeOrigami:!!b.flowText?.apprentice, isRoblotixOrigami:!!b.flowText?.roblotix,
       isTags:b.kind==='tags', isLinks:b.kind==='links', isSee:b.kind==='see',
       text:b.text, note:b.note, flowTitle:b.flowTitle, flowText:b.flowText,
       diagram:(diagram||[]).map(s=>({isRow:s.t==='row',isArrow:s.t==='arrow',isNote:s.t==='note',isText:s.t==='text',nodes:s.v||[],label:s.v||''})),
