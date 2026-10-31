@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./assets/js/portfolio-data.js?v=20261030d"></script>
+<script src="./assets/js/portfolio-data.js?v=20261030e"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -431,6 +431,85 @@
                               <path d="M91 228L117 272M139 228L151 272M188 228L189 272M237 228L228 272M286 228L267 272M335 228L305 272"/>
                               <path d="M104 235H350M93 245H343M82 257H332"/>
                             </g>
+                          </svg>
+                        </figure>
+                      </sc-if>
+                      <sc-if value="{{ b.isBrowser4AllOrigami }}">
+                        <figure class="project-origami">
+                          <svg viewBox="0 0 400 530" role="img" aria-labelledby="browser4all-origami-title browser4all-origami-desc">
+                            <title id="browser4all-origami-title">Speak, watch, respond</title>
+                            <desc id="browser4all-origami-desc">A person speaks a task in one of five supported languages. Browser4ALL transcribes it, drives a visible browser, and shows color-coded progress in a floating overlay. Clarifying questions are spoken back so the user can respond by voice.</desc>
+                            <defs><marker id="browser4all-arrow" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1L6 4L1 7" fill="none" stroke="context-stroke" stroke-width="1.2"/></marker></defs>
+
+                            <!-- Voice-first input: a faceted profile, microphone, and five real language options. -->
+                            <g class="origami-paper" stroke-linejoin="round">
+                              <path d="M42 141L52 126L70 115L97 118L115 141Z" fill="#ef6934"/>
+                              <path d="M52 126L79 137L42 141Z" fill="#ffbf86"/>
+                              <path d="M70 108L96 106L97 126L82 137L66 122Z" fill="#e68d61"/>
+                              <path d="M54 63L64 44L88 36L108 44L119 59L118 71L128 80L118 87L115 103L103 117L82 126L65 116L55 97Z" fill="#ffd5a5"/>
+                              <path d="M54 63L72 77L65 116L55 97Z" fill="#e68d61"/>
+                              <path d="M72 77L118 71L128 80L99 88Z" fill="#ffbf86"/>
+                              <path d="M65 116L99 88L103 117L82 126Z" fill="#f09a61"/>
+                              <path d="M54 63L50 51L66 34L91 30L112 42L119 59L106 62L86 48L64 55Z" fill="#829db7"/>
+                              <path d="M66 34L86 48L91 30Z" fill="#bdd0de"/>
+                              <path d="M54 75L64 69L72 77L65 91L55 88Z" fill="#ffb477"/>
+                              <path d="M105 69L116 70M115 94L106 96" fill="none" stroke-width="1.8"/>
+                              <circle cx="110" cy="78" r="1.8" fill="#34496b" stroke="none"/>
+
+                              <path d="M153 70L167 70L172 101L165 116L151 101Z" fill="#ef6934"/>
+                              <path d="M153 70L160 80L160 108L151 101Z" fill="#ffbf86"/>
+                              <path d="M143 96Q143 121 160 121Q177 121 177 96M160 121V137M148 137H172" fill="none"/>
+
+                              <path d="M191 40L349 40L356 116L208 120L186 103Z" fill="#fff1d7"/>
+                              <path d="M186 103L208 94L208 120Z" fill="#ffbf86"/>
+                            </g>
+                            <text x="272" y="64" fill="#34496b" font-family="inherit" font-size="11" text-anchor="middle">“Find an accessible</text>
+                            <text x="272" y="79" fill="#34496b" font-family="inherit" font-size="11" text-anchor="middle">route.”</text>
+                            <g font-family="inherit" font-size="10" text-anchor="middle">
+                              <text fill="#34496b" x="220" y="102">EN</text><text fill="#34496b" x="247" y="102">ES</text><text fill="#34496b" x="274" y="102">FR</text><text fill="#34496b" x="301" y="102">DE</text><text fill="#34496b" x="329" y="102">中文</text>
+                            </g>
+                            <text class="origami-label" x="200" y="157">Speak a task in your language</text>
+                            <path class="origami-route" d="M200 169V195" marker-end="url(#browser4all-arrow)"/>
+                            <text class="origami-sub" x="277" y="185">speech → task</text>
+
+                            <!-- A visible browser, not a black box: page, cursor, and live activity overlay. -->
+                            <g class="origami-paper" stroke-linejoin="round">
+                              <path d="M45 211L344 211L356 401L36 401Z" fill="#829db7"/>
+                              <path d="M45 211L344 211L347 239L42 239Z" fill="#506b8a"/>
+                              <circle cx="58" cy="225" r="5" fill="#ef6934"/><circle cx="75" cy="225" r="5" fill="#ffbf86"/><circle cx="92" cy="225" r="5" fill="#bdd0de"/>
+                              <path d="M109 218L319 218L323 232L108 232Z" fill="#fff1d7"/>
+                              <path d="M52 248L331 248L337 388L45 388Z" fill="#fff1d7"/>
+                              <path d="M66 265L191 265L194 282L66 282ZM66 296L211 296L214 306L66 306ZM66 316L183 316L186 326L66 326Z" fill="#bdd0de"/>
+                              <path d="M66 344L132 344L134 370L65 370Z" fill="#ffbf86"/>
+                              <path d="M65 344L99 357L65 370Z" fill="#ef6934"/>
+
+                              <!-- Hovering UI mirrors the repo's question/action color coding. -->
+                              <path d="M215 260L360 270L356 371L211 360Z" fill="#34496b"/>
+                              <path d="M223 275L347 283L348 299L221 291Z" fill="#506b8a"/>
+                              <path d="M225 308L338 314M223 328L326 334M221 348L344 355" fill="none" stroke="#bdd0de"/>
+                              <path d="M225 307L233 312L225 317Z" fill="#06b890" stroke="none"/>
+                              <path d="M223 327L231 332L223 337Z" fill="#60a5fa" stroke="none"/>
+                              <path d="M221 347L229 352L221 357Z" fill="#06b890" stroke="none"/>
+
+                              <!-- The cursor lands on the page while the overlay reports the action. -->
+                              <path d="M151 329L178 350L165 353L174 370L164 375L156 358L146 369Z" fill="#ef6934"/>
+                              <path d="M151 329L156 358L146 369Z" fill="#ffbf86"/>
+                            </g>
+                            <text x="283" y="291" fill="#fff1d7" font-family="inherit" font-size="10" text-anchor="middle">Browser4ALL · LIVE</text>
+                            <text class="origami-label" x="200" y="425">Watch the browser act</text>
+                            <text class="origami-sub" x="200" y="445">Questions, actions, and progress stay visible</text>
+                            <path class="origami-route" d="M200 455V466" marker-end="url(#browser4all-arrow)"/>
+
+                            <!-- Spoken clarification closes the accessible interaction loop. -->
+                            <g class="origami-paper" stroke-linejoin="round">
+                              <path d="M62 478L79 478L103 461L103 514L79 498L62 498Z" fill="#ef6934"/>
+                              <path d="M79 478L103 461L90 488L103 514L79 498Z" fill="#ffbf86"/>
+                              <path d="M111 476L121 488L111 501M123 468L139 488L123 509" fill="none"/>
+                              <path d="M153 466L344 466L349 518L185 518L165 526L168 518L151 518Z" fill="#fff1d7"/>
+                              <path d="M151 518L185 504L165 526L168 518Z" fill="#ffbf86"/>
+                            </g>
+                            <text class="origami-label" x="250" y="490">“Which result?”</text>
+                            <text class="origami-sub" x="250" y="506">Answer by voice.</text>
                           </svg>
                         </figure>
                       </sc-if>
@@ -900,8 +979,8 @@ class Component extends DCLogic {
     const groupedBlocks=[];
     for(let bi=0;bi<sourceBlocks.length;bi++){
       const b=sourceBlocks[bi], next=sourceBlocks[bi+1], flowHeading=sourceBlocks[bi+2], flow=sourceBlocks[bi+3];
-      if(b.kind==='h' && next&&next.kind==='bullets' && flowHeading&&flowHeading.kind==='h' && flow&&['pre','clenchOrigami','roblotixOrigami','fennecOrigami','driftArchitecture','apprenticeOrigami'].includes(flow.kind)){
-        groupedBlocks.push({kind:'workWithFlow',text:b.text,items:next.items,flowTitle:flowHeading.text,flowText:flow.kind==='apprenticeOrigami'?{apprentice:true}:flow.kind==='clenchOrigami'?{clench:true}:flow.kind==='roblotixOrigami'?{roblotix:true}:flow.kind==='fennecOrigami'?{fennec:true}:flow.kind==='driftArchitecture'?{drift:true}:flow.text});
+      if(b.kind==='h' && next&&next.kind==='bullets' && flowHeading&&flowHeading.kind==='h' && flow&&['pre','clenchOrigami','roblotixOrigami','fennecOrigami','browser4allOrigami','driftArchitecture','apprenticeOrigami'].includes(flow.kind)){
+        groupedBlocks.push({kind:'workWithFlow',text:b.text,items:next.items,flowTitle:flowHeading.text,flowText:flow.kind==='apprenticeOrigami'?{apprentice:true}:flow.kind==='clenchOrigami'?{clench:true}:flow.kind==='roblotixOrigami'?{roblotix:true}:flow.kind==='fennecOrigami'?{fennec:true}:flow.kind==='browser4allOrigami'?{browser4all:true}:flow.kind==='driftArchitecture'?{drift:true}:flow.text});
         bi+=3;
       } else if(b.kind==='para' && next&&next.kind==='h' && flowHeading&&flowHeading.kind==='pre'){
         const previous=groupedBlocks[groupedBlocks.length-1];
@@ -914,7 +993,7 @@ class Component extends DCLogic {
     const blocks=entry?groupedBlocks.map((b,bi)=>{
       const diagram=b.kind==='workWithFlow' ? b.flowText?.diagram : b.text?.diagram;
       return {
-      isH:b.kind==='h', isPara:b.kind==='para', isBullets:b.kind==='bullets', isPre:b.kind==='pre'&&!diagram, isWorkWithFlow:b.kind==='workWithFlow', isParaWithFlow:b.kind==='paraWithFlow', isDiagram:!!diagram&&b.kind!=='workWithFlow'&&b.kind!=='paraWithFlow', isClenchOrigami:!!b.flowText?.clench, isFennecOrigami:!!b.flowText?.fennec, isDriftArchitecture:!!b.flowText?.drift, hasStandardFlow:!!diagram,
+      isH:b.kind==='h', isPara:b.kind==='para', isBullets:b.kind==='bullets', isPre:b.kind==='pre'&&!diagram, isWorkWithFlow:b.kind==='workWithFlow', isParaWithFlow:b.kind==='paraWithFlow', isDiagram:!!diagram&&b.kind!=='workWithFlow'&&b.kind!=='paraWithFlow', isClenchOrigami:!!b.flowText?.clench, isFennecOrigami:!!b.flowText?.fennec, isBrowser4AllOrigami:!!b.flowText?.browser4all, isDriftArchitecture:!!b.flowText?.drift, hasStandardFlow:!!diagram,
       isApprenticeOrigami:!!b.flowText?.apprentice, isRoblotixOrigami:!!b.flowText?.roblotix, hasFlowLink:!!b.flowText?.fennec, hasPlainFlowTitle:!b.flowText?.fennec, flowHref:b.flowText?.fennec?'https://fennecxr.vercel.app/':'',
       isTags:b.kind==='tags', isLinks:b.kind==='links', isSee:b.kind==='see',
       text:b.text, note:b.note, flowTitle:b.flowTitle, flowText:b.flowText,

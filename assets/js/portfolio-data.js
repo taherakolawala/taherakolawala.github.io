@@ -294,20 +294,8 @@ const ENTRIES = [
         'Engineered a stateful AI agent with custom context management and 50+ functions for multi-step web navigation and error recovery.',
         'Designed a full-stack orchestration pipeline with dynamic API cost management and a custom tkinter UI for real-time visual feedback.'
       ]},
-      {kind:'h',text:'AGENT LOOP'},
-      {kind:'pre',text:D([
-        {t:'text',v:'voice in'},
-        {t:'arrow'},
-        {t:'row',v:['speech-to-text']},
-        {t:'arrow'},
-        {t:'row',v:['stateful agent - 50+ functions']},
-        {t:'arrow'},
-        {t:'row',v:['browser-use driver']},
-        {t:'arrow',v:'page state back into context'},
-        {t:'row',v:['text-to-speech - ElevenLabs']},
-        {t:'arrow'},
-        {t:'text',v:'voice out'}
-      ])},
+      {kind:'h',text:'SPEAK, WATCH, RESPOND'},
+      {kind:'browser4allOrigami'},
       {kind:'h',text:'STACK'},
       {kind:'tags',items:['Python','asyncio','browser-use','OpenAI','ElevenLabs','tkinter']},
       {kind:'links',items:[{label:'Demo video',href:'https://www.youtube.com/watch?v=D0L6IPorGCQ'},{label:'GitHub',href:'https://github.com/taherakolawala/Browser4All'}]},
