@@ -38,8 +38,12 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .flow-diagram{display:flex;flex-direction:column;gap:6px;color:var(--dim)}
 .work-flow:has(.project-origami){grid-template-columns:minmax(0,1.35fr) minmax(300px,1fr);gap:28px}
 .flow-title{text-align:center}
+.diagram-cta{display:block;color:var(--accent);text-decoration:none;text-underline-offset:4px}
+.diagram-cta:hover{text-decoration:underline}
 .project-origami{margin:0 auto;max-width:320px}
 .project-origami svg{display:block;width:100%;height:auto;overflow:visible}
+.fennec-origami{max-width:360px}
+.fennec-origami svg{filter:drop-shadow(0 5px 0 rgba(52,73,107,.09))}
 .origami-paper{stroke:#34496b;stroke-width:1.15}
 .origami-route{fill:none;stroke:var(--dim);stroke-width:1.1;stroke-linejoin:round}
 .origami-observe{stroke-dasharray:3 5}

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./assets/js/portfolio-data.js?v=20261030b"></script>
+<script src="./assets/js/portfolio-data.js?v=20261030d"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./assets/css/site.css?v=20261030c">
+<link rel="stylesheet" href="./assets/css/site.css?v=20261030d">
 </helmet>
 <div style="min-height:100vh;background:var(--bg);color:var(--fg);display:flex;flex-direction:column">
 
@@ -141,7 +141,12 @@
                       </ul>
                     </div>
                     <div class="flow-visual" style="padding-top:20px">
-                      <div class="flow-title" style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px;letter-spacing:0.04em;color:var(--dim);margin-bottom:10px">{{ b.flowTitle }}</div>
+                      <sc-if value="{{ b.hasPlainFlowTitle }}">
+                        <div class="flow-title" style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px;letter-spacing:0.04em;color:var(--dim);margin-bottom:10px">{{ b.flowTitle }}</div>
+                      </sc-if>
+                      <sc-if value="{{ b.hasFlowLink }}">
+                        <a class="flow-title diagram-cta" href="{{ b.flowHref }}" target="_blank" rel="noreferrer" style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px;letter-spacing:0.04em;margin-bottom:10px">{{ b.flowTitle }}</a>
+                      </sc-if>
                       <sc-if value="{{ b.isApprenticeOrigami }}">
                         <figure class="project-origami">
                           <svg viewBox="0 0 400 530" role="img" aria-labelledby="project-origami-title project-origami-desc">
@@ -369,6 +374,63 @@
                             <text class="origami-label" x="200" y="513">Message</text>
                             <text class="origami-label" x="313" y="513">Call</text>
 
+                          </svg>
+                        </figure>
+                      </sc-if>
+                      <sc-if value="{{ b.isFennecOrigami }}">
+                        <figure class="project-origami fennec-origami">
+                          <svg viewBox="0 0 440 300" role="img" aria-labelledby="fennec-origami-title fennec-origami-desc">
+                            <title id="fennec-origami-title">Carthage Underfoot courtyard</title>
+                            <desc id="fennec-origami-desc">A faceted illustration of the FennecXR live experience: a Carthaginian courtyard with a broad temple roof, columns, brick walls, artifact scans, and a tiled plaza.</desc>
+                            <!-- Dusk sky and the broad ground plane establish the live site's frontal view. -->
+                            <path class="origami-paper" d="M18 65L220 13L422 65L422 254L18 254Z" fill="#d8c1b7"/>
+                            <path class="origami-paper" d="M18 172L220 128L422 172L422 254L18 254Z" fill="#c8945f"/>
+                            <path class="origami-paper" d="M18 211L220 164L422 211L392 272L48 272Z" fill="#b77a42"/>
+                            <path class="origami-paper" d="M48 272L392 272L359 289L81 289Z" fill="#6f3d26"/>
+
+                            <!-- Crenellated perimeter walls. -->
+                            <g class="origami-paper" stroke-linejoin="round">
+                              <path d="M18 143L61 149L61 221L18 211Z" fill="#9a5e35"/>
+                              <path d="M18 137V126H31V140H41V129H54V147Z" fill="#bd8050"/>
+                              <path d="M379 149L422 143V211L379 221Z" fill="#8c4f31"/>
+                              <path d="M386 147V129H399V140H409V126H422V137Z" fill="#b87346"/>
+                              <path d="M18 174L61 181M379 181L422 174M25 151V214M43 156V218M397 156V218M415 151V214" fill="none" opacity=".45"/>
+                            </g>
+
+                            <!-- Temple: layered eaves, pediment, and folded roof planes. -->
+                            <g class="origami-paper" stroke-linejoin="round">
+                              <path d="M82 93L220 28L358 93L341 101L220 54L99 101Z" fill="#6f3020"/>
+                              <path d="M99 101L220 54L341 101L220 83Z" fill="#8d4c2c"/>
+                              <path d="M93 98L347 98L358 112L82 112Z" fill="#5c2d1e"/>
+                              <path d="M82 112L358 112L350 124L91 124Z" fill="#8a4b2a"/>
+                              <path d="M103 124H337V211H103Z" fill="#744229"/>
+                              <path d="M103 124L220 141L337 124V211H103Z" fill="#875033" opacity=".62"/>
+                              <path d="M116 211L220 190L324 211L349 228L91 228Z" fill="#d0a06a"/>
+                              <path d="M91 228L349 228L363 238L77 238Z" fill="#99603a"/>
+                            </g>
+
+                            <!-- Six faceted columns frame the archive artifacts. -->
+                            <g class="origami-paper" stroke-linejoin="round">
+                              <path d="M111 119L132 119L136 204L107 204Z" fill="#c58a55"/><path d="M111 119L122 130L122 204H107Z" fill="#e0b17a"/><path d="M101 204H141L135 214H107Z" fill="#8c5030"/>
+                              <path d="M157 119L177 119L181 198L153 198Z" fill="#b87545"/><path d="M157 119L167 129L167 198H153Z" fill="#d69e68"/><path d="M148 198H186L181 208H153Z" fill="#82452a"/>
+                              <path d="M204 119L225 119L227 193L201 193Z" fill="#c58a55"/><path d="M204 119L214 129L214 193H201Z" fill="#e0b17a"/><path d="M196 193H232L228 203H200Z" fill="#8c5030"/>
+                              <path d="M260 119L281 119L285 198L256 198Z" fill="#b87545"/><path d="M260 119L271 129L271 198H256Z" fill="#d69e68"/><path d="M251 198H290L285 208H256Z" fill="#82452a"/>
+                              <path d="M307 119L328 119L332 204L303 204Z" fill="#c58a55"/><path d="M307 119L318 130L318 204H303Z" fill="#e0b17a"/><path d="M297 204H338L332 214H303Z" fill="#8c5030"/>
+                            </g>
+
+                            <!-- Pale scan fragments stand out from the interpretive architecture. -->
+                            <g class="origami-paper" stroke-linejoin="round">
+                              <path d="M69 169L78 148L88 153L91 181L82 198L65 195Z" fill="#e4d8bf"/><path d="M69 169L82 162L91 181L82 198Z" fill="#b8c2bd"/>
+                              <path d="M137 180L146 157L154 159L160 190L151 203L136 198Z" fill="#eee0c5"/><path d="M146 157L154 159L151 203L143 180Z" fill="#aab8b5"/>
+                              <path d="M235 172L246 149L254 156L253 190L242 201L230 193Z" fill="#e8dcc5"/><path d="M235 172L246 149L247 181L230 193Z" fill="#b6c0b8"/>
+                              <path d="M342 178L351 154L360 159L364 191L354 203L339 197Z" fill="#eee2c9"/><path d="M351 154L360 159L354 203L347 181Z" fill="#aebbb7"/>
+                            </g>
+
+                            <!-- Plaza seams echo the screenshot's tiled court without becoming a grid diagram. -->
+                            <g class="origami-route" opacity=".42">
+                              <path d="M91 228L117 272M139 228L151 272M188 228L189 272M237 228L228 272M286 228L267 272M335 228L305 272"/>
+                              <path d="M104 235H350M93 245H343M82 257H332"/>
+                            </g>
                           </svg>
                         </figure>
                       </sc-if>
@@ -838,8 +900,8 @@ class Component extends DCLogic {
     const groupedBlocks=[];
     for(let bi=0;bi<sourceBlocks.length;bi++){
       const b=sourceBlocks[bi], next=sourceBlocks[bi+1], flowHeading=sourceBlocks[bi+2], flow=sourceBlocks[bi+3];
-      if(b.kind==='h' && next&&next.kind==='bullets' && flowHeading&&flowHeading.kind==='h' && flow&&['pre','clenchOrigami','roblotixOrigami','driftArchitecture','apprenticeOrigami'].includes(flow.kind)){
-        groupedBlocks.push({kind:'workWithFlow',text:b.text,items:next.items,flowTitle:flowHeading.text,flowText:flow.kind==='apprenticeOrigami'?{apprentice:true}:flow.kind==='clenchOrigami'?{clench:true}:flow.kind==='roblotixOrigami'?{roblotix:true}:flow.kind==='driftArchitecture'?{drift:true}:flow.text});
+      if(b.kind==='h' && next&&next.kind==='bullets' && flowHeading&&flowHeading.kind==='h' && flow&&['pre','clenchOrigami','roblotixOrigami','fennecOrigami','driftArchitecture','apprenticeOrigami'].includes(flow.kind)){
+        groupedBlocks.push({kind:'workWithFlow',text:b.text,items:next.items,flowTitle:flowHeading.text,flowText:flow.kind==='apprenticeOrigami'?{apprentice:true}:flow.kind==='clenchOrigami'?{clench:true}:flow.kind==='roblotixOrigami'?{roblotix:true}:flow.kind==='fennecOrigami'?{fennec:true}:flow.kind==='driftArchitecture'?{drift:true}:flow.text});
         bi+=3;
       } else if(b.kind==='para' && next&&next.kind==='h' && flowHeading&&flowHeading.kind==='pre'){
         const previous=groupedBlocks[groupedBlocks.length-1];
@@ -852,8 +914,8 @@ class Component extends DCLogic {
     const blocks=entry?groupedBlocks.map((b,bi)=>{
       const diagram=b.kind==='workWithFlow' ? b.flowText?.diagram : b.text?.diagram;
       return {
-      isH:b.kind==='h', isPara:b.kind==='para', isBullets:b.kind==='bullets', isPre:b.kind==='pre'&&!diagram, isWorkWithFlow:b.kind==='workWithFlow', isParaWithFlow:b.kind==='paraWithFlow', isDiagram:!!diagram&&b.kind!=='workWithFlow'&&b.kind!=='paraWithFlow', isClenchOrigami:!!b.flowText?.clench, isDriftArchitecture:!!b.flowText?.drift, hasStandardFlow:!!diagram,
-      isApprenticeOrigami:!!b.flowText?.apprentice, isRoblotixOrigami:!!b.flowText?.roblotix,
+      isH:b.kind==='h', isPara:b.kind==='para', isBullets:b.kind==='bullets', isPre:b.kind==='pre'&&!diagram, isWorkWithFlow:b.kind==='workWithFlow', isParaWithFlow:b.kind==='paraWithFlow', isDiagram:!!diagram&&b.kind!=='workWithFlow'&&b.kind!=='paraWithFlow', isClenchOrigami:!!b.flowText?.clench, isFennecOrigami:!!b.flowText?.fennec, isDriftArchitecture:!!b.flowText?.drift, hasStandardFlow:!!diagram,
+      isApprenticeOrigami:!!b.flowText?.apprentice, isRoblotixOrigami:!!b.flowText?.roblotix, hasFlowLink:!!b.flowText?.fennec, hasPlainFlowTitle:!b.flowText?.fennec, flowHref:b.flowText?.fennec?'https://fennecxr.vercel.app/':'',
       isTags:b.kind==='tags', isLinks:b.kind==='links', isSee:b.kind==='see',
       text:b.text, note:b.note, flowTitle:b.flowTitle, flowText:b.flowText,
       diagram:(diagram||[]).map(s=>({isRow:s.t==='row',isArrow:s.t==='arrow',isNote:s.t==='note',isText:s.t==='text',nodes:s.v||[],label:s.v||''})),
