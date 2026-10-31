@@ -37,7 +37,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .work-flow{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(220px,0.85fr);gap:38px;align-items:start}
 .flow-diagram{display:flex;flex-direction:column;gap:6px;color:var(--dim)}
 .work-flow:has(.project-origami){grid-template-columns:minmax(0,1.35fr) minmax(300px,1fr);gap:28px}
-.flow-visual:has(.project-origami) .flow-title{text-align:center}
+.flow-title{text-align:center}
 .project-origami{margin:0 auto;max-width:320px}
 .project-origami svg{display:block;width:100%;height:auto;overflow:visible}
 .origami-paper{stroke:#34496b;stroke-width:1.15}

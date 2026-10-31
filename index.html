@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./assets/css/site.css?v=20261030b">
+<link rel="stylesheet" href="./assets/css/site.css?v=20261030c">
 </helmet>
 <div style="min-height:100vh;background:var(--bg);color:var(--fg);display:flex;flex-direction:column">
 
@@ -466,7 +466,7 @@
                       </sc-if>
                       <sc-if value="{{ b.hasExtraFlow }}">
                         <p style="font-size:11px;line-height:1.5;color:var(--dim);margin:18px 0 9px">{{ b.note }}</p>
-                        <div style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px;letter-spacing:0.04em;color:var(--dim);margin-bottom:10px">{{ b.extraFlowTitle }}</div>
+                        <div class="flow-title" style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px;letter-spacing:0.04em;color:var(--dim);margin-bottom:10px">{{ b.extraFlowTitle }}</div>
                         <div class="flow-diagram">
                           <sc-for list="{{ b.extraDiagram }}" as="d" hint-placeholder-count="6">
                             <sc-if value="{{ d.isRow }}"><div class="flow-row"><sc-for list="{{ d.nodes }}" as="n" hint-placeholder-count="2"><span class="flow-node">{{ n }}</span></sc-for></div></sc-if>
@@ -482,8 +482,8 @@
                 <sc-if value="{{ b.isParaWithFlow }}">
                   <div class="work-flow">
                     <p style="font-size:14.5px;line-height:1.75;color:var(--fg);margin:0;max-width:78ch;text-wrap:pretty">{{ b.text }}</p>
-                    <div>
-                      <div style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px;letter-spacing:0.04em;color:var(--dim);margin-bottom:10px">{{ b.flowTitle }}</div>
+                    <div class="flow-visual">
+                      <div class="flow-title" style="font-family:'Departure Mono','JetBrains Mono',monospace;font-size:14px;letter-spacing:0.04em;color:var(--dim);margin-bottom:10px">{{ b.flowTitle }}</div>
                       <div class="flow-diagram">
                         <sc-for list="{{ b.diagram }}" as="d" hint-placeholder-count="6">
                           <sc-if value="{{ d.isRow }}"><div class="flow-row"><sc-for list="{{ d.nodes }}" as="n" hint-placeholder-count="2"><span class="flow-node">{{ n }}</span></sc-for></div></sc-if>
